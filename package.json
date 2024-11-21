@@ -1,0 +1,21 @@
+{
+  "name": "nail-studio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently -n BE,FE -c yellow,blue \"npm run BE\" \"npm run FE\"",
+    "BE": "npm run dev -w packages/server",
+    "FE": "npm run dev -w packages/client"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "workspaces": [
+    "packages/server",
+    "packages/client"
+  ],
+  "dependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
