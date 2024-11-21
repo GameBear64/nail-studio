@@ -1,20 +1,19 @@
-import { createApp } from 'vue';
+import { createMemoryHistory, createRouter } from "vue-router";
+import { createApp } from "vue";
+import "../main.css";
+import App from "./App.vue";
 
-// find user
-import useFetch from '@utils/useFetch';
-import { setId } from '@utils/UserStore';
+const routes = [
+  { path: "/", component: () => import("./Pages/Register.vue") },
+  { path: "/register", component: () => import("./Pages/Login.vue") },
+];
 
-import App from './App.vue';
-
-import './style.css';
-// useFetch({ url: 'user' }).then(user => setId(user?.id));
-
-//including the swiper web components
-import { register } from 'swiper/element/bundle';
-register();
-
-import router from './router';
+const router = createRouter({
+  history: createMemoryHistory(),
+  linkActiveClass: "text-red-700",
+  routes,
+});
 
 const app = createApp(App);
 app.use(router);
-app.mount('#app');
+app.mount("#app");
