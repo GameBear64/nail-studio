@@ -7,12 +7,12 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
+      "@pages": fileURLToPath(new URL("./src/pages", import.meta.url)),
       "@tools": fileURLToPath(new URL("./src/toolbox", import.meta.url)),
+      "@store": fileURLToPath(new URL("./src/toolbox/stores", import.meta.url)),
       "@components": fileURLToPath(
         new URL("./src/components", import.meta.url)
       ),
-      "@pages": fileURLToPath(new URL("./src/pages", import.meta.url)),
-      "@store": fileURLToPath(new URL("./src/stores", import.meta.url)),
     },
   },
   server: {

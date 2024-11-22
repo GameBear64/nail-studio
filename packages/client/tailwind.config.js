@@ -8,7 +8,6 @@ export default {
         base: "var(--base)",
         "base-m": "var(--base-m)",
         "base-s": "var(--base-s)",
-        "base-xs": "var(--base-xs)", //for borders
         txtPrimary: "var(--txtPrimary)",
         txtSecondary: "var(--txtSecondary)",
         "primary-light": "var(--primary-light)",
