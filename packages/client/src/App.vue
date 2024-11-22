@@ -1,15 +1,18 @@
-<script setup></script>
+<script setup>
+import { Suspense } from "vue";
+import { RouterView } from "vue-router";
+import Loading from "./pages/Loading.vue";
+</script>
 
 <template>
-  <h1 class="bg-black text-red-700">Hello App!</h1>
-  <p><strong>Current route path:</strong> {{ $route.fullPath }}</p>
-  <nav>
-    <RouterLink to="/">Go to Home</RouterLink>
-    <RouterLink to="/register">Go to register</RouterLink>
-  </nav>
-  <main>
-    <RouterView />
-  </main>
+  <RouterView v-slot="{ Component }">
+    <Suspense timeout="0">
+      <component :is="{ Component }" />
+      <template #fallback>
+        <Loading />
+      </template>
+    </Suspense>
+  </RouterView>
 </template>
 
 <style scoped></style>
