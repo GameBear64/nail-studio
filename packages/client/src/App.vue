@@ -1,10 +1,4 @@
-<script>
-export default {
-  setup() {
-    return {};
-  },
-};
-</script>
+<script setup></script>
 
 <template>
   <h1 class="bg-black text-red-700">Hello App!</h1>

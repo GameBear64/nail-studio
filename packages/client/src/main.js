@@ -1,18 +1,7 @@
-import { createMemoryHistory, createRouter } from "vue-router";
 import { createApp } from "vue";
+import { router } from "./router";
 import "../main.css";
 import App from "./App.vue";
-
-const routes = [
-  { path: "/", component: () => import("./Pages/Register.vue") },
-  { path: "/register", component: () => import("./Pages/Login.vue") },
-];
-
-const router = createRouter({
-  history: createMemoryHistory(),
-  linkActiveClass: "text-red-700",
-  routes,
-});
 
 const app = createApp(App);
 app.use(router);

@@ -16,7 +16,6 @@
     "packages/client"
   ],
   "dependencies": {
-    "concurrently": "^9.1.0",
-    "vue-router": "4"
+    "concurrently": "^9.1.0"
   }
 }
