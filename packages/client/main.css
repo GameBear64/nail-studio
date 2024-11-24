@@ -21,7 +21,7 @@
   textarea,
   input,
   select {
-    @apply rounded bg-base-m text-txtPrimary h-10 px-2 w-full border border-base-s focus:border-primary focus:outline-none my-2;
+    @apply rounded bg-base-m text-txtPrimary h-10 px-2 w-full border border-base-s focus:border-primary focus:outline-none;
   }
 
   textarea {
@@ -63,7 +63,7 @@
   }
 
   .card {
-    @apply rounded-lg bg-base-x px-4 py-3 text-txtPrimary;
+    @apply rounded-2xl bg-base-x p-4 text-txtPrimary;
   }
 }
 
