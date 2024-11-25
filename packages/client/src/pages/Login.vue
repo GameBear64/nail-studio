@@ -25,7 +25,6 @@ const login = (data) => {
         v-slot="{ errors }"
         :rules="{
           name: joi.string().min(3),
-
           password: joi.string().min(3),
         }"
       >

@@ -1,8 +1,8 @@
 <script setup>
 import joi from "joi";
-import Form from "../components/Form/Form.vue";
-import Input from "../components/Form/Input.vue";
-
+import Form from "@components/Form/Form.vue";
+import Input from "@components/Form/Input.vue";
+import PasswordInput from "@components/Form/PasswordInput.vue";
 const register = (data) => {
   console.log(data);
 };
@@ -26,7 +26,7 @@ const register = (data) => {
         :rules="{
           name: joi.string().min(3),
           phone_number: joi.number(),
-          password: joi.string().min(3),
+          password: joi.string().regex('/^[0-9]*$/'),
           confirm_password: joi
             .valid(joi.ref('password'))
             .messages({ 'any.only': 'Passwords don\'t match' }),
@@ -35,7 +35,7 @@ const register = (data) => {
         <div class="text-left flex flex-col gap-1">
           <Input name="name" :errors="errors?.name" />
           <Input name="phone_number" :errors="errors?.phone_number" />
-          <Input name="password" :errors="errors?.password" />
+          <PasswordInput :errors="errors?.password" />
           <Input name="confirm_password" :errors="errors?.confirm_password" />
         </div>
       </Form>
