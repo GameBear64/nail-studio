@@ -1,5 +1,6 @@
 <script setup>
 import { useAttrs } from "vue";
+// TODO: optional label when we cant use the name as label
 const props = defineProps(["errors"]);
 const value = defineModel();
 

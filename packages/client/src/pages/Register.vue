@@ -3,8 +3,19 @@ import joi from "joi";
 import Form from "@components/Form/Form.vue";
 import Input from "@components/Form/Input.vue";
 import PasswordInput from "@components/Form/PasswordInput.vue";
+
 const register = (data) => {
   console.log(data);
+};
+
+const rules = {
+  name: joi.string().min(3),
+  email: joi.string().min(3),
+  phone: joi.string(),
+  password: joi.string(),
+  confirmPassword: joi
+    .valid(joi.ref("password"))
+    .messages({ "any.only": "Passwords don't match" }),
 };
 </script>
 
@@ -20,23 +31,17 @@ const register = (data) => {
           <RouterLink to="/login"> Sign in here </RouterLink>
         </div>
       </div>
-      <Form
-        @submit="register"
-        v-slot="{ errors }"
-        :rules="{
-          name: joi.string().min(3),
-          phone_number: joi.number(),
-          password: joi.string().regex('/^[0-9]*$/'),
-          confirm_password: joi
-            .valid(joi.ref('password'))
-            .messages({ 'any.only': 'Passwords don\'t match' }),
-        }"
-      >
+      <Form @submit="register" v-slot="{ errors }" :rules>
         <div class="text-left flex flex-col gap-1">
           <Input name="name" :errors="errors?.name" />
-          <Input name="phone_number" :errors="errors?.phone_number" />
-          <PasswordInput :errors="errors?.password" />
-          <Input name="confirm_password" :errors="errors?.confirm_password" />
+          <Input name="email" :errors="errors?.email" />
+          <Input name="phone" :errors="errors?.phone_number" />
+          <PasswordInput name="password" />
+          <Input
+            name="confirmPassword"
+            type="password"
+            :errors="errors?.confirm_password"
+          />
         </div>
       </Form>
     </div>
