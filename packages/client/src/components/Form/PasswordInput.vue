@@ -1,70 +1,63 @@
 <script setup>
-import { ref, watch } from "vue";
-import { difficultyLevel } from "../../toolbox/consts/consts";
+import { computed, reactive, ref, watch } from "vue";
+import Icon from "../Icon.vue";
+import { difficultyLevel, passwordRules } from "@tools/consts/consts";
 
 const value = defineModel();
 const passwordPoints = ref(0);
-const difficulty = ref(difficultyLevel[1]);
-const message = ref("");
-
-const color = () => {
-  if (passwordPoints.value < 1) {
-    difficulty.value = difficultyLevel[1];
-  }
-  if (passwordPoints.value > 1 && passwordPoints.value < 3) {
-    difficulty.value = difficultyLevel[2];
-  }
-  if (passwordPoints.value >= 3) {
-    difficulty.value = difficultyLevel[3];
-  }
-};
+const messages = ref([]);
+const state = reactive({ visibility: false });
 
 watch(value, (password) => {
-  let points = 0;
-
-  if (password.length > 8) {
-    points++;
-    if (password.match(/(?=.*[a-z])(?=.*[A-Z])/g)) {
-      points++;
-    } else {
-      message.value = "Optional: At least one upper and lower case";
-    }
-    if (password.match(/\d/g)) {
-      points++;
-    } else {
-      message.value = "Optional: At least one number";
-    }
-    if (password.match(/[$&+,:;=?@#|'<>.^*()%!-]/g)) {
-      points++;
-    } else {
-      message.value = "Optional: At least one special character";
-    }
-  } else {
-    return (message.value = "Required: At least 8 characters");
-  }
-
-  passwordPoints.value = points;
-  color();
+  messages.value = passwordRules.filter((rules) => !password.match(rules.rule));
+  passwordPoints.value = passwordRules.length - messages.value.length + 1;
+  console.log(difficultyLevel[passwordPoints.value]);
+  // + 1, because of the labels and the progress element
 });
+
+const passwordVisibility = computed(() =>
+  state.visibility ? "text" : "password"
+);
+
+const iconVisible = computed(() =>
+  state.visibility ? "visibility" : "visibility_off"
+);
 </script>
 
 <template>
   <div>
     <label class="font-medium" for="password">Password</label>
-    <input id="password" v-bind="$attrs" type="password" v-model="value" />
+    <div class="flex flex-row relative items-center">
+      <input
+        id="password"
+        class="relative pr-9"
+        v-bind="$attrs"
+        :type="passwordVisibility"
+        v-model="value"
+      />
+      <Icon
+        class="absolute right-0 mr-1.5"
+        :onclick="() => (state.visibility = !state.visibility)"
+        :icon="iconVisible"
+      />
+    </div>
     <div>
       <progress
         id="progress"
-        :class="`flex w-full mt-1 [&::-webkit-progress-value]:${difficulty.bg} [&::-webkit-progress-value]:rounded`"
+        class="flex w-full mt-1 [&::-webkit-progress-value]:rounded"
+        :class="`[&::-webkit-progress-value]:${difficultyLevel[passwordPoints]?.bg}`"
         :value="passwordPoints"
-        max="4"
+        max="5"
       ></progress>
-      <div v-if="message.length > 1" class="flex flex-row justify-between">
-        <p v-if="difficultyLevel.difficulty != 'Good'" class="text-sm">
-          {{ message }}
+      <div class="flex flex-row justify-between text-sm">
+        <p>
+          {{ messages[0]?.message }}
         </p>
-        <p :class="`text-sm font-medium items-end ml-auto ${difficulty.color}`">
-          {{ difficulty.difficulty }}
+        <p
+          class="font-medium items-end ml-auto"
+          :class="difficultyLevel[passwordPoints]?.color"
+        >
+          {{ difficultyLevel[passwordPoints]?.difficulty }}
         </p>
       </div>
     </div>

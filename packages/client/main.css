@@ -51,15 +51,6 @@ progress::-webkit-progress-bar {
   .reject-btn {
     @apply bg-red-600 hover:bg-red-700;
   }
-  .weak {
-    @apply [&::-webkit-progress-value]:bg-red-600;
-  }
-  .fair {
-    @apply [&::-webkit-progress-value]:bg-yellow-400;
-  }
-  .good {
-    @apply [&::-webkit-progress-value]:bg-green-400;
-  }
   .accept-btn {
     @apply bg-green-600 hover:bg-green-700;
   }

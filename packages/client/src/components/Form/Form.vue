@@ -34,7 +34,7 @@ const handleSubmit = (event) => {
 <template>
   <form @submit.prevent="handleSubmit">
     <slot :errors="error"></slot>
-    <button :class="`mt-4 w-full ${error && 'bg-gray-300'}`" type="submit">
+    <button class="mt-4 w-full" :class="error && 'bg-gray-300'" type="submit">
       Submit
     </button>
   </form>
