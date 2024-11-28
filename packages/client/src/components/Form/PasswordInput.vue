@@ -4,16 +4,24 @@ import Icon from "../Icon.vue";
 import { difficultyLevel, passwordRules } from "@tools/consts/consts";
 
 const value = defineModel();
-const passwordPoints = ref(0);
+const pp = ref(0); // Stands for "Password points"
 const messages = ref([]);
 const state = reactive({ visibility: false });
 
 watch(value, (password) => {
+  if (!password.match(/^.{8,}$/)) {
+    pp.value = 1;
+    return (messages.value = [{ message: "At least 8 characters" }]);
+  }
   messages.value = passwordRules.filter((rules) => !password.match(rules.rule));
-  passwordPoints.value = passwordRules.length - messages.value.length + 1;
-  console.log(difficultyLevel[passwordPoints.value]);
-  // + 1, because of the labels and the progress element
+  pp.value = passwordRules.length - messages.value.length + 2;
+
+  // + 2, because of the labels and the progress element
 });
+
+const requirementStatus = computed(() =>
+  pp === 1 ? "Required:" : "Optional:"
+);
 
 const passwordVisibility = computed(() =>
   state.visibility ? "text" : "password"
@@ -39,25 +47,31 @@ const iconVisible = computed(() =>
         class="absolute right-0 mr-1.5"
         :onclick="() => (state.visibility = !state.visibility)"
         :icon="iconVisible"
+        :clickable="true"
       />
     </div>
     <div>
       <progress
         id="progress"
-        class="flex w-full mt-1 [&::-webkit-progress-value]:rounded"
-        :class="`[&::-webkit-progress-value]:${difficultyLevel[passwordPoints]?.bg}`"
-        :value="passwordPoints"
+        class="flex w-full mt-1"
+        :class="difficultyLevel[pp]?.bg"
+        :value="pp"
         max="5"
       ></progress>
-      <div class="flex flex-row justify-between text-sm">
-        <p>
-          {{ messages[0]?.message }}
-        </p>
+      <div class="flex flex-row justify-between h-4 text-sm">
+        <div
+          v-if="pp > 0"
+          class="flex flex-row gap-1 text-red-700"
+          :class="{ 'text-txtSecondary': pp >= 2 }"
+        >
+          <p class="font-semibold">{{ requirementStatus }}</p>
+          <p>{{ messages[0]?.message }}</p>
+        </div>
         <p
           class="font-medium items-end ml-auto"
-          :class="difficultyLevel[passwordPoints]?.color"
+          :class="difficultyLevel[pp]?.color"
         >
-          {{ difficultyLevel[passwordPoints]?.difficulty }}
+          {{ difficultyLevel[pp]?.difficulty }}
         </p>
       </div>
     </div>

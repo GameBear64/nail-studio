@@ -1,9 +1,14 @@
 <script setup>
-const props = defineProps(["icon"]);
+const props = defineProps(["icon", "clickable", "fill", "dense"]);
 </script>
 
 <template>
-  <span :v-bind="$attrs" class="material-symbols-rounded cursor-pointer">
+  <span
+    class="material-symbols-rounded"
+    :class="{ 'cursor-pointer': clickable, 'tracking-tight': dense }"
+    :style="`font-variation-settings: 'FILL' ${fill ? 1 : 0} `"
+    :v-bind="$attrs"
+  >
     {{ icon }}
   </span>
 </template>

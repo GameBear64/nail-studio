@@ -3,6 +3,7 @@ import joi from "joi";
 import Form from "@components/Form/Form.vue";
 import Input from "@components/Form/Input.vue";
 import PasswordInput from "@components/Form/PasswordInput.vue";
+import useFetch from "../toolbox/useFetch";
 
 const register = (data) => {
   console.log(data);
@@ -34,7 +35,7 @@ const rules = {
       <Form @submit="register" v-slot="{ errors }" :rules>
         <div class="text-left flex flex-col gap-1">
           <Input name="name" :errors="errors?.name" />
-          <Input name="email" :errors="errors?.email" />
+          <Input type="email" name="email" :errors="errors?.email" />
           <Input name="phone" :errors="errors?.phone_number" />
           <PasswordInput name="password" />
           <Input

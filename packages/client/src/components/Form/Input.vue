@@ -16,7 +16,7 @@ const name = attrs.name.split("_").join(" ");
     <input
       :id="name"
       v-bind="$attrs"
-      :class="props?.errors && `input-error`"
+      :class="{ 'input-error': props?.errors }"
       v-model="value"
     />
     <p class="text-red-600 leading-none text-sm h-4 mt-1 font-medium">
