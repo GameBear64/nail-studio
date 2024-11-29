@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { userId } from "./toolbox/stores/userStore";
 
 const routes = [
   { path: "/login", component: () => import("@pages/Login.vue") },

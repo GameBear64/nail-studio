@@ -3,17 +3,28 @@ import joi from "joi";
 import Form from "@components/Form/Form.vue";
 import Input from "@components/Form/Input.vue";
 import PasswordInput from "@components/Form/PasswordInput.vue";
+import { setUserId } from "../toolbox/stores/userStore";
+import { useRouter } from "vue-router";
 import useFetch from "../toolbox/useFetch";
 
+const router = useRouter();
+
 const register = (data) => {
-  console.log(data);
+  useFetch({
+    url: "register",
+    method: "POST",
+    body: data,
+  }).then((res) => {
+    setUserId(res.id);
+    router.push({ path: "/login" });
+  });
 };
 
 const rules = {
   name: joi.string().min(3),
   email: joi.string().min(3),
   phone: joi.string(),
-  password: joi.string(),
+  password: joi.string().min(8),
   confirmPassword: joi
     .valid(joi.ref("password"))
     .messages({ "any.only": "Passwords don't match" }),
@@ -36,12 +47,12 @@ const rules = {
         <div class="text-left flex flex-col gap-1">
           <Input name="name" :errors="errors?.name" />
           <Input type="email" name="email" :errors="errors?.email" />
-          <Input name="phone" :errors="errors?.phone_number" />
-          <PasswordInput name="password" />
+          <Input name="phone" :errors="errors?.phone" />
+          <PasswordInput :errors="errors?.password" name="password" />
           <Input
             name="confirmPassword"
             type="password"
-            :errors="errors?.confirm_password"
+            :errors="errors?.confirmPassword"
           />
         </div>
       </Form>

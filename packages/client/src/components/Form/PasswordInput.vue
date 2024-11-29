@@ -1,11 +1,14 @@
 <script setup>
 import { computed, reactive, ref, watch } from "vue";
-import Icon from "../Icon.vue";
 import { difficultyLevel, passwordRules } from "@tools/consts/consts";
+import Icon from "../Icon.vue";
 
 const value = defineModel();
+
 const pp = ref(0); // Stands for "Password points"
 const messages = ref([]);
+const props = defineProps(["errors"]);
+
 const state = reactive({ visibility: false });
 
 watch(value, (password) => {
@@ -15,13 +18,8 @@ watch(value, (password) => {
   }
   messages.value = passwordRules.filter((rules) => !password.match(rules.rule));
   pp.value = passwordRules.length - messages.value.length + 2;
-
   // + 2, because of the labels and the progress element
 });
-
-const requirementStatus = computed(() =>
-  pp === 1 ? "Required:" : "Optional:"
-);
 
 const passwordVisibility = computed(() =>
   state.visibility ? "text" : "password"
@@ -58,13 +56,18 @@ const iconVisible = computed(() =>
         :value="pp"
         max="5"
       ></progress>
-      <div class="flex flex-row justify-between h-4 text-sm">
+      <p
+        v-if="errors && value.length < 8"
+        class="text-red-600 leading-none text-sm h-4 mt-1 font-medium"
+      >
+        {{ props.errors }}
+      </p>
+      <div v-else class="flex flex-row justify-between h-4 text-sm">
         <div
-          v-if="pp > 0"
-          class="flex flex-row gap-1 text-red-700"
-          :class="{ 'text-txtSecondary': pp >= 2 }"
+          v-if="pp > 0 && messages[0]"
+          class="flex flex-row gap-1 text-txtSecondary"
         >
-          <p class="font-semibold">{{ requirementStatus }}</p>
+          <p class="font-semibold">Hint:</p>
           <p>{{ messages[0]?.message }}</p>
         </div>
         <p

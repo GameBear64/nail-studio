@@ -1,10 +1,11 @@
 <script setup>
 import joi from "joi";
-import Form from "../components/Form/Form.vue";
-import Input from "../components/Form/Input.vue";
+import Form from "@components/Form/Form.vue";
+import Input from "@components/Form/Input.vue";
+import useFetch from "@tools/useFetch";
 
 const login = (data) => {
-  console.log(data);
+  useFetch({ url: "login", method: "GET", body: data });
 };
 </script>
 
