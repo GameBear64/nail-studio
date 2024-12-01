@@ -8,7 +8,7 @@ exports.skipIfNoChanges = () => (req, res, next) => {
   next();
 };
 
-exports.InformationTypes = Object.freeze({
+exports.InfoTypes = Object.freeze({
   BODY: 'body',
   PARAMS: 'params',
   QUERY: 'query',
