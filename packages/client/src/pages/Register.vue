@@ -2,10 +2,11 @@
 import joi from "joi";
 import Form from "@components/Form/Form.vue";
 import Input from "@components/Form/Input.vue";
-import PasswordInput from "@components/Form/PasswordInput.vue";
+import StrengthInput from "../components/Form/StrengthInput.vue";
 import { setUserId } from "../toolbox/stores/userStore";
 import { useRouter } from "vue-router";
 import useFetch from "../toolbox/useFetch";
+import CheckBox from "../components/Form/CheckBox.vue";
 
 const router = useRouter();
 
@@ -48,12 +49,13 @@ const rules = {
           <Input name="name" :errors="errors?.name" />
           <Input type="email" name="email" :errors="errors?.email" />
           <Input name="phone" :errors="errors?.phone" />
-          <PasswordInput :errors="errors?.password" name="password" />
+          <StrengthInput :errors="errors?.password" name="password" />
           <Input
             name="confirmPassword"
             type="password"
             :errors="errors?.confirmPassword"
           />
+          <CheckBox />
         </div>
       </Form>
     </div>

@@ -3,7 +3,6 @@ import { useAttrs } from "vue";
 // TODO: optional label when we cant use the name as label
 const props = defineProps(["errors"]);
 const value = defineModel();
-console.log(props?.errors);
 const attrs = useAttrs();
 const name = attrs.name.split("_").join(" ");
 </script>

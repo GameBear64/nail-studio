@@ -27,6 +27,7 @@ export const difficultyLevel = {
 };
 
 export const passwordRules = [
+  { rule: /^.{8,}$/, message: "At least 8 characters", required: true },
   {
     rule: /(?=.*[a-z])(?=.*[A-Z])/g,
     message: "At least one upper and lower case",
@@ -39,4 +40,5 @@ export const passwordRules = [
     rule: /[$&+,:;=?@#|'<>.^*()%!-]/g,
     message: "At least one special character",
   },
+  { rule: /^.{12,}$/, message: "At least 12 characters" },
 ];
