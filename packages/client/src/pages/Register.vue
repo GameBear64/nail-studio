@@ -9,7 +9,6 @@ import useFetch from "../toolbox/useFetch";
 import CheckBox from "../components/Form/CheckBox.vue";
 
 const router = useRouter();
-
 const register = (data) => {
   useFetch({
     url: "register",
@@ -29,6 +28,7 @@ const rules = {
   confirmPassword: joi
     .valid(joi.ref("password"))
     .messages({ "any.only": "Passwords don't match" }),
+  checkBox: joi.boolean().default(false),
 };
 </script>
 
@@ -55,7 +55,7 @@ const rules = {
             type="password"
             :errors="errors?.confirmPassword"
           />
-          <CheckBox />
+          <CheckBox :errors="errors?.checkBox" name="checkBox" />
         </div>
       </Form>
     </div>
