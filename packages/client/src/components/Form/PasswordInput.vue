@@ -17,8 +17,6 @@ const passwordVisibility = computed(() =>
   visibility.value ? "text" : "password"
 );
 
-console.log(props.errors, value);
-
 const iconVisible = computed(() =>
   visibility.value ? "visibility" : "visibility_off"
 );
@@ -42,10 +40,7 @@ const iconVisible = computed(() =>
         :clickable="true"
       />
     </div>
-    <p
-      v-if="!hideErrors"
-      class="text-red-600 leading-none text-sm h-4 mt-1 font-medium"
-    >
+    <p v-if="!hideErrors" class="text-error">
       {{ props.errors }}
     </p>
   </div>

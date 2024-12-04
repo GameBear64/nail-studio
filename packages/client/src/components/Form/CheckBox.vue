@@ -1,25 +1,21 @@
 <script setup>
-import { useAttrs } from "vue";
-
-const props = defineProps(["errors"]);
-const check = defineModel({ default: false });
-const attrs = useAttrs();
-
-const name = attrs.name.split("_").join(" ");
-const label = name?.charAt(0).toUpperCase() + name.slice(1);
+const props = defineProps(["name", "label", "errors"]);
+const model = defineModel();
 </script>
 
 <template>
   <div class="flex flex-row items-center gap-2">
     <label :for="name">{{ label }}</label>
+    <input type="checkbox" class="w-auto" v-model="model" v-bind="$attrs" />
     <input
-      v-model="check"
-      class="w-auto"
-      true-name="yes"
-      false-name="no"
-      type="checkbox"
-      :name="name"
       :id="name"
+      :name="name"
+      type="hidden"
+      value="false"
+      v-model="model"
     />
+    <p class="text-error">
+      {{ props.errors }}
+    </p>
   </div>
 </template>

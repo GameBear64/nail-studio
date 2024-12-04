@@ -1,7 +1,7 @@
 <script setup>
 import { useAttrs } from "vue";
 
-const props = defineProps(["errors"]);
+const props = defineProps(["options", "errors"]);
 const model = defineModel();
 
 const attrs = useAttrs();
@@ -12,7 +12,17 @@ const label = name.charAt(0).toUpperCase() + name.slice(1);
 <template>
   <div>
     <label class="font-medium" :for="name">{{ label }}</label>
-    <textarea v-model="model" v-bind="$attrs" :id="name"></textarea>
+    <select
+      v-bind="$attrs"
+      :id="name"
+      v-model="model"
+      :name="name"
+      v-for="{ option, value } in options"
+    >
+      <option :value="value">{{ option }}</option>
+    </select>
+    <p class="text-error">
+      {{ props.errors }}
+    </p>
   </div>
-  <p class="text-error">{{ props.errors }}</p>
 </template>

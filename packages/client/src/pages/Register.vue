@@ -1,15 +1,20 @@
 <script setup>
 import joi from "joi";
+import { useRouter } from "vue-router";
+
+import useFetch from "@tools/useFetch";
+import { setUserId } from "@store/userStore";
+
 import Form from "@components/Form/Form.vue";
 import Input from "@components/Form/Input.vue";
-import StrengthInput from "../components/Form/StrengthInput.vue";
-import { setUserId } from "../toolbox/stores/userStore";
-import { useRouter } from "vue-router";
-import useFetch from "../toolbox/useFetch";
+import TextArea from "@components/Form/TextArea.vue";
+import SelectInput from "@components/Form/SelectInput.vue";
+import StrengthInput from "@components/Form/StrengthInput.vue";
 import CheckBox from "../components/Form/CheckBox.vue";
 
 const router = useRouter();
 const register = (data) => {
+  console.log(data);
   useFetch({
     url: "register",
     method: "POST",
@@ -28,7 +33,7 @@ const rules = {
   confirmPassword: joi
     .valid(joi.ref("password"))
     .messages({ "any.only": "Passwords don't match" }),
-  checkBox: joi.boolean().default(false),
+  checkBox: joi.string().required(),
 };
 </script>
 
@@ -46,7 +51,7 @@ const rules = {
       </div>
       <Form @submit="register" v-slot="{ errors }" :rules>
         <div class="text-left flex flex-col gap-1">
-          <Input name="name" :errors="errors?.name" />
+          <Input label="Name" name="name" :errors="errors?.name" />
           <Input type="email" name="email" :errors="errors?.email" />
           <Input name="phone" :errors="errors?.phone" />
           <StrengthInput :errors="errors?.password" name="password" />
@@ -55,7 +60,17 @@ const rules = {
             type="password"
             :errors="errors?.confirmPassword"
           />
-          <CheckBox :errors="errors?.checkBox" name="checkBox" />
+          <CheckBox :errors="errors?.checkBox" name="checkBox" label="Check" />
+          <!-- <TextArea
+            name="testArea"
+            label="Test Area"
+            :errors="errors?.testArea"
+          /> -->
+          <!-- <SelectInput
+            name="select"
+            :options="[{ option: 1, value: 1 }]"
+            :errors="errors?.select"
+          /> -->
         </div>
       </Form>
     </div>

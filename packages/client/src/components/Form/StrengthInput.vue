@@ -35,10 +35,7 @@ watch(value, (password) => {
         :value="pp"
         max="5"
       ></progress>
-      <p
-        v-if="errors"
-        class="text-red-600 leading-none text-sm h-4 mt-1 font-medium"
-      >
+      <p v-if="errors" class="text-error">
         {{ props.errors }}
       </p>
       <div v-else class="flex flex-row justify-between h-4 text-sm">
