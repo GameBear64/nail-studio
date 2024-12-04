@@ -7,14 +7,10 @@ import { setUserId } from "@store/userStore";
 
 import Form from "@components/Form/Form.vue";
 import Input from "@components/Form/Input.vue";
-import TextArea from "@components/Form/TextArea.vue";
-import SelectInput from "@components/Form/SelectInput.vue";
 import StrengthInput from "@components/Form/StrengthInput.vue";
-import CheckBox from "../components/Form/CheckBox.vue";
 
 const router = useRouter();
 const register = (data) => {
-  console.log(data);
   useFetch({
     url: "register",
     method: "POST",
@@ -30,10 +26,9 @@ const rules = {
   email: joi.string().min(3),
   phone: joi.string(),
   password: joi.string().min(8),
-  confirmPassword: joi
+  confirm_password: joi
     .valid(joi.ref("password"))
     .messages({ "any.only": "Passwords don't match" }),
-  checkBox: joi.string().required(),
 };
 </script>
 
@@ -51,26 +46,15 @@ const rules = {
       </div>
       <Form @submit="register" v-slot="{ errors }" :rules>
         <div class="text-left flex flex-col gap-1">
-          <Input label="Name" name="name" :errors="errors?.name" />
+          <Input name="name" :errors="errors?.name" />
           <Input type="email" name="email" :errors="errors?.email" />
           <Input name="phone" :errors="errors?.phone" />
           <StrengthInput :errors="errors?.password" name="password" />
           <Input
-            name="confirmPassword"
+            name="confirm_password"
             type="password"
             :errors="errors?.confirmPassword"
           />
-          <CheckBox :errors="errors?.checkBox" name="checkBox" label="Check" />
-          <!-- <TextArea
-            name="testArea"
-            label="Test Area"
-            :errors="errors?.testArea"
-          /> -->
-          <!-- <SelectInput
-            name="select"
-            :options="[{ option: 1, value: 1 }]"
-            :errors="errors?.select"
-          /> -->
         </div>
       </Form>
     </div>

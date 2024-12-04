@@ -43,7 +43,7 @@ router
       email: joi.string().min(10).max(255).required().email(),
       phone: joi.number().required(),
       password: joi.string().min(8).max(255).required(),
-      confirmPassword: joi.string().valid(joi.ref("password")).required(),
+      confirm_password: joi.string().valid(joi.ref("password")).required(),
     }),
     async (req, res) => {
       const hash = shortHash(req.body.email);

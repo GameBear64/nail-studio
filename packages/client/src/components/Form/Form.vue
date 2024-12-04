@@ -12,9 +12,6 @@ const handleSubmit = (event) => {
   const data = new FormData(event.target);
   const values = Object.fromEntries(data.entries());
 
-  console.log(event.target);
-  console.log(values);
-
   let validation = schema.validate(values, {
     abortEarly: false,
     presence: "required",

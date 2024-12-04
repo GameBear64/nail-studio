@@ -1,19 +1,20 @@
 <script setup>
 import { useAttrs } from "vue";
-// TODO: optional label when we cant use the name as label
+
 const props = defineProps(["errors"]);
 const model = defineModel();
 
 const attrs = useAttrs();
-const name = attrs.name.split("_").join(" ");
-const label = name.charAt(0).toUpperCase() + name.slice(1);
+const label = attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1);
 </script>
 
 <template>
   <div>
-    <label class="font-medium" :for="name">{{ label }}</label>
+    <label class="font-medium" :for="attrs.name">{{
+      label.split("_").join(" ")
+    }}</label>
     <input
-      :id="name"
+      :id="attrs.name"
       v-bind="$attrs"
       :class="{ 'input-error': props?.errors }"
       v-model="model"

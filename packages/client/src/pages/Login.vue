@@ -4,9 +4,16 @@ import Form from "@components/Form/Form.vue";
 import Input from "@components/Form/Input.vue";
 import useFetch from "@tools/useFetch";
 import PasswordInput from "@components/Form/PasswordInput.vue";
+import { setUserId } from "../toolbox/stores/userStore";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const login = (data) => {
-  useFetch({ url: "login", method: "POST", body: data });
+  useFetch({ url: "login", method: "POST", body: data }).then((res) => {
+    setUserId(res.id);
+    router.push("/");
+  });
 };
 </script>
 
