@@ -11,7 +11,6 @@ const props = defineProps({
 const visibility = ref(false);
 
 const attrs = useAttrs();
-const name = attrs.name?.split("_").join(" ");
 
 const passwordVisibility = computed(() =>
   visibility.value ? "text" : "password"
@@ -24,10 +23,10 @@ const iconVisible = computed(() =>
 
 <template>
   <div>
-    <label class="font-medium" for="password">Password</label>
+    <label class="font-medium" :for="$attrs.name">Password</label>
     <div class="flex flex-row relative items-center">
       <input
-        :id="name"
+        :id="$attrs.name"
         class="relative pr-9"
         v-bind="$attrs"
         :type="passwordVisibility"

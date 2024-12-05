@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, useAttrs } from "vue";
+import { ref, watch } from "vue";
 import { difficultyLevel, passwordRules } from "@tools/consts/consts";
 import PasswordInput from "./PasswordInput.vue";
 
@@ -9,9 +9,6 @@ const pp = ref(0); // Stands for "Password points"
 const messages = ref([]);
 const props = defineProps(["errors"]);
 
-const attrs = useAttrs();
-const name = attrs.name.split("_").join(" ");
-
 watch(value, (password) => {
   messages.value = passwordRules.filter((rules) => !password.match(rules.rule));
   const hasRequired = messages.value.some((r) => r.required);
@@ -19,21 +16,21 @@ watch(value, (password) => {
   if (hasRequired) {
     pp.value = 1;
   } else {
-    pp.value = passwordRules.length - messages.value.length + 1;
+    pp.value = passwordRules.length - messages.value.length;
   }
 });
 </script>
 
 <template>
   <div>
-    <PasswordInput hide-errors v-bind="$attrs" v-model="value" :name="name" />
+    <PasswordInput hide-errors v-bind="$attrs" v-model="value" />
     <div>
       <progress
         id="progress"
         class="flex w-full mt-1"
         :class="difficultyLevel[pp]?.bg"
         :value="pp"
-        max="5"
+        :max="passwordRules.length"
       ></progress>
       <p v-if="errors" class="text-error">
         {{ props.errors }}

@@ -5,18 +5,18 @@ const props = defineProps(["options", "errors"]);
 const model = defineModel();
 
 const attrs = useAttrs();
-const name = attrs.name.split("_").join(" ");
-const label = name.charAt(0).toUpperCase() + name.slice(1);
+const label = attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1);
 </script>
 
 <template>
   <div>
-    <label class="font-medium" :for="name">{{ label }}</label>
+    <label class="font-medium" :for="$attrs.name">{{
+      label.split("_").join(" ")
+    }}</label>
     <select
       v-bind="$attrs"
-      :id="name"
+      :id="$attrs.name"
       v-model="model"
-      :name="name"
       v-for="{ option, value } in options"
     >
       <option :value="value">{{ option }}</option>
