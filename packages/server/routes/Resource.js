@@ -1,5 +1,7 @@
 const router = require('express').Router();
 
+const fs = require('fs');
+const path = require('path');
 const joi = require('joi');
 const sharp = require('sharp');
 const shortHash = require('short-hash');
@@ -36,7 +38,7 @@ router
       db.get('images').get(req.authUser.id).createFile(`${hash}.${extension}`, Buffer.from(base64Data, 'base64'));
 
       res.status(201).json({ message: 'File uploaded successfully', path: `${req.authUser.id}/${hash}` });
-    }
+    },
   )
   .all((_req, res) => {
     res.status(405).json('Use another method');
@@ -60,7 +62,7 @@ router
       }
 
       res.sendFile(path.resolve(filePath));
-    }
+    },
   )
   .all((_req, res) => {
     res.status(405).json('Use another method');
