@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "concurrently -n BE,FE -c yellow,blue \"npm run BE\" \"npm run FE\"",
     "BE": "npm run dev -w packages/server",
-    "FE": "npm run dev -w packages/client"
+    "FE": "npm run dev -w packages/client",
+    "prettier": "prettier --write \"src/**/*.{js,jsx}\" \"server/**/*.js\"",
+    "eslint": "eslint --fix",
+    "lint": "npm run prettier && npm run eslint"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +18,15 @@
     "packages/server",
     "packages/client"
   ],
-  "dependencies": {
-    "concurrently": "^9.1.0"
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.15.0",
+    "concurrently": "^9.1.0",
+    "eslint": "^9.15.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-tailwindcss": "^3.17.5",
+    "eslint-plugin-vue": "^9.31.0",
+    "globals": "^15.12.0",
+    "prettier": "^3.3.3"
   }
 }

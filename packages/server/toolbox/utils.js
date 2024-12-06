@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 
-exports.createJWTCookie = id => {
+exports.createJWTCookie = data => {
   let expireAt = 3 * 30 * 24 * 60 * 60; /*3 months*/
-  return jwt.sign({ id }, process.env.SECRET, { expiresIn: expireAt });
+  return jwt.sign(data, process.env.SECRET, { expiresIn: expireAt });
 };
 
 // CREDIT: https://stackoverflow.com/a/1054862/7149508
