@@ -12,7 +12,20 @@ const routes = [
     component: () => import("@pages/Register.vue"),
     meta: { guestRoute: true },
   },
-  { path: "/", component: () => import("@pages/Home.vue") },
+  {
+    path: "/",
+    component: () => import("./components/Header.vue"),
+    children: [
+      {
+        path: "/",
+        component: () => import("./pages/Home.vue"),
+      },
+      {
+        path: "/profile",
+        component: () => import("./pages/NotFound.vue"),
+      },
+    ],
+  },
 ];
 
 const router = createRouter({
@@ -21,16 +34,16 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.meta?.guestRoute && userId.id) {
-    return next("/");
-  }
+// router.beforeEach((to, from, next) => {
+//   if (to.meta?.guestRoute && userId.id) {
+//     return next("/");
+//   }
 
-  if (!to.meta?.guestRoute && !userId.id) {
-    return next("/login");
-  }
+//   if (!to.meta?.guestRoute && !userId.id) {
+//     return next("/login");
+//   }
 
-  next();
-});
+//   next();
+// });
 
 export default router;

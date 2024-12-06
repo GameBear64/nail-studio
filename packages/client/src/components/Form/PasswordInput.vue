@@ -1,6 +1,5 @@
 <script setup>
 import { computed, ref } from "vue";
-import { useAttrs } from "vue";
 import Icon from "../Icon.vue";
 
 const value = defineModel();
@@ -9,8 +8,6 @@ const props = defineProps({
   hideErrors: { type: Boolean, default: false },
 });
 const visibility = ref(false);
-
-const attrs = useAttrs();
 
 const passwordVisibility = computed(() =>
   visibility.value ? "text" : "password"
