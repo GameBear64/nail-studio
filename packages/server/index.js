@@ -8,10 +8,11 @@ require('dotenv').config({ path: '../../.env' });
 
 //============= API ==============
 const cors = require('cors');
-const { normalizeBodyFields } = require('./middleware/global');
+const { normalizeBodyFields, getCookies } = require('./middleware/global');
 
 app.use(cors());
 app.use(express.json());
+app.use(getCookies);
 app.use(normalizeBodyFields);
 
 require('./routes/_router')(app);
