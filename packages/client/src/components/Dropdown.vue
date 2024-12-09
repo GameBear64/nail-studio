@@ -6,7 +6,7 @@ const props = defineProps(["options"]);
 
 <template>
   <ul
-    class="font-medium shadow-sm w-[10rem] rounded bg-white divide-y shadow-gray-400 text-white absolute flex flex-col right-1"
+    class="font-medium shadow-sm w-[10rem] rounded bg-white divide-y shadow-gray-400 text-white absolute flex flex-col"
   >
     <div
       v-for="option in options"

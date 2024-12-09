@@ -11,9 +11,10 @@ const db = require('../toolbox/database');
 router
   .route('/')
   .get(async (req, res) => {
-    const userFile = await db.get('users').get(req.apiUser.id).data;
+    if (!req?.authUser?.id) return res.status(404).json();
+    const userFile = await db.get('users').get(req.authUser.id).data;
 
-    return res.status(200).json({ id: req.apiUser.id, ...pick(userFile, ['name']) });
+    return res.status(200).json({ id: req.authUser.id, ...pick(userFile, ['name']) });
   })
   .patch(
     skipIfNoChanges,

@@ -4,9 +4,7 @@ import router from "../router";
 const baseURL = `${origin}/api`;
 const doNotRedirectFrom = ["/login", "/register"];
 
-export default function useFetch(
-  { url, method, body, noError } = { noError: true }
-) {
+export default function useFetch({ url, method, body, noError }) {
   const options = {
     method,
     body: JSON.stringify(body),
