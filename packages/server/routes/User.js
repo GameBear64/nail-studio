@@ -13,7 +13,6 @@ router
   .get(async (req, res) => {
     if (!req?.authUser?.id) return res.status(404).json();
     const userFile = await db.get('users').get(req.authUser.id).data;
-
     return res.status(200).json({ id: req.authUser.id, ...pick(userFile, ['name']) });
   })
   .patch(

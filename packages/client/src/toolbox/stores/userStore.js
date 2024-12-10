@@ -1,4 +1,4 @@
-import { reactive } from "vue";
+import { reactive } from 'vue';
 
 export const userId = reactive({ id: null });
 
@@ -6,6 +6,6 @@ export const setUserId = (id) => {
   userId.id = id;
 };
 
-export const removeUserId = (id) => {
+export const removeUserId = () => {
   userId.id = null;
 };

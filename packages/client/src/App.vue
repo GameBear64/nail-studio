@@ -1,21 +1,12 @@
 <script setup>
-import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 import Loading from '@pages/Loading.vue';
-
 import Header from '@components/Header.vue';
 
-import useFetch from '@tools/useFetch';
 import { themes } from '@store/themeStore';
 
 const route = useRoute();
-
-onMounted(() => {
-  useFetch({ url: 'user', method: 'GET', noError: true }).then((res) => {
-    console.log(res);
-  });
-});
 </script>
 
 <template>
