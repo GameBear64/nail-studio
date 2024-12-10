@@ -1,9 +1,9 @@
 <script setup>
-import joi from "joi";
-import { ref } from "vue";
+import { ref } from 'vue';
+import joi from 'joi';
 
-const props = defineProps(["rules"]);
-const emit = defineEmits(["submit"]);
+const props = defineProps(['rules']);
+const emit = defineEmits(['submit']);
 const error = ref(null);
 
 const schema = joi.object(props.rules);
@@ -14,18 +14,15 @@ const handleSubmit = (event) => {
 
   let validation = schema.validate(values, {
     abortEarly: false,
-    presence: "required",
+    presence: 'required',
   });
   if (!validation.error) {
-    emit("submit", values);
+    emit('submit', values);
     error.value = null;
     return;
   }
 
-  validation = validation?.error?.details?.map((el) => [
-    el.context.label,
-    el.message,
-  ]);
+  validation = validation?.error?.details?.map((el) => [el.context.label, el.message]);
 
   error.value = Object.fromEntries(validation);
 };
@@ -33,8 +30,12 @@ const handleSubmit = (event) => {
 
 <template>
   <form @submit.prevent="handleSubmit">
-    <slot :errors="error"></slot>
-    <button class="mt-4 w-full" :class="{ 'bg-gray-300': error }" type="submit">
+    <slot :errors="error" />
+    <button
+      class="mt-4 w-full"
+      :class="{ 'bg-gray-300': error }"
+      type="submit"
+    >
       Submit
     </button>
   </form>
