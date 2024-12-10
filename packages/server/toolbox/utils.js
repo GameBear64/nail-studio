@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
 
-exports.createJWTCookie = data => {
+exports.createJWTCookie = (data) => {
   let expireAt = 3 * 30 * 24 * 60 * 60; /*3 months*/
   return jwt.sign(data, process.env.SECRET, { expiresIn: expireAt });
 };
 
 // CREDIT: https://stackoverflow.com/a/1054862/7149508
-exports.slugifyString = text =>
+exports.slugifyString = (text) =>
   text
     ?.toLowerCase()
     ?.trim()
@@ -23,16 +23,16 @@ exports.wildcardMatch = (wildcard, str) => {
 };
 
 exports.pick = (object, desiredFields) => {
-  return Object.assign({}, ...desiredFields.map(field => ([field] in object ? { [field]: object[field] } : {})));
+  return Object.assign({}, ...desiredFields.map((field) => ([field] in object ? { [field]: object[field] } : {})));
 };
 
 exports.omit = (object, fieldsToOmit) => {
   return Object.assign(
     {},
     ...Object.keys(object)
-      .filter(key => !fieldsToOmit.includes(key))
-      .map(key => ({ [key]: object[key] }))
+      .filter((key) => !fieldsToOmit.includes(key))
+      .map((key) => ({ [key]: object[key] })),
   );
 };
 
-exports.sanitizeHTML = string => string?.replace(/\\/g, '')?.replace(/</g, '&lt;')?.replace(/>/g, '&gt;'); //.replace(/&/g, '&amp;').replace(///g, '&#x2F;');
+exports.sanitizeHTML = (string) => string?.replace(/\\/g, '')?.replace(/</g, '&lt;')?.replace(/>/g, '&gt;'); //.replace(/&/g, '&amp;').replace(///g, '&#x2F;');

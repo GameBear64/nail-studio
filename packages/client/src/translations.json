@@ -1,0 +1,8 @@
+{
+  "Login": ["Вход", "Anmelden", "ログイン"],
+  "Don't have an account yet?": ["Все още нямате акаунт?", "Sie haben noch kein Konto?", "まだアカウントをお持ちでないですか？"],
+  "Sign up here": ["Регистрация", "Registrieren", "登録"],
+  "Register": ["Регистрация", "Registrieren", "登録"],
+  "Already have an account?": ["Вече имате акаунт?", "Sie haben schon ein Konto?", "すでにアカウントをお持ちですか？"],
+  "Sign in here": ["Вход", "Anmelden", "ログイン"]
+}

@@ -1,12 +1,13 @@
 <script setup>
-import Loading from "@pages/Loading.vue";
-import { themes } from "@store/themeStore";
+import Loading from '@pages/Loading.vue';
+
+import { themes } from '@store/themeStore';
 </script>
 
 <template>
   <div
     :class="`theme-${themes.theme} theme-${themes.accent}`"
-    class="flex flex-col h-screen bg-base text-primaryText"
+    class="bg-base text-primaryText flex h-screen flex-col"
   >
     <div class="flex-1">
       <RouterView v-slot="{ Component }">
