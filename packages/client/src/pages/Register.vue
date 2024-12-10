@@ -1,23 +1,23 @@
 <script setup>
-import joi from "joi";
-import { useRouter } from "vue-router";
+import joi from 'joi';
+import { useRouter } from 'vue-router';
 
-import useFetch from "@tools/useFetch";
-import { setUserId } from "@store/userStore";
+import Form from '@components/Form/Form.vue';
+import Input from '@components/Form/Input.vue';
+import StrengthInput from '@components/Form/StrengthInput.vue';
 
-import Form from "@components/Form/Form.vue";
-import Input from "@components/Form/Input.vue";
-import StrengthInput from "@components/Form/StrengthInput.vue";
+import useFetch from '@tools/useFetch';
+import { setUserId } from '@store/userStore';
 
 const router = useRouter();
 const register = (data) => {
   useFetch({
-    url: "register",
-    method: "POST",
+    url: 'register',
+    method: 'POST',
     body: data,
   }).then((res) => {
     setUserId(res.id);
-    router.push({ path: "/login" });
+    router.push({ path: '/login' });
   });
 };
 
@@ -26,30 +26,55 @@ const rules = {
   email: joi.string().min(3),
   phone: joi.string(),
   password: joi.string().min(8),
-  confirm_password: joi
-    .valid(joi.ref("password"))
-    .messages({ "any.only": "Passwords don't match" }),
+  confirm_password: joi.valid(joi.ref('password')).messages({ 'any.only': "Passwords don't match" }),
 };
 </script>
 
 <template>
-  <div
-    class="max-w-full bg-gradient-to-r from-purple-400 to-pink-400 h-full flex justify-center items-center"
-  >
-    <div class="flex card flex-col gap-5 text-center p-10">
+  <div class="flex h-full max-w-full items-center justify-center bg-gradient-to-r from-purple-400 to-pink-400">
+    <div class="card flex flex-col gap-5 p-10 text-center">
       <div>
-        <h1 class="text-2xl font-bold">Register</h1>
-        <div class="justify-center flex flex-row gap-1.5">
-          <p>Already have an account?</p>
-          <RouterLink to="/login"> Sign in here </RouterLink>
+        <h1
+          v-i18n
+          class="text-2xl font-bold"
+        >
+          Register
+        </h1>
+        <div class="flex flex-row justify-center gap-1.5">
+          <p v-i18n>
+            Already have an account?
+          </p>
+          <RouterLink
+            v-i18n
+            to="/login"
+          >
+            Sign in here
+          </RouterLink>
         </div>
       </div>
-      <Form @submit="register" v-slot="{ errors }" :rules>
-        <div class="text-left flex flex-col gap-1">
-          <Input name="name" :errors="errors?.name" />
-          <Input type="email" name="email" :errors="errors?.email" />
-          <Input name="phone" :errors="errors?.phone" />
-          <StrengthInput :errors="errors?.password" name="password" />
+      <Form
+        v-slot="{ errors }"
+        :rules
+        @submit="register"
+      >
+        <div class="flex flex-col gap-1 text-left">
+          <Input
+            name="name"
+            :errors="errors?.name"
+          />
+          <Input
+            type="email"
+            name="email"
+            :errors="errors?.email"
+          />
+          <Input
+            name="phone"
+            :errors="errors?.phone"
+          />
+          <StrengthInput
+            :errors="errors?.password"
+            name="password"
+          />
           <Input
             name="confirm_password"
             type="password"
