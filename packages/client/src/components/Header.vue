@@ -1,8 +1,9 @@
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
 import useFetch from '@tools/useFetch';
 
-import { useRouter } from 'vue-router';
 import DesktopNavigation from './Layout/DesktopNavigation.vue';
 import MobileNavigation from './Layout/MobileNavigation.vue';
 
@@ -38,6 +39,12 @@ const navigations = [
 </script>
 
 <template>
-  <MobileNavigation :navigations="navigations" :options="options" />
-  <DesktopNavigation :navigations="navigations" :options="options" />
+  <MobileNavigation
+    :navigations="navigations"
+    :options="options"
+  />
+  <DesktopNavigation
+    :navigations="navigations"
+    :options="options"
+  />
 </template>

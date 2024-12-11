@@ -1,11 +1,13 @@
 <script setup>
 import joi from 'joi';
+import { useRouter } from 'vue-router';
+
 import Form from '@components/Form/Form.vue';
 import Input from '@components/Form/Input.vue';
-import useFetch from '@tools/useFetch';
 import PasswordInput from '@components/Form/PasswordInput.vue';
+
+import useFetch from '@tools/useFetch';
 import { setUserId } from '@store/userStore';
-import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
@@ -18,25 +20,37 @@ const login = (data) => {
 </script>
 
 <template>
-  <div class="max-w-full bg-gradient-to-r from-purple-400 to-pink-400 h-full flex justify-center items-center">
-    <div class="flex card flex-col gap-5 text-center p-10">
+  <div class="flex h-full max-w-full items-center justify-center bg-gradient-to-r from-purple-400 to-pink-400">
+    <div class="card flex flex-col gap-5 p-10 text-center">
       <div>
-        <h1 class="text-2xl font-bold">Login</h1>
-        <div class="justify-center flex flex-row gap-1.5">
+        <h1 class="text-2xl font-bold">
+          Login
+        </h1>
+        <div class="flex flex-row justify-center gap-1.5">
           <p>Don't have an account yet?</p>
-          <RouterLink to="/register"> Sign up here </RouterLink>
+          <RouterLink to="/register">
+            Sign up here
+          </RouterLink>
         </div>
       </div>
       <Form
-        @submit="login"
         v-slot="{ errors }"
         :rules="{
           email: joi.string().required(),
           password: joi.string().required(),
-        }">
-        <div class="text-left flex flex-col gap-1">
-          <Input label="Email" name="email" :errors="errors?.email" />
-          <PasswordInput name="password" :errors="errors?.password" />
+        }"
+        @submit="login"
+      >
+        <div class="flex flex-col gap-1 text-left">
+          <Input
+            label="Email"
+            name="email"
+            :errors="errors?.email"
+          />
+          <PasswordInput
+            name="password"
+            :errors="errors?.password"
+          />
         </div>
       </Form>
     </div>

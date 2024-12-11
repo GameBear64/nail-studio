@@ -5,12 +5,21 @@ const props = defineProps(['options']);
 </script>
 
 <template>
-  <ul class="font-medium shadow-sm w-[10rem] rounded bg-white divide-y shadow-gray-400 text-white absolute flex flex-col">
+  <ul class="absolute flex w-40 flex-col divide-y rounded bg-white font-medium text-white shadow-sm shadow-gray-400">
     <div
       v-for="option in options"
-      class="flex gap-2 flex-row py-2 rounded px-2 text-gray-600 cursor-pointer hover:bg-gray-100 items-center">
-      <Icon class="text-xl" :icon="option.icon" />
-      <li :onclick="option?.action" class="w-full">{{ option.name }}</li>
+      class="flex cursor-pointer flex-row items-center gap-2 rounded p-2 text-gray-600 hover:bg-gray-100"
+    >
+      <Icon
+        class="text-xl"
+        :icon="option.icon"
+      />
+      <li
+        :onclick="option?.action"
+        class="w-full"
+      >
+        {{ option.name }}
+      </li>
     </div>
   </ul>
 </template>

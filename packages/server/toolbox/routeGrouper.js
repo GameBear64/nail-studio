@@ -1,4 +1,4 @@
-module.exports = express =>
+module.exports = (express) =>
   (express.application.group = express.Router.group =
     function (path, mdw = [], cb) {
       const router = express.Router();

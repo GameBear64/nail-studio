@@ -1,11 +1,12 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { computed,ref } from 'vue';
 import { useRouter } from 'vue-router';
+
 import { onClickOutside } from '@vueuse/core';
 
-import Logo from '../Logo.vue';
 import Dropdown from '../Dropdown.vue';
 import Icon from '../Icon.vue';
+import Logo from '../Logo.vue';
 
 const router = useRouter();
 
@@ -18,12 +19,13 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
 </script>
 
 <template>
-  <div class="hidden sm:flex mb-auto w-full items-center justify-between bg-white px-3 py-2 shadow-md">
+  <div class="mb-auto hidden w-full items-center justify-between bg-white px-3 py-2 shadow-md sm:flex">
     <Logo />
     <div class="flex flex-row gap-20 text-lg text-gray-600">
       <div
         v-for="navigation in navigations"
-        class="flex cursor-pointer flex-row items-center gap-2 rounded-xl p-2 hover:bg-pink-100 hover:text-pink-600">
+        class="flex cursor-pointer flex-row items-center gap-2 rounded-xl p-2 hover:bg-pink-100 hover:text-pink-600"
+      >
         <Icon :icon="navigation.icon" />
         <p :onclick="router.push(navigation.location)">
           {{ navigation.name }}
@@ -31,10 +33,23 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
       </div>
     </div>
     <div class="flex flex-row items-end">
-      <p class="rounded bg-blue-700 px-3 py-1 font-medium text-white">C</p>
-      <div ref="openRef" class="relative flex justify-end">
-        <Icon :icon="arrow" :clickable="true" @click="() => (open = !open)" />
-        <Dropdown v-if="open" class="-right-1 top-11" :options="options" />
+      <p class="rounded bg-blue-700 px-3 py-1 font-medium text-white">
+        C
+      </p>
+      <div
+        ref="openRef"
+        class="relative flex justify-end"
+      >
+        <Icon
+          :icon="arrow"
+          :clickable="true"
+          @click="() => (open = !open)"
+        />
+        <Dropdown
+          v-if="open"
+          class="-right-1 top-11"
+          :options="options"
+        />
       </div>
     </div>
   </div>

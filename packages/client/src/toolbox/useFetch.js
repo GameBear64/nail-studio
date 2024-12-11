@@ -1,27 +1,26 @@
-import { errorSnackBar } from "@tools/snackbars";
-import router from "../router";
+import { errorSnackBar } from '@tools/snackbars';
+
+import router from '../router';
 
 const baseURL = `${origin}/api`;
-const doNotRedirectFrom = ["/login", "/register"];
+const doNotRedirectFrom = ['/login', '/register'];
 
 export default function useFetch({ url, method, body, noError }) {
   const options = {
     method,
     body: JSON.stringify(body),
     headers: {
-      "content-type": "application/json",
+      'content-type': 'application/json',
     },
   };
 
   return fetch(`${baseURL}/${url}`, options)
     .then(async (res) => {
-      const data = await res
-        .text()
-        .then((text) => (text ? JSON.parse(text) : null));
+      const data = await res.text().then((text) => (text ? JSON.parse(text) : null));
 
       if (res.status === 401) {
         if (!doNotRedirectFrom.includes(router.state.location.pathname)) {
-          router.navigate("/login");
+          router.navigate('/login');
           window.location.reload();
         }
       }
