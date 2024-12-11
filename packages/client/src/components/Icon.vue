@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["icon", "clickable", "fill", "dense"]);
+defineProps(['icon', 'clickable', 'fill', 'dense']);
 </script>
 
 <template>
