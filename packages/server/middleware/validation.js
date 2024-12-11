@@ -17,8 +17,8 @@ exports.InfoTypes = Object.freeze({
 // prettier-ignore
 exports.joiValidate = (schema, realm = 'body') => (req, res, next) => {
   let validation = joi.object(schema).validate(req[realm], { abortEarly: false });
-
-  if (!validation?.error) next();
+  
+  if (!validation?.error?.details) return next();
 
   validation = validation.error.details.map(err => [err.context.key, err.message]);
   validation = Object.fromEntries(validation);

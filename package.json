@@ -6,7 +6,7 @@
     "dev": "concurrently -n BE,FE -c yellow,blue \"npm run BE\" \"npm run FE\"",
     "BE": "npm run dev -w packages/server",
     "FE": "npm run dev -w packages/client",
-    "prettier": "prettier --write \"src/**/*.{js,jsx}\" \"server/**/*.js\"",
+    "prettier": "prettier --write \"packages/**/*.{js,jsx,vue}\"",
     "eslint": "eslint --fix",
     "lint": "npm run prettier && npm run eslint"
   },

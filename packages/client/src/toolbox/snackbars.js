@@ -23,19 +23,19 @@ const snackDefaultSettings = (color, { double, animated } = {}) => ({
   },
 });
 
-export const errorSnackBar = message => {
+export const errorSnackBar = (message) => {
   new Snackbar(snackMessageTemplate(message, 'error'), snackDefaultSettings('#DC343B'));
 };
 
-export const warningSnackBar = message => {
+export const warningSnackBar = (message) => {
   new Snackbar(snackMessageTemplate(message, 'warning'), snackDefaultSettings('#ffd400'));
 };
 
-export const infoSnackBar = message => {
+export const infoSnackBar = (message) => {
   new Snackbar(snackMessageTemplate(message, 'info'), snackDefaultSettings('#007cb7'));
 };
 
-export const successSnackBar = message => {
+export const successSnackBar = (message) => {
   new Snackbar(snackMessageTemplate(message, 'check_circle'), snackDefaultSettings('#39a845'));
 };
 
