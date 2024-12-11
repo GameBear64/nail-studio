@@ -1,18 +1,22 @@
 <script setup>
-import Logo from '../Logo.vue';
-import useFetch from '../../toolbox/useFetch';
-import Dropdown from '../Dropdown.vue';
-import Icon from '../Icon.vue';
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { onClickOutside } from '@vueuse/core';
+
+import Logo from '../Logo.vue';
+import Dropdown from '../Dropdown.vue';
+import Icon from '../Icon.vue';
+
+const router = useRouter();
 
 const props = defineProps(['navigations', 'options']);
-const router = useRouter();
 const open = ref(false);
 const openRef = ref(false);
 
+onClickOutside(openRef, () => (open.value = false));
 const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow_down'));
 </script>
+
 <template>
   <div class="hidden sm:flex mb-auto w-full items-center justify-between bg-white px-3 py-2 shadow-md">
     <Logo />
@@ -21,12 +25,7 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
         v-for="navigation in navigations"
         class="flex cursor-pointer flex-row items-center gap-2 rounded-xl p-2 hover:bg-pink-100 hover:text-pink-600">
         <Icon :icon="navigation.icon" />
-        <p
-          :onclick="
-            () => {
-              useFetch({ url: 'user/logout', method: 'GET' }).then((res) => router.push('/login  '));
-            }
-          ">
+        <p :onclick="router.push(navigation.location)">
           {{ navigation.name }}
         </p>
       </div>

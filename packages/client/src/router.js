@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { userId } from './toolbox/stores/userStore';
-import useFetch from './toolbox/useFetch';
-import { setUserId } from './toolbox/stores/userStore';
+import useFetch from '@tools/useFetch';
+import { setUserId } from '@store/userStore';
 
 const routes = [
   {
@@ -18,10 +17,6 @@ const routes = [
     path: '/',
     component: () => import('@pages/Home.vue'),
   },
-  {
-    path: '/profile',
-    component: () => import('@pages/NotFound.vue'),
-  },
 ];
 
 const router = createRouter({
@@ -30,20 +25,23 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  useFetch({ url: 'user', method: 'GET', noError: true })
-    .then((res) => {
-      setUserId(res?.id);
-    })
-    .then(() => {
-      if (to.meta?.guestRoute && userId.id) {
-        return next('/');
-      }
-      if (!to.meta?.guestRoute && !userId.id) {
-        return next('/login');
-      }
-      next();
-    });
+router.beforeEach(async (to) => {
+  try {
+    const res = await useFetch({ url: 'user', method: 'GET', noError: true });
+    const userId = res?.id;
+    setUserId(userId);
+
+    if (to.meta?.guestRoute && userId) {
+      return { path: '/' };
+    }
+
+    if (!to.meta?.guestRoute && !userId) {
+      return { path: '/login' };
+    }
+  } catch (error) {
+    console.error('Error during navigation guard:', error);
+    return;
+  }
 });
 
 export default router;
