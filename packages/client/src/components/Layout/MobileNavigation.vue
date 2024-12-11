@@ -2,27 +2,19 @@
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { onClickOutside } from '@vueuse/core';
-
 import Icon from '../Icon.vue';
 import Logo from '../Logo.vue';
 
 const router = useRouter();
 const props = defineProps(['navigations', 'options']);
 const openMobile = ref(false);
-const openMobileRef = ref(false);
-
-onClickOutside(openMobileRef, () => (openMobile.value = false));
 
 const openIcon = computed(() => (openMobile.value ? 'close' : 'menu'));
 </script>
 
 <template>
-  <div class="h-full w-screen sm:hidden">
-    <div
-      ref="openMobileRef"
-      class="mb-auto flex w-full items-center justify-between bg-white px-3 py-2 shadow-md"
-    >
+  <div class="w-screen sm:hidden">
+    <div class="mb-auto flex w-full items-center justify-between bg-white px-3 py-2 shadow-md">
       <Logo />
       <Icon
         :icon="openIcon"
@@ -30,7 +22,10 @@ const openIcon = computed(() => (openMobile.value ? 'close' : 'menu'));
         @click="() => (openMobile = !openMobile)"
       />
     </div>
-    <div :class="openMobile && 'absolute bg-black/30 backdrop-blur-sm h-full w-screen'">
+    <div
+      :class="openMobile && 'absolute bg-black/30 backdrop-blur-sm h-full w-screen'"
+      @click.self="() => (openMobile = false)"
+    >
       <div
         v-if="openMobile"
         class="absolute right-0 z-50 mb-auto flex h-full w-52 flex-col gap-5 bg-white px-1 py-2 shadow-md"

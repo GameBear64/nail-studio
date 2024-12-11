@@ -33,9 +33,10 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
       </div>
     </div>
     <div class="flex flex-row items-end">
-      <p class="rounded bg-blue-700 px-3 py-1 font-medium text-white">
-        C
-      </p>
+      <Icon
+        icon="person"
+        class="rounded bg-blue-700 p-1 text-white"
+      />
       <div
         ref="openRef"
         class="relative flex justify-end"

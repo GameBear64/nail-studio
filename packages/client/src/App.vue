@@ -13,7 +13,7 @@ const route = useRoute();
 <template>
   <div
     :class="`theme-${themes.theme} theme-${themes.accent}`"
-    class="bg-base text-primaryText flex h-full flex-col"
+    class="bg-base text-primaryText flex h-screen flex-col"
   >
     <div class="flex-1">
       <RouterView v-slot="{ Component }">
