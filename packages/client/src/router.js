@@ -40,7 +40,7 @@ router.beforeEach(async (to) => {
       return { path: '/login' };
     }
   } catch (error) {
-    console.error('Error during navigation guard:', error);
+    console.log('Error during navigation guard:', error);
     return;
   }
 });

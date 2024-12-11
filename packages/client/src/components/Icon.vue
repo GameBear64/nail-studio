@@ -5,10 +5,10 @@ const props = defineProps(['icon', 'clickable', 'fill', 'dense']);
 <template>
   <span
     class="material-symbols-rounded"
-    :class="{ 'cursor-pointer': clickable, 'tracking-tight': dense }"
-    :style="`font-variation-settings: 'FILL' ${fill ? 1 : 0} `"
+    :class="{ 'cursor-pointer': props.clickable, 'tracking-tight': props.dense }"
+    :style="`font-variation-settings: 'FILL' ${props.fill ? 1 : 0} `"
     :v-bind="$attrs"
   >
-    {{ icon }}
+    {{ props.icon }}
   </span>
 </template>

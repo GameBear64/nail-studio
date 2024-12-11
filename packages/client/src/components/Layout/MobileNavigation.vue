@@ -23,7 +23,7 @@ const openIcon = computed(() => (openMobile.value ? 'close' : 'menu'));
       />
     </div>
     <div
-      :class="openMobile && 'absolute bg-black/30 backdrop-blur-sm h-full w-screen'"
+      :class="{ 'absolute h-full w-screen bg-black/30 backdrop-blur-sm': openMobile }"
       @click.self="() => (openMobile = false)"
     >
       <div
@@ -35,7 +35,8 @@ const openIcon = computed(() => (openMobile.value ? 'close' : 'menu'));
             Directives
           </p>
           <div
-            v-for="navigation in navigations"
+            v-for="navigation in props.navigations"
+            :key="navigation.name"
             class="flex cursor-pointer flex-row items-center gap-2 rounded px-1 py-2 hover:bg-pink-100 hover:text-pink-600"
           >
             <Icon :icon="navigation.icon" />
@@ -49,7 +50,8 @@ const openIcon = computed(() => (openMobile.value ? 'close' : 'menu'));
             Actions
           </p>
           <div
-            v-for="option in options"
+            v-for="option in props.options"
+            :key="option.name"
             class="flex cursor-pointer flex-row items-center gap-2 rounded px-1 py-2 hover:bg-pink-100 hover:text-pink-600"
           >
             <Icon :icon="option.icon" />

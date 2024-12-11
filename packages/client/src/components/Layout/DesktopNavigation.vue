@@ -23,7 +23,8 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
     <Logo />
     <div class="flex flex-row gap-20 text-lg text-gray-600">
       <div
-        v-for="navigation in navigations"
+        v-for="navigation in props.navigations"
+        :key="navigation.name"
         class="flex cursor-pointer flex-row items-center gap-2 rounded-xl p-2 hover:bg-pink-100 hover:text-pink-600"
       >
         <Icon :icon="navigation.icon" />
