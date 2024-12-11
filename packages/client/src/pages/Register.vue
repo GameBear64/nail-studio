@@ -34,12 +34,20 @@ const rules = {
   <div class="flex h-full max-w-full items-center justify-center bg-gradient-to-r from-purple-400 to-pink-400">
     <div class="card flex flex-col gap-5 p-10 text-center">
       <div>
-        <h1 class="text-2xl font-bold">
+        <h1
+          v-i18n
+          class="text-2xl font-bold"
+        >
           Register
         </h1>
         <div class="flex flex-row justify-center gap-1.5">
-          <p>Already have an account?</p>
-          <RouterLink to="/login">
+          <p v-i18n>
+            Already have an account?
+          </p>
+          <RouterLink
+            v-i18n
+            to="/login"
+          >
             Sign in here
           </RouterLink>
         </div>

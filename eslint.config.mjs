@@ -36,7 +36,6 @@ export default [
       'vue/require-prop-types': 'off',
       'vue/valid-v-for': 'off',
       'tailwindcss/no-custom-classname': 'off',
-
       'vue/no-unused-vars': [
         0,
         {

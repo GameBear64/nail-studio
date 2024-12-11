@@ -18,8 +18,6 @@ exports.checkAuth = async (req, res, next) => {
     //   if (decoded.iat < lastChanged) throw new Error('User changed password, please log in again.');
     // }
 
-    // console.log(pick(decoded, ['id']));
-
     req.authUser = pick(decoded, ['id']);
     next();
   } catch (err) {

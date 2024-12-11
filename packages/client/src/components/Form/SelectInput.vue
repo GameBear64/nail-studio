@@ -18,7 +18,7 @@ const label = attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1);
       v-for="{ option, value } in options"
       v-bind="$attrs"
       :id="$attrs.name"
-      :key="option"
+      :key="value"
       v-model="model"
     >
       <option :value="value">

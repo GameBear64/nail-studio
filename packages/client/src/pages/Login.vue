@@ -23,12 +23,20 @@ const login = (data) => {
   <div class="flex h-full max-w-full items-center justify-center bg-gradient-to-r from-purple-400 to-pink-400">
     <div class="card flex flex-col gap-5 p-10 text-center">
       <div>
-        <h1 class="text-2xl font-bold">
+        <h1
+          v-i18n
+          class="text-2xl font-bold"
+        >
           Login
         </h1>
         <div class="flex flex-row justify-center gap-1.5">
-          <p>Don't have an account yet?</p>
-          <RouterLink to="/register">
+          <p v-i18n>
+            Don't have an account yet?
+          </p>
+          <RouterLink
+            v-i18n
+            to="/register"
+          >
             Sign up here
           </RouterLink>
         </div>
