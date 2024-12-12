@@ -19,14 +19,13 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
 </script>
 
 <template>
-  <div class="mb-auto hidden w-full items-center justify-between bg-white px-3 py-2 shadow-md sm:flex">
+  <div class="mb-auto z-50 hidden w-full items-center justify-between bg-white sticky top-0 px-3 py-2 shadow-md sm:flex">
     <Logo />
     <div class="flex flex-row gap-20 text-lg text-gray-600">
       <div
         v-for="navigation in props.navigations"
         :key="navigation.name"
-        class="flex cursor-pointer flex-row items-center gap-2 rounded-xl p-2 hover:bg-pink-100 hover:text-pink-600"
-      >
+        class="flex cursor-pointer flex-row items-center gap-2 rounded-xl p-2 hover:bg-pink-100 hover:text-pink-600">
         <Icon :icon="navigation.icon" />
         <p :onclick="router.push(navigation.location)">
           {{ navigation.name }}
@@ -34,24 +33,10 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
       </div>
     </div>
     <div class="flex flex-row items-end">
-      <Icon
-        icon="person"
-        class="rounded bg-blue-700 p-1 text-white"
-      />
-      <div
-        ref="openRef"
-        class="relative flex justify-end"
-      >
-        <Icon
-          :icon="arrow"
-          :clickable="true"
-          @click="() => (open = !open)"
-        />
-        <Dropdown
-          v-if="open"
-          class="-right-1 top-11"
-          :options="options"
-        />
+      <Icon icon="person" class="rounded bg-blue-700 p-1 text-white" />
+      <div ref="openRef" class="relative flex justify-end">
+        <Icon :icon="arrow" :clickable="true" @click="() => (open = !open)" />
+        <Dropdown v-if="open" class="-right-1 top-11" :options="options" />
       </div>
     </div>
   </div>

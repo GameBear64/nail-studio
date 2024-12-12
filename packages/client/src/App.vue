@@ -11,23 +11,18 @@ const route = useRoute();
 </script>
 
 <template>
-  <div
-    :class="`theme-${themes.theme} theme-${themes.accent}`"
-    class="bg-base text-primaryText flex h-screen flex-col"
-  >
-    <div class="flex-1">
-      <RouterView v-slot="{ Component }">
-        <Header v-if="!route.meta.guestRoute" />
-        <template v-if="Component">
-          <Suspense timeout="0">
-            <component :is="Component" />
-            <template #fallback>
-              <Loading />
-            </template>
-          </Suspense>
-        </template>
-      </RouterView>
-    </div>
+  <div :class="`theme-${themes.theme} theme-${themes.accent}`" class="bg-base text-primaryText flex h-full flex-col">
+    <RouterView v-slot="{ Component }">
+      <Header v-if="!route.meta.guestRoute" />
+      <template v-if="Component">
+        <Suspense timeout="0">
+          <component :is="Component" />
+          <template #fallback>
+            <Loading />
+          </template>
+        </Suspense>
+      </template>
+    </RouterView>
   </div>
 </template>
 
