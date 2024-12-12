@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import useFetch from '@tools/useFetch';
 import { setUserId } from '@store/userStore';
+
+import { userStore } from './toolbox/stores/userStore';
 
 const routes = [
   {
@@ -27,22 +28,9 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to) => {
-  try {
-    const res = await useFetch({ url: 'user', method: 'GET', noError: true });
-    const userId = res?.id;
-    setUserId(userId);
-
-    if (to.meta?.guestRoute && userId) {
-      return { path: '/' };
-    }
-
-    if (!to.meta?.guestRoute && !userId) {
-      return { path: '/login' };
-    }
-  } catch (error) {
-    console.log('Error during navigation guard:', error);
-    return;
-  }
+  if (!userStore.id) await setUserId();
+  if (!userStore.id && !to.meta?.guestRoute) return { path: '/login' };
+  if (userStore.id && to.meta?.guestRoute) return { path: '/' };
 });
 
 export default router;

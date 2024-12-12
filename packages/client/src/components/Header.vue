@@ -2,6 +2,7 @@
 import { useRouter } from 'vue-router';
 
 import useFetch from '@tools/useFetch';
+import { setUserId } from '@store/userStore';
 
 import DesktopNavigation from './Layout/DesktopNavigation.vue';
 import MobileNavigation from './Layout/MobileNavigation.vue';
@@ -25,7 +26,9 @@ const options = [
     icon: 'logout',
     name: 'Logout',
     action: () => {
-      useFetch({ url: 'user/logout', method: 'GET' }).then(() => router.push('/login'));
+      useFetch({ url: 'user/logout', method: 'GET' }).then(() => {
+        setUserId().then(() => router.push('/login'));
+      });
     },
   },
 ];
