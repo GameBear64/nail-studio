@@ -7,8 +7,7 @@ import Input from '@components/Form/Input.vue';
 import PasswordInput from '@components/Form/PasswordInput.vue';
 
 import useFetch from '@tools/useFetch';
-
-import { setUserId } from '../toolbox/stores/userStore';
+import { setUserId } from '@store/userStore';
 
 const router = useRouter();
 

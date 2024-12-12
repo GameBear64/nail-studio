@@ -1,11 +1,14 @@
 import { reactive } from 'vue';
 
-export const userId = reactive({ id: null });
+import useFetch from '../useFetch';
 
-export const setUserId = (id) => {
-  userId.id = id;
+export const userStore = reactive({ id: null });
+
+export const setUserId = async () => {
+  const res = await useFetch({ url: 'user', method: 'GET', noError: true });
+  userStore.id = res?.id;
 };
 
 export const removeUserId = () => {
-  userId.id = null;
+  userStore.id = null;
 };

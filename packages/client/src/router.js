@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import { userId } from './toolbox/stores/userStore';
+import { setUserId } from '@store/userStore';
+
+import { userStore } from './toolbox/stores/userStore';
 
 const routes = [
   {
@@ -13,7 +15,10 @@ const routes = [
     component: () => import('@pages/Register.vue'),
     meta: { guestRoute: true },
   },
-  { path: '/', component: () => import('@pages/Home.vue') },
+  {
+    path: '/',
+    component: () => import('@pages/Home.vue'),
+  },
 ];
 
 const router = createRouter({
@@ -22,16 +27,10 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.meta?.guestRoute && userId.id) {
-    return next('/');
-  }
-
-  if (!to.meta?.guestRoute && !userId.id) {
-    return next('/login');
-  }
-
-  next();
+router.beforeEach(async (to) => {
+  if (!userStore.id) await setUserId();
+  if (!userStore.id && !to.meta?.guestRoute) return { path: '/login' };
+  if (userStore.id && to.meta?.guestRoute) return { path: '/' };
 });
 
 export default router;

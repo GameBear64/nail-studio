@@ -1,7 +1,13 @@
 <script setup>
+import { useRoute } from 'vue-router';
+
 import Loading from '@pages/Loading.vue';
 
+import Header from '@components/Header.vue';
+
 import { themes } from '@store/themeStore';
+
+const route = useRoute();
 </script>
 
 <template>
@@ -11,6 +17,7 @@ import { themes } from '@store/themeStore';
   >
     <div class="flex-1">
       <RouterView v-slot="{ Component }">
+        <Header v-if="!route.meta.guestRoute" />
         <template v-if="Component">
           <Suspense timeout="0">
             <component :is="Component" />

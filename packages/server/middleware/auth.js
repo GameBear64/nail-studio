@@ -18,7 +18,7 @@ exports.checkAuth = async (req, res, next) => {
     //   if (decoded.iat < lastChanged) throw new Error('User changed password, please log in again.');
     // }
 
-    req.authUser = pick(currentUser, ['id']);
+    req.authUser = pick(decoded, ['id']);
     next();
   } catch (err) {
     if (err.name === 'JsonWebTokenError') return res.status(401).json('Not Authorized');
