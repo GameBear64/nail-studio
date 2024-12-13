@@ -31,6 +31,37 @@ export default {
       fontFamily: {
         rouge: ['Rouge Script', 'cursive'],
       },
+      animation: {
+        fall: 'fall 8s linear infinite',
+        fall1: 'fall 5s linear infinite',
+        fall2: 'fall 11s linear infinite',
+      },
+      keyframes: {
+        fall: {
+          '0%': { transform: 'translateY(0) translateX(0) rotate(0deg) ' },
+          '15%': { transform: 'translateY(10%) translateX(5%) rotate(10deg)' },
+          '30%': { transform: 'translateY(30%) translateX(-10%) rotate(-5deg)' },
+          '50%': { transform: 'translateY(60%) translateX(15%) rotate(20deg)' },
+          '70%': { transform: 'translateY(80%) translateX(-20%) rotate(-15deg)' },
+          '100%': { transform: 'translateY(100%) translateX(-25%) rotate(5deg)' },
+        },
+        fall1: {
+          '0%': { transform: 'translateY(0) translateX(0) rotate(0deg)' },
+          '15%': { transform: 'translateY(10%) translateX(5%) rotate(10deg)' },
+          '30%': { transform: 'translateY(30%) translateX(-10%) rotate(-5deg)' },
+          '50%': { transform: 'translateY(60%) translateX(15%) rotate(20deg)' },
+          '70%': { transform: 'translateY(80%) translateX(-20%) rotate(-15deg)' },
+          '100%': { transform: 'translateY(100%) translateX(-25%) rotate(5deg)' },
+        },
+        fall2: {
+          '0%': { transform: 'translateY(0) translateX(0) rotate(0deg)' },
+          '15%': { transform: 'translateY(10%) translateX(5%) rotate(10deg)' },
+          '30%': { transform: 'translateY(30%) translateX(-10%) rotate(-5deg)' },
+          '50%': { transform: 'translateY(60%) translateX(15%) rotate(20deg)' },
+          '70%': { transform: 'translateY(80%) translateX(-20%) rotate(-15deg)' },
+          '100%': { transform: 'translateY(100%) translateX(-25%) rotate(5deg)' },
+        },
+      },
     },
   },
   plugins: [],
