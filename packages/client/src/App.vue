@@ -11,12 +11,20 @@ const route = useRoute();
 </script>
 
 <template>
-  <div :class="`theme-${themes.theme} theme-${themes.accent}`" class="bg-base text-primaryText flex h-full flex-col">
-    <RouterView v-slot="{ Component }">
+  <div
+    :class="`theme-${themes.theme}`"
+    class="bg-base text-primaryText flex h-screen flex-col"
+  >
+    <RouterView
+      v-slot="{ Component }"
+      class="h-full"
+    >
       <Header v-if="!route.meta.guestRoute" />
       <template v-if="Component">
         <Suspense timeout="0">
-          <component :is="Component" />
+          <component
+            :is="Component"
+          />
           <template #fallback>
             <Loading />
           </template>

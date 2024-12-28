@@ -42,3 +42,78 @@ export const passwordRules = [
   },
   { rule: /^.{12,}$/, message: 'At least 12 characters' },
 ];
+
+export const leaves = [
+  {
+    position: 'left-40 -top-10 ',
+    animation: 1,
+    size: 'size-6',
+    delay: 'delay-300',
+  },
+  {
+    position: '-left-32 top-20 ',
+    animation: 1,
+    size: 'size-3',
+    delay: 'delay-300',
+  },
+  {
+    position: '-left-10 -top-10 ',
+    animation: 4,
+    size: 'size-2',
+    delay: 'delay-4000',
+  },
+  {
+    position: 'left-10 -top-10 ',
+    animation: 1,
+    size: 'size-2',
+    delay: 'delay-2000',
+  },
+  {
+    position: 'left-52 -top-10 ',
+    animation: 1,
+    size: 'size-2',
+    delay: 'delay-1000',
+  },
+  {
+    position: 'left-72 -top-10 ',
+    animation: 1,
+    size: 'size-3',
+    delay: 'delay-5000',
+  },
+  {
+    position: 'left-0 -top-10 ',
+    animation: 3,
+    size: 'size-8',
+    delay: 'delay-100',
+  },
+  {
+    position: 'left-60 -top-10 ',
+    animation: 2,
+    size: 'size-7',
+    delay: 'delay-2000',
+  },
+  {
+    position: '-left-24 -top-10 ',
+    animation: 3,
+    size: 'size-9',
+    delay: 'delay-3000',
+  },
+  {
+    position: '-left-40 top-40',
+    animation: 3,
+    size: 'size-9',
+    delay: 'delay-5000',
+  },
+  {
+    position: '-left-40 top-96',
+    animation: 3,
+    size: 'size-14',
+    delay: 'delay-1000',
+  },
+  {
+    position: 'left-[65%] -top-10',
+    animation: 3,
+    size: 'size-14',
+    delay: 'delay-1000',
+  },
+];
