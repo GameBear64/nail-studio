@@ -41,7 +41,7 @@ import { leaves } from '../toolbox/consts/consts';
       </div>
     </div>
     <img
-      src="../../banner.jpg"
+      src="../public/banner.jpg"
       alt="flowers picture"
       class="z-30 hidden h-auto w-full rounded-md object-cover sm:flex"
     >
