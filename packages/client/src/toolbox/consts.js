@@ -43,7 +43,7 @@ export const passwordRules = [
   { rule: /^.{12,}$/, message: 'At least 12 characters' },
 ];
 
-export const leaves = [
+export const leafs = [
   {
     position: 'left-40 -top-10 ',
     animation: 1,

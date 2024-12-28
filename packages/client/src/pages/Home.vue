@@ -1,6 +1,6 @@
 <script setup>
 import Shape from '../components/Shape.vue';
-import { leaves } from '../toolbox/consts/consts';
+import { leafs } from '../toolbox/consts';
 
 </script>
 
@@ -9,12 +9,12 @@ import { leaves } from '../toolbox/consts/consts';
     <div class="bg-base-x relative flex flex-col justify-center gap-4 overflow-hidden rounded-md px-5">
       <div class="absolute size-full">
         <template
-          v-for="leave in leaves"
-          :key="leave"
+          v-for="leaf in leafs"
+          :key="leaf"
         >
           <Shape
-            :class="`animate-${leave.animation} ${leave.position} ${leave?.delay&&leave.delay}`"
-            :size="leave.size"
+            :class="`animate-${leaf.animation} ${leaf.position} ${leaf?.delay&&leaf.delay}`"
+            :size="leaf.size"
           />
         </template>
       </div>
@@ -43,7 +43,7 @@ import { leaves } from '../toolbox/consts/consts';
     <img
       src="../public/banner.jpg"
       alt="flowers picture"
-      class="z-30 hidden h-auto w-full rounded-md object-cover sm:flex"
+      class="z-30 hidden h-auto w-full rounded-md object-cover lg:flex"
     >
   </div>
 </template>

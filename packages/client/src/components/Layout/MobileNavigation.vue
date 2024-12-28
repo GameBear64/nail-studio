@@ -14,7 +14,7 @@ const openIcon = computed(() => (openMobile.value ? 'close' : 'menu'));
 
 <template>
   <div class="z-50 w-screen sm:hidden">
-    <div class="sticky top-0 z-50 mb-auto flex w-full items-center justify-between bg-white px-3 py-2 shadow-md">
+    <div class="sticky top-0 mb-auto flex w-full items-center justify-between bg-white px-3 py-2 shadow-md">
       <Logo />
       <Icon
         :icon="openIcon"
@@ -28,7 +28,7 @@ const openIcon = computed(() => (openMobile.value ? 'close' : 'menu'));
     >
       <div
         v-if="openMobile"
-        class="absolute right-0 z-50 mb-auto flex h-full w-52 flex-col gap-5 bg-white px-1 py-2 shadow-md"
+        class="absolute right-0 mb-auto flex h-full w-52 flex-col gap-5 bg-white px-1 py-2 shadow-md"
       >
         <div class="px-2">
           <p class="font-medium">
