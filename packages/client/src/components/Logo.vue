@@ -1,8 +1,10 @@
 <template>
-  <div class="flex flex-row text-2xl font-bold italic">
-    <p>N</p>
+  <div class="font-rouge flex flex-row text-3xl font-bold italic sm:text-4xl">
     <p class="text-pink-500">
-      S
+      9
+    </p>
+    <p>
+      6
     </p>
   </div>
 </template>

@@ -1,8 +1,16 @@
+import plugin from 'tailwindcss/plugin';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{vue,js}'],
   theme: {
     extend: {
+      transitionDelay: {
+        2000: '2000ms',
+        3000: '3000ms',
+        4000: '4000ms',
+        5000: '5000ms',
+      },
       colors: {
         'base-x': 'var(--base-x)',
         base: 'var(--base)',
@@ -10,10 +18,6 @@ export default {
         'base-s': 'var(--base-s)',
         txtPrimary: 'var(--txtPrimary)',
         txtSecondary: 'var(--txtSecondary)',
-        'primary-light': 'var(--primary-light)',
-        primary: 'var(--primary)',
-        'primary-shade': 'var(--primary-shade)',
-        'primary-dark': 'var(--primary-dark)',
       },
       fontSize: {
         // because we override base with a color
@@ -28,7 +32,26 @@ export default {
         // xl 1280px
         // 2xl 1536px
       },
+      fontFamily: {
+        rouge: ['Rouge Script', 'cursive'],
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          delay: (value) => {
+            return {
+              'transition-delay': value,
+              'animation-delay': value,
+            };
+          },
+        },
+        {
+          values: theme('transitionDelay'),
+        },
+      );
+    }),
+  ],
 };
