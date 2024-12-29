@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue';
 
-import { difficultyLevel, passwordRules } from '@tools/consts/consts';
+import { difficultyLevel, passwordRules } from '@tools/consts';
 
 import PasswordInput from './PasswordInput.vue';
 

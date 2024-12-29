@@ -3,8 +3,6 @@
     <p class="text-pink-500">
       9
     </p>
-    <p>
-      6
-    </p>
+    <p>6</p>
   </div>
 </template>

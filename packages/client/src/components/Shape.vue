@@ -1,6 +1,5 @@
-
 <script setup>
-const props= defineProps(['size'])
+const props = defineProps(['size']);
 </script>
 
 <template>
@@ -33,5 +32,3 @@ const props= defineProps(['size'])
     />
   </svg>
 </template>
-
-

@@ -18,6 +18,7 @@ export default {
         'base-s': 'var(--base-s)',
         txtPrimary: 'var(--txtPrimary)',
         txtSecondary: 'var(--txtSecondary)',
+        txtAccent: 'var(--txtAccent)',
       },
       fontSize: {
         // because we override base with a color
