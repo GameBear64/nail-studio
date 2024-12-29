@@ -74,6 +74,7 @@
   --base-s: theme('colors.neutral.300');
   --txtPrimary: theme('colors.neutral.800');
   --txtSecondary: theme('colors.neutral.600');
+  --txtAccent: theme('colors.pink.500');
 }
 
 .theme-dark {
@@ -83,4 +84,5 @@
   --base-s: theme('colors.neutral.600');
   --txtPrimary: theme('colors.white');
   --txtSecondary: theme('colors.neutral.300');
+  --txtAccent: theme('colors.pink.200');
 }

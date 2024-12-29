@@ -2,7 +2,6 @@
 import { useRoute } from 'vue-router';
 
 import Loading from '@pages/Loading.vue';
-
 import Header from '@components/Header.vue';
 
 import { themes } from '@store/themeStore';
@@ -15,16 +14,14 @@ const route = useRoute();
     :class="`theme-${themes.theme}`"
     class="bg-base text-primaryText flex h-screen flex-col"
   >
+    <Header v-if="!route.meta.guestRoute" />
     <RouterView
       v-slot="{ Component }"
-      class="h-full"
+      class="flex-1 overflow-x-auto"
     >
-      <Header v-if="!route.meta.guestRoute" />
       <template v-if="Component">
         <Suspense timeout="0">
-          <component
-            :is="Component"
-          />
+          <component :is="Component" />
           <template #fallback>
             <Loading />
           </template>

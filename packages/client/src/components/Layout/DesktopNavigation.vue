@@ -19,7 +19,7 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
 </script>
 
 <template>
-  <div class="sticky top-0 z-50 mb-auto hidden w-full items-center justify-between bg-white px-3 py-2 shadow-md sm:flex">
+  <div class="sticky z-50 hidden w-screen items-center justify-between bg-white px-3 py-2 shadow-md sm:flex">
     <Logo />
     <div class="flex flex-row gap-20 text-lg text-gray-600">
       <div
