@@ -48,7 +48,7 @@
     @apply rounded-md font-medium px-2 py-1 bg-pink-500 text-base;
   }
   .btn-outlined {
-    @apply rounded-md font-medium border-2 border-pink-200 px-2 py-1 bg-pink-100 text-pink-600;
+    @apply rounded-md font-medium border border-pink-200 px-2 py-1 bg-pink-100 text-pink-600;
   }
   .btn-tonal {
     @apply rounded-md font-medium px-2 py-1 bg-pink-100 text-pink-600;
@@ -85,4 +85,24 @@
   --txtPrimary: theme('colors.white');
   --txtSecondary: theme('colors.neutral.300');
   --txtAccent: theme('colors.pink.200');
+}
+.swiper {
+  width: 100%;
+  /* display: flex; */
+  /* justify-items: center;
+  align-items: center; */
+  height: auto;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  width: 320px;
+  /* width: auto !important; */
+
+  /* Center slide text vertically */
+  /* display: flex; */
+  /* justify-content: center;
+  align-items: center; */
 }

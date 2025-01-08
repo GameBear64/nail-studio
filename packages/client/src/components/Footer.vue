@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-base text-txtPrimary max-h-82 flex w-screen flex-col items-center gap-6 border-t-2 border-pink-200 px-2 py-8 sm:justify-between md:flex-row md:px-10 md:py-20 lg:px-52"
+    class="bg-base text-txtPrimary max-h-82 flex w-screen flex-col items-center gap-6 border-t-0 border-pink-200 px-2 py-8 sm:justify-between md:flex-row md:px-10 md:py-20 lg:px-52"
   >
     <div class="flex flex-row items-center divide-x md:w-auto">
       <p class="font-rouge pr-5 text-4xl md:pr-8 md:text-7xl">
