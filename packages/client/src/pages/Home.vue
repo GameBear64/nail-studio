@@ -6,7 +6,9 @@ import Swiper from '../components/Swiper.vue';
 </script>
 
 <template>
-  <!-- <Banner /> -->
-  <Swiper />
-  <Footer />
+  <div class="flex flex-col">
+    <Banner />
+    <Swiper />
+    <Footer />
+  </div>
 </template>

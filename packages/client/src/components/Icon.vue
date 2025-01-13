@@ -1,5 +1,6 @@
 <script setup>
-defineProps(['icon', 'clickable', 'fill', 'dense']);
+defineProps({'icon':String, 'clickable':Boolean, 'fill':Boolean, 'dense':Boolean});
+
 </script>
 
 <template>
@@ -7,7 +8,6 @@ defineProps(['icon', 'clickable', 'fill', 'dense']);
     class="material-symbols-rounded"
     :class="{ 'cursor-pointer': clickable, 'tracking-tight': dense }"
     :style="`font-variation-settings: 'FILL' ${fill ? 1 : 0} `"
-    :v-bind="$attrs"
   >
     {{ icon }}
   </span>

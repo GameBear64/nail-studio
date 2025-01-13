@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { FreeMode, Navigation,Pagination } from 'swiper/modules';
+import { Navigation,Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide,useSwiper } from 'swiper/vue';
 
 import artist3 from "../public/aiony-haust-3TLl_97HNJo-unsplash.jpg"
@@ -15,10 +15,8 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 const slider = ref(null);
     const swiper= useSwiper()
-   console.log(swiper)
         const onSwiper = (swiper) => {
           slider.value=swiper.value
-          console.log(slider);
         };
         const onSlideChange = (e) => {
           // console.log(e, swiper);
@@ -47,51 +45,51 @@ const artists = [{
 
     </script>
 <template>
-  <div class="min-h-1 w-screen bg-gradient-to-l from-pink-300  to-pink-50" />
+  <!-- <div class="min-h-full w-screen bg-gradient-to-l from-pink-300  to-pink-50" /> -->
   <Swiper
-    :slides-per-view="3"
-    :space-between="20"
-    :free-mode="true"
+    :breakpoints="{500:{slidesPerView:1}, 800:{slidesPerView:2, spaceBetween:60}, 1200:{slidesPerView:3}, 1600:{slidesPerView:4}}"
+    allow-slide-next="true"
+    :space-between="120"
     :pagination="{
       clickable: true,
     }"
-    :modules="[FreeMode, Pagination, Navigation]"
-    class="w-screen bg-black"
+    :modules="[Pagination, Navigation]"
+    class="min-h-[35rem] !w-screen bg-gradient-to-l from-pink-300  to-pink-50 !px-28 !py-10 md:!px-14"
   >
     <SwiperSlide
       v-for="artist in artists"
       :key="artist"
+      class="!flex max-h-[30rem] flex-col !justify-between rounded-lg border border-pink-200 bg-white py-5"
     >
-      <div class="flex min-h-full w-80 flex-col justify-between rounded-lg border border-pink-200 bg-white py-2">
-        <div class="flex flex-col items-center gap-2">
-          <div class="size-52 rounded-lg p-2 shadow-[inset_0px_0px_37px_50px_rgba(236,_72,_153,_0.15)]">
-            <img
-              :src="artist.image"
-              alt="image"
-              class="size-full rounded object-cover"
-            >
-          </div>
-          <div class="flex flex-col items-center gap-2 px-4">
-            <div class="text-center">
-              <p class="text-lg font-semibold">
-                {{ artist.name }}
-              </p> <p class="text-sm text-gray-500">
-                1-5 years of experience
-              </p>
-            </div>
-            <p class="pb-2 text-center">
-              {{ artist.describtion }}
+      <!-- <div class="flex min-h-full w-80 flex-col justify-between rounded-lg border border-pink-200 bg-white py-2"> -->
+      <div class="flex flex-col items-center gap-2">
+        <div class="size-52 rounded-lg p-2 shadow-[inset_0px_0px_37px_50px_rgba(236,_72,_153,_0.15)]">
+          <img
+            :src="artist.image"
+            alt="image"
+            class="size-full rounded object-cover"
+          >
+        </div>
+        <div class="flex flex-col items-center gap-2 px-4">
+          <div class="text-center">
+            <p class="text-lg font-semibold">
+              {{ artist.name }}
+            </p> <p class="text-sm text-gray-500">
+              5 years of experience
             </p>
           </div>
+          <p class="text-md pb-2 text-center">
+            {{ artist.describtion }}
+          </p>
         </div>
-        <div class="my-2 flex flex-row justify-center gap-6">
-          <button class="btn-outlined">
-            Book me
-          </button>
-          <button class="btn-outlined">
-            See more
-          </button>
-        </div>
+      </div>
+      <div class="my-2 flex flex-row justify-center gap-6">
+        <button class="btn-outlined">
+          Book me
+        </button>
+        <button class="btn-outlined">
+          See more
+        </button>
       </div>
     </SwiperSlide>
   </Swiper>
