@@ -15,81 +15,89 @@ import 'swiper/css/navigation';
 const artists = [{
   image:artist3,
   name:"Aiony Brat",
-  describtion:"An amazing artist and listener, giving you the prettiest nails and see you leaving with a smilling face is my proprity!"
+  description:"An amazing artist and listener, giving you the prettiest nails and see you leaving with a smilling face is my proprity!"
 },
 {
   image:artist2,
   name:"Angelina Litvin",
-  describtion:"With years of experience, wrinckes, and doing my wife's manicure for years, i am sure that we can give your nails the care they deserve. Trust me."
+  description:"With years of experience, wrinckes, and doing my wife's manicure for years, i am sure that we can give your nails the care they deserve. Trust me."
 },{
   image:artist4,
   name:"Like Branswell",
-  describtion:"Mona Lisa can eat a fat cake! I am here to bring the life in your nails, and make sure you leave happy."
+  description:"Your nails are my priority! I am here to bring the life in your nails, and make sure you leave happy."
 },{
   image:artist1,
   name:"Swapnil Dwivedi",
-  describtion:"My soul is black just like my skin. Happy ending included 😉"
+  description:"Always here to give you a professional service"
 },
 ]
 
 const limitedCharacters = (text)=>{
 let characters = text
-if(characters.length>120){
-characters=characters.split("").slice(0,120).join("") +'...'
+if(characters.length>110){
+characters=characters.split("").slice(0,110).join("") +'...'
 }
 return characters
 }
     </script>
 
 <template>
-  <Swiper
-  thumbs-swiper=".my-thumbs "
-  :navigation="true"
-    :breakpoints="{500:{slidesPerView:1}, 800:{slidesPerView:2, spaceBetween:60}, 1200:{slidesPerView:3}, 1600:{slidesPerView:4}}"
-    :space-between="120"
-    :pagination="{
-      clickable: true,
-    }"
-    :modules="[Pagination, Navigation]"
-    class="flex sm:min-h-[35rem] min-h-[30rem] flex-row bg-gradient-to-l from-pink-300  to-pink-50 !px-12 !py-10 sm:!px-32"
-  >
-    <SwiperSlide
-      v-for="artist in artists"
-      :key="artist"
-      class="!flex max-h-[26rem] flex-col !justify-between rounded-lg border border-pink-200 bg-white py-5 sm:max-h-[30rem]"
+  
+  <div class="flex w-screen sm:gap-8 gap-7 sm:min-h-[47rem] min-h-[40rem] flex-col bg-gradient-to-t from-pink-200  to-white !py-10">
+    <div class="min-h-1 bg-gradient-to-r from-pink-200  to-pink-50" />
+    <div class="flex flex-col text-center justify-center items-center gap-1">
+    <p class=" font-rouge sm:text-7xl text-5xl">Our best artists</p>
+  <p class="italic sm:text-md sm:max-w-[28rem] max-w-[21rem] text-sm">With years of experience and happy clients, we can proudly suggest one of our best artists.</p>
+  </div>
+    <Swiper
+    class="!px-12 sm:!px-32"
+    thumbs-swiper=".my-thumbs "
+    :loop="true"
+    navigation
+      :breakpoints="{500:{slidesPerView:1}, 800:{slidesPerView:2, spaceBetween:60}, 1200:{slidesPerView:3}, 1600:{slidesPerView:4}}"
+      :space-between="120"
+      :pagination="{
+        clickable: true,
+      }"
+      :modules="[Pagination, Navigation]"
     >
-      <div class="flex flex-col items-center gap-2">
-        <div class="size-44 rounded-lg p-2 shadow-[inset_0px_0px_37px_50px_rgba(236,_72,_153,_0.15)] sm:size-52">
-          <img
-            :src="artist.image"
-            alt="image"
-            class="size-40 rounded object-cover sm:size-full"
-          >
-        </div>
-        <div class="flex flex-col items-center gap-2 px-4">
-          <div class="text-center">
-            <p class="text-lg font-semibold">
-              {{ artist.name }}
-            </p> 
-            <p class="text-sm text-gray-500">
-              5 years of experience
+      <SwiperSlide
+        v-for="artist in artists"
+        :key="artist"
+        class="!flex max-h-[26rem] flex-col !justify-between rounded-lg border border-pink-200 bg-white py-5 sm:max-h-[30rem]"
+      >
+        <div class="flex flex-col items-center gap-2">
+          <div class="size-44 rounded-lg p-2 shadow-[inset_0px_0px_37px_50px_rgba(236,_72,_153,_0.15)] sm:size-52">
+            <img
+              :src="artist.image"
+              alt="image"
+              class="size-40 rounded object-cover sm:size-full"
+            >
+          </div>
+          <div class="flex flex-col items-center gap-2 px-4">
+            <div class="text-center">
+              <p class="text-lg font-semibold">
+                {{ artist.name }}
+              </p> 
+              <p class="text-sm text-gray-500">
+                5 years of experience
+              </p>
+            </div>
+            <p class="sm:text-md pb-2 max-h-28 text-center text-sm">
+              {{ limitedCharacters(artist.description) }}
             </p>
           </div>
-          <p class="sm:text-md pb-2 text-center text-sm">
-            {{ limitedCharacters(artist.describtion) }}
-          </p>
         </div>
-      </div>
-      <div class="my-2 flex flex-row justify-center gap-6">
-        <button class="btn-outlined sm:text-md text-sm">
-          Book me
-        </button>
-        <button class="btn-outlined sm:text-md text-sm">
-          See more
-        </button>
-      </div>
-    </SwiperSlide>
-  </Swiper>
+        <div class="my-2 flex flex-row justify-center gap-6">
+          <button class="btn-outlined sm:text-md text-sm">
+            Book me
+          </button>
+          <button class="btn-outlined sm:text-md text-sm">
+            See more
+          </button>
+        </div>
+      </SwiperSlide>
+    </Swiper>
+  </div>
   <div class="min-h-1 w-screen bg-gradient-to-r from-pink-300  to-pink-50" />
 </template>
-
