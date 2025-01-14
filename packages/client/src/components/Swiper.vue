@@ -1,6 +1,6 @@
 <script setup>
 import { Navigation,Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide,useSwiper } from 'swiper/vue';
+import { Swiper,SwiperSlide } from 'swiper/vue';
 
 import artist3 from "../public/aiony-haust-3TLl_97HNJo-unsplash.jpg"
 import artist2 from "../public/angelina-litvin-52R7t7x8CPI-unsplash.jpg"
@@ -45,27 +45,32 @@ return characters
   <Swiper
     :breakpoints="{500:{slidesPerView:1}, 800:{slidesPerView:2, spaceBetween:60}, 1200:{slidesPerView:3}, 1600:{slidesPerView:4}}"
     :space-between="120"
-    nextButton= '.swiper-button-next'
-    :navigation="true"
-    prevButton='.swiper-button-prev'
+    next-button=".swiper-button-next"
+    navigation="{
+    nextEl:
+    '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+    }"
+    ,
+    free-mode
+    prev-button=".swiper-button-prev"
     :pagination="{
       clickable: true,
     }"
     :modules="[Pagination, Navigation]"
-    class="min-h-[35rem] !w-screen bg-gradient-to-l flex flex-row from-pink-300  to-pink-50 !px-10 !py-10 md:!px-14"
+    class="flex min-h-[35rem] !w-screen flex-row bg-gradient-to-l from-pink-300  to-pink-50 !px-7 !py-10 sm:!px-32"
   >
- 
     <SwiperSlide
       v-for="artist in artists"
       :key="artist"
-      class="!flex sm:max-h-[30rem] max-h-[26rem] flex-col !justify-between rounded-lg border border-pink-200 bg-white py-5"
+      class="!flex max-h-[26rem] flex-col !justify-between rounded-lg border border-pink-200 bg-white py-5 sm:max-h-[30rem]"
     >
       <div class="flex flex-col items-center gap-2">
-        <div class="sm:size-52 size-44 rounded-lg p-2 shadow-[inset_0px_0px_37px_50px_rgba(236,_72,_153,_0.15)]">
+        <div class="size-44 rounded-lg p-2 shadow-[inset_0px_0px_37px_50px_rgba(236,_72,_153,_0.15)] sm:size-52">
           <img
             :src="artist.image"
             alt="image"
-            class="sm:size-full rounded object-cover size-40"
+            class="size-40 rounded object-cover sm:size-full"
           >
         </div>
         <div class="flex flex-col items-center gap-2 px-4">
@@ -77,7 +82,7 @@ return characters
               5 years of experience
             </p>
           </div>
-          <p class="sm:text-md text-sm pb-2 text-center">
+          <p class="sm:text-md pb-2 text-center text-sm">
             {{ limitedCharacters(artist.describtion) }}
           </p>
         </div>
@@ -89,11 +94,10 @@ return characters
         <button class="btn-outlined sm:text-md text-sm">
           See more
         </button>
-      
       </div>
     </SwiperSlide>
-    <div class="swiper-button-prev swiper-button"></div>
-    <div class="swiper-button-next swiper-button"></div>
+    <div class="swiper-button-prev swiper-button" />
+    <div class="swiper-button-next swiper-button" />
   </Swiper>
   <div class="min-h-1 w-screen bg-gradient-to-r from-pink-300  to-pink-50" />
 </template>
