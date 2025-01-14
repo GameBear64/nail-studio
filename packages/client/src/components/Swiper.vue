@@ -1,5 +1,5 @@
 <script setup>
-import { Navigation,Pagination } from 'swiper/modules';
+import { Pagination, Navigation } from 'swiper/modules';
 import { Swiper,SwiperSlide } from 'swiper/vue';
 
 import artist3 from "../public/aiony-haust-3TLl_97HNJo-unsplash.jpg"
@@ -39,26 +39,19 @@ characters=characters.split("").slice(0,120).join("") +'...'
 }
 return characters
 }
-
     </script>
+
 <template>
   <Swiper
+  thumbs-swiper=".my-thumbs "
+  :navigation="true"
     :breakpoints="{500:{slidesPerView:1}, 800:{slidesPerView:2, spaceBetween:60}, 1200:{slidesPerView:3}, 1600:{slidesPerView:4}}"
     :space-between="120"
-    next-button=".swiper-button-next"
-    navigation="{
-    nextEl:
-    '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-    }"
-    ,
-    free-mode
-    prev-button=".swiper-button-prev"
     :pagination="{
       clickable: true,
     }"
     :modules="[Pagination, Navigation]"
-    class="flex min-h-[35rem] !w-screen flex-row bg-gradient-to-l from-pink-300  to-pink-50 !px-7 !py-10 sm:!px-32"
+    class="flex sm:min-h-[35rem] min-h-[30rem] flex-row bg-gradient-to-l from-pink-300  to-pink-50 !px-12 !py-10 sm:!px-32"
   >
     <SwiperSlide
       v-for="artist in artists"
@@ -96,15 +89,7 @@ return characters
         </button>
       </div>
     </SwiperSlide>
-    <div class="swiper-button-prev swiper-button" />
-    <div class="swiper-button-next swiper-button" />
   </Swiper>
   <div class="min-h-1 w-screen bg-gradient-to-r from-pink-300  to-pink-50" />
 </template>
 
-
-<style lang="css" scoped>
-.swiper-button{
-  @apply bg-pink-200 rounded-full !text-pink-400 !fill-pink-400 !text-sm py-4 px-5 font-bold
-}
-</style>

@@ -4,7 +4,7 @@ import { leafs } from '../toolbox/consts';
 </script>
 
 <template>
-  <div class="z-40 flex h-[80vh] flex-row justify-between gap-2 bg-white p-2">
+  <div class="z-40 flex min-h-[80vh] flex-row justify-between gap-2 bg-white p-2">
     <div class="bg-base-x relative flex flex-col justify-center gap-4 overflow-hidden rounded-md px-5">
       <div class="absolute size-full">
         <template

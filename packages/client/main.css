@@ -42,9 +42,9 @@
     @apply my-2 border-b border-pink-500;
   }
 }
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 25px !important;
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  @apply bg-pink-200 rounded-full !text-pink-400 !fill-pink-400 !text-md py-2 px-3.5 !font-bold;
 }
 
 @layer components {
