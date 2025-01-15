@@ -1,9 +1,13 @@
 <script setup>
-import Banner from '../components/Banner.vue';
-import Footer from '../components/Footer.vue';
+import Banner from '@components/Banner.vue';
+import BestArtists from '@components/BestArtists.vue';
+import Footer from '@components/Footer.vue';
 </script>
 
 <template>
-  <Banner />
-  <Footer />
+  <div class="flex flex-col overflow-x-hidden">
+    <Banner />
+    <BestArtists />
+    <Footer />
+  </div>
 </template>

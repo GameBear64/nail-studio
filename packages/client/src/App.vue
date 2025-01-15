@@ -2,9 +2,15 @@
 import { useRoute } from 'vue-router';
 
 import Loading from '@pages/Loading.vue';
+
 import Header from '@components/Header.vue';
 
 import { themes } from '@store/themeStore';
+
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 const route = useRoute();
 </script>

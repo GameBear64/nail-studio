@@ -33,7 +33,7 @@ const iconVisible = computed(() => (visibility.value ? 'visibility' : 'visibilit
         class="absolute right-0 mr-1.5"
         :onclick="() => (visibility = !visibility)"
         :icon="iconVisible"
-        :clickable="true"
+        clickable
       />
     </div>
     <p

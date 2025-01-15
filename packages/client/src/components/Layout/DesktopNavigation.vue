@@ -27,24 +27,29 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
         :key="navigation.name"
         class="flex cursor-pointer flex-row items-center gap-2 rounded-xl p-2 hover:bg-pink-100 hover:text-pink-600"
       >
-        <Icon :icon="navigation.icon" />
+        <Icon
+          clickable
+          :icon="navigation.icon"
+        />
         <p :onclick="router.push(navigation.location)">
           {{ navigation.name }}
         </p>
       </div>
     </div>
-    <div class="flex flex-row items-end">
+    <div
+      ref="openRef"
+      class="flex flex-row items-end"
+    >
       <Icon
         icon="person"
+        clickable
         class="rounded bg-pink-400 p-1 text-white"
+        @click="() => (open = !open)"
       />
-      <div
-        ref="openRef"
-        class="relative flex justify-end"
-      >
+      <div class="relative flex justify-end">
         <Icon
           :icon="arrow"
-          :clickable="true"
+          clickable
           @click="() => (open = !open)"
         />
         <Dropdown
