@@ -18,7 +18,7 @@ const openIcon = computed(() => (openMobile.value ? 'close' : 'menu'));
       <Logo />
       <Icon
         :icon="openIcon"
-        :clickable="true"
+        clickable
         @click="() => (openMobile = !openMobile)"
       />
     </div>

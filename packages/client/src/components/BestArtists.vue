@@ -1,5 +1,5 @@
 <script setup>
-import ArtistCart from '../components/ArtistCart.vue';
+import ArtistCart from './ArtistCard.vue';
 import Swiper from '../components/Swiper.vue';
 
 import artist3 from '../public/aiony-haust-3TLl_97HNJo-unsplash.jpg';

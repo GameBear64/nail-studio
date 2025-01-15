@@ -42,14 +42,14 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
     >
       <Icon
         icon="person"
-        :clickable="true"
+        clickable
         class="rounded bg-pink-400 p-1 text-white"
         @click="() => (open = !open)"
       />
       <div class="relative flex justify-end">
         <Icon
           :icon="arrow"
-          :clickable="true"
+          clickable
           @click="() => (open = !open)"
         />
         <Dropdown
