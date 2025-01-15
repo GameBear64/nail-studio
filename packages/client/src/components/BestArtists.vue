@@ -1,6 +1,6 @@
 <script setup>
 import ArtistCart from './ArtistCard.vue';
-import Swiper from '../components/Swiper.vue';
+import Swiper from '@components/Swiper.vue';
 
 import artist3 from '../public/aiony-haust-3TLl_97HNJo-unsplash.jpg';
 import artist2 from '../public/angelina-litvin-52R7t7x8CPI-unsplash.jpg';

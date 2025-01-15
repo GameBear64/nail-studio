@@ -1,6 +1,6 @@
 <script setup>
-import Shape from '../components/Shape.vue';
-import { leafs } from '../toolbox/consts';
+import Shape from '@components/Shape.vue';
+import { leafs } from '@tools/consts';
 </script>
 
 <template>
