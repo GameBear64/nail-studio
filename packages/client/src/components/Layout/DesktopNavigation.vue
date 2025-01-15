@@ -28,7 +28,7 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
         class="flex cursor-pointer flex-row items-center gap-2 rounded-xl p-2 hover:bg-pink-100 hover:text-pink-600"
       >
         <Icon
-          :clickable="true"
+          clickable
           :icon="navigation.icon"
         />
         <p :onclick="router.push(navigation.location)">
@@ -46,10 +46,7 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
         class="rounded bg-pink-400 p-1 text-white"
         @click="() => (open = !open)"
       />
-      <div
-
-        class="relative flex justify-end"
-      >
+      <div class="relative flex justify-end">
         <Icon
           :icon="arrow"
           :clickable="true"

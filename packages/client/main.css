@@ -92,9 +92,6 @@
 }
 .swiper {
   width: 100%;
-  /* display: flex; */
-  /* justify-items: center;
-  align-items: center; */
   height: auto;
 }
 
@@ -103,10 +100,4 @@
   font-size: 18px;
   background: #fff;
   width: 320px;
-  /* width: auto !important; */
-
-  /* Center slide text vertically */
-  /* display: flex; */
-  /* justify-content: center;
-  align-items: center; */
 }

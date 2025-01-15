@@ -1,6 +1,5 @@
 <script setup>
-defineProps({'icon':String, 'clickable':Boolean, 'fill':Boolean, 'dense':Boolean});
-
+defineProps({ icon: String, clickable: Boolean, fill: Boolean, dense: Boolean });
 </script>
 
 <template>
