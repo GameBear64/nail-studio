@@ -6,9 +6,9 @@ const joi = require('joi');
 const sharp = require('sharp');
 const shortHash = require('short-hash');
 
-const db = require('../toolbox/database');
+const db = require('../database/_database');
 const { joiValidate, InfoTypes } = require('../middleware/validation');
-const { checkAuth } = require('../middleware/auth');
+const { checkAuth, checkAdmin } = require('../middleware/auth');
 
 const turnSizeIntoNumberBeforeValidation = () => (req, res, next) => {
   if (req.query?.size) req.query.size = Number(req.query.size);
@@ -18,32 +18,44 @@ const turnSizeIntoNumberBeforeValidation = () => (req, res, next) => {
 router
   .route('/')
   .post(
-    checkAuth, // Permission check soon
+    checkAuth, // Permission check
     joiValidate({
       data: joi.string().required(),
     }),
-    async (req, res) => {
-      const matches = req.body.data.match(/^data:(.+);base64,(.+)$/);
-      if (!matches || matches.length !== 3) {
-        return res.status(400).json('Invalid Base64 string');
-      }
-
-      const [_, mimeType, base64Data] = matches;
-
-      // Determine the file extension from the MIME type
-      const extension = mimeType.split('/')[1];
-      if (!extension) return res.status(400).json('Unsupported MIME type');
-
-      const hash = shortHash(base64Data);
-      db.get('images').get(req.authUser.id).createFile(`${hash}.${extension}`, Buffer.from(base64Data, 'base64'));
-
-      res.status(201).json({ message: 'File uploaded successfully', path: `${req.authUser.id}/${hash}` });
-    },
+    async (req, res) => uploadFile(req, res, req.authUser.id),
   )
   .all((_req, res) => {
     res.status(405).json('Use another method');
   });
 
+// Admin folder upload
+router.post('/:group').get(
+  checkAdmin, // Permission check
+  joiValidate({
+    data: joi.string().required(),
+  }),
+  async (req, res) => uploadFile(req, res, req.params.group),
+);
+
+function uploadFile(req, res, id) {
+  const matches = req.body.data.match(/^data:(.+);base64,(.+)$/);
+  if (!matches || matches.length !== 3) {
+    return res.status(400).json('Invalid Base64 string');
+  }
+
+  const [_, mimeType, base64Data] = matches;
+
+  // Determine the file extension from the MIME type
+  const extension = mimeType.split('/')[1];
+  if (!extension) return res.status(400).json('Unsupported MIME type');
+
+  const hash = shortHash(base64Data);
+  db.get('images').get(id).createFile(`${hash}.${extension}`, Buffer.from(base64Data, 'base64'));
+
+  res.status(201).json({ message: 'File uploaded successfully', path: `${id}/${hash}` });
+}
+
+// Different router for naming convenience
 router
   .route('/:id')
   .get(

@@ -9,3 +9,17 @@ exports.UserRoles = Object.freeze({
   ARTIST: 'artist',
   ADMIN: 'admin',
 });
+
+exports.Shifts = Object.freeze({
+  FULL: 'Full',
+  MORNING: 'Morning',
+  AFTERNOON: 'Afternoon',
+});
+
+// Maybe?
+exports.Appointment = Object.freeze({
+  PENDING: 'Pending',
+  ACCEPTED: 'Accepted',
+  COMPLETED: 'Completed',
+  CANCELED: 'Canceled',
+});

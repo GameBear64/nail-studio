@@ -2,17 +2,15 @@ const router = require('express').Router();
 
 const bcrypt = require('bcryptjs');
 const joi = require('joi');
-const shortHash = require('short-hash');
 
 const { joiValidate, skipIfNoChanges } = require('../middleware/validation');
-const { createJWTCookie, pick } = require('../toolbox/utils');
-const db = require('../toolbox/database');
+const { pick } = require('../toolbox/utils');
+const userSchema = require('../database/UserSchema');
 
 router
   .route('/')
-  .get(async (req, res) => {
-    if (!req?.authUser?.id) return res.status(404).json();
-    const userFile = await db.get('users').get(req.authUser.id).data;
+  .get((req, res) => {
+    const userFile = userSchema.read(req.authUser.id);
     return res.status(200).json({ id: req.authUser.id, ...pick(userFile, ['name']) });
   })
   .patch(
@@ -25,33 +23,20 @@ router
         .length(10)
         .pattern(/^[0-9]+$/),
     }),
-    async (req, res) => {
-      // ensured existence by auth
-      const userFile = await db.get('users').get(req.apiUserId).data;
-
-      await db
-        .get('users')
-        .get(req.apiUserId)
-        .set({ ...userFile, ...req.body });
-
-      if (req.body?.email) {
-        const hash = shortHash(req.body.email);
-        await db.get('users').get(req.apiUserId).rename(hash);
-
-        res.cookie('jwt', createJWTCookie({ id: hash }), { httpOnly: true });
-      }
+    (req, res) => {
+      userSchema.update(req.apiUserId, req.body);
 
       return res.status(200).json();
     },
   )
   .delete(joiValidate({ password: joi.string().min(8).max(255).required() }), async (req, res) => {
     // ensured existence by auth
-    const userFile = await db.get('users').get(req.apiUserId);
+    const [, userFile] = userSchema.read(req.authUser.id);
 
-    let validPassword = await bcrypt.compare(userFile.data.password, req.body.password);
+    let validPassword = await bcrypt.compare(userFile.password, req.body.password);
     if (!validPassword) return res.status(404).json('Incorrect password');
 
-    await userFile.remove();
+    userSchema.destroy(req.authUser.id);
 
     res.clearCookie('jwt');
     return res.status(200).json();
@@ -60,7 +45,7 @@ router
     res.status(405).json('Use another method');
   });
 
-router.route('/logout').get(async (req, res) => {
+router.route('/logout').get((req, res) => {
   res.clearCookie('jwt');
   return res.status(200).json();
 });
