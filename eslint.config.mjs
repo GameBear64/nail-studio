@@ -71,6 +71,7 @@ export default [
       'no-lone-blocks': 2,
       'no-multi-spaces': 2,
       'no-proto': 2,
+      'no-prototype-builtins': 0,
       'no-redeclare': 2,
       'no-return-assign': 2,
       'no-script-url': 2,

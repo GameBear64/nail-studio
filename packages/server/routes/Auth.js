@@ -2,11 +2,10 @@ const router = require('express').Router();
 
 const bcrypt = require('bcryptjs');
 const joi = require('joi');
-const shortHash = require('short-hash');
 
 const { joiValidate } = require('../middleware/validation');
-const { createJWTCookie } = require('../toolbox/utils');
-const db = require('../toolbox/database');
+const { createJWTCookie, omit } = require('../toolbox/utils');
+const userSchema = require('../database/UserSchema');
 
 router
   .route('/login')
@@ -16,15 +15,14 @@ router
       password: joi.string().required(),
     }),
     async (req, res) => {
-      const hash = shortHash(req.body.email);
-      const userFile = await db.get('users').get(hash).data;
+      const [id, userFile] = userSchema.find((user) => user.email == req.body.email, { first: true, omit: [] });
       if (!userFile) return res.status(404).json('User with this email does not exist');
 
       const validPassword = await bcrypt.compare(req.body.password, userFile.password);
       if (!validPassword) return res.status(403).json('Incorrect password');
 
-      res.cookie('jwt', createJWTCookie({ id: hash }), { httpOnly: true });
-      res.status(200).json({ id: hash });
+      res.cookie('jwt', createJWTCookie({ id, role: userFile.role }), { httpOnly: true });
+      res.status(200).json({ id });
     },
   )
   .all((_req, res) => {
@@ -42,17 +40,13 @@ router
       confirm_password: joi.string().valid(joi.ref('password')).required(),
     }),
     async (req, res) => {
-      const hash = shortHash(req.body.email);
-      const userFile = await db.get('users').get(hash).data;
-      if (userFile) return res.status(409).json('User with this email already exists');
+      const userFile = userSchema.find((user) => user.email == req.body.email, { first: true });
+      if (userFile.length) return res.status(409).json('User with this email already exists');
 
-      db.get('users').createFile(hash, {
-        ...req.body,
-        password: bcrypt.hashSync(req.body.password, 10),
-      });
+      const [id] = userSchema.create(omit(req.body, ['confirm_password']));
 
-      res.cookie('jwt', createJWTCookie({ id: hash }), { httpOnly: true });
-      res.status(201).json({ id: hash });
+      res.cookie('jwt', createJWTCookie({ id, role: userFile.role }), { httpOnly: true });
+      res.status(201).json({ id });
     },
   )
   .all((_req, res) => {
