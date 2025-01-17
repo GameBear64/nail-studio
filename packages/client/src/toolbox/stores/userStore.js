@@ -6,6 +6,7 @@ export const userStore = reactive({ id: null });
 
 export const setUserId = async () => {
   const res = await useFetch({ url: 'user', method: 'GET', noError: true });
+  console.log(res);
   userStore.id = res?.id;
 };
 

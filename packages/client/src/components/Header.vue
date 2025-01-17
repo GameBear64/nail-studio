@@ -10,14 +10,19 @@ import MobileNavigation from './Layout/MobileNavigation.vue';
 const router = useRouter();
 
 const options = [
+  // {
+  //   icon: 'person',
+  //   name: 'Profile',
+  // },
   {
-    icon: 'person',
-    name: 'Profile',
+    icon: 'supervisor_account',
+    name: 'Admin Panel',
+    action: ()=>{router.push("/admin")}
   },
   {
     icon: 'calendar_today',
     name: 'Appointments',
-  },
+  }, 
   {
     icon: 'settings',
     name: 'Settings',

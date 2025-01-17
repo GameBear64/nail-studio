@@ -1,7 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-
 import { setUserId } from '@store/userStore';
-
 import { userStore } from './toolbox/stores/userStore';
 
 const routes = [
@@ -19,6 +17,15 @@ const routes = [
     path: '/',
     component: () => import('@pages/Home.vue'),
   },
+  {
+    path: '/admin',
+    redirect: () => '/admin/artists',
+    component: () => import('@pages/AdminPanel.vue'),
+    children: [
+      { path: 'artists', name: 'artists', component: () => import('@components/ArtistsPanel.vue') },
+      { path: 'galleries', name: 'galleries', component: () => import('@components/Galleries.vue') },
+    ],
+  },
 ];
 
 const router = createRouter({
@@ -27,7 +34,7 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach(async (to) => {
+router.beforeEach(async (to, from) => {
   if (!userStore.id) await setUserId();
   if (!userStore.id && !to.meta?.guestRoute) return { path: '/login' };
   if (userStore.id && to.meta?.guestRoute) return { path: '/' };

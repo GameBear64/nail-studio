@@ -29,7 +29,7 @@ router
   });
 
 // Admin folder upload
-router.post('/:group').get(
+router.route('/:group').post(
   checkAdmin, // Permission check
   joiValidate({
     data: joi.string().required(),
