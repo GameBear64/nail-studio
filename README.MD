@@ -9,5 +9,5 @@ run with `npm run dev`
 ---
 
 # Resources
-Tasks: https://app.ora.pm/p/7fa5e5c9d88c44d3a03216c3c73b1290?v=0&t=k
+Tasks: https://app.ora.pm/p/7fa5e5c9d88c44d3a03216c3c73b1290?v=0&t=k  
 Design: https://miro.com/app/board/uXjVLAjlNLI=/
