@@ -2,7 +2,10 @@
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { userStore } from '../../toolbox/stores/userStore';
+import { UserRoles } from '@toolbox/consts';
+
+import { userStore } from '@store/userStore';
+
 import Icon from '../Icon.vue';
 import Logo from '../Logo.vue';
 
@@ -64,7 +67,7 @@ const openIcon = computed(() => (openMobile.value ? 'close' : 'menu'));
           </div>
         </div>
         <div
-          v-if="userStore.role === 'admin'"
+          v-if="userStore.role === UserRoles.ADMIN"
           class="px-2"
         >
           <p class="font-medium">

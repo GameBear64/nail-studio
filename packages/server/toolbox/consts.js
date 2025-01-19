@@ -5,6 +5,7 @@ exports.noAuthRoutes = [
 ];
 
 exports.UserRoles = Object.freeze({
+  GUEST: 'guest',
   USER: 'user',
   ARTIST: 'artist',
   ADMIN: 'admin',

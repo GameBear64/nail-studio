@@ -3,6 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { setUserData } from '@store/userStore';
 import { userStore } from '@store/userStore';
 
+import { UserRoles } from './toolbox/consts';
+
 const routes = [
   {
     path: '/login',
@@ -39,7 +41,7 @@ const router = createRouter({
 router.beforeEach(async (to) => {
   if (!userStore.id) await setUserData();
   if (!userStore.id && !to.meta?.guestRoute) return { path: '/login' };
-  if (userStore.id && to.meta?.adminRoute && userStore.role !== 'admin') return { path: '/' };
+  if (userStore.id && to.meta?.adminRoute && userStore.role !== UserRoles.ADMIN) return { path: '/' };
   if (userStore.id && to.meta?.guestRoute) return { path: '/' };
 });
 
