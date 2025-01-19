@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 
 import { onClickOutside } from '@vueuse/core';
 
+import { userStore } from '../../toolbox/stores/userStore';
 import Dropdown from '../Dropdown.vue';
 import Icon from '../Icon.vue';
 import Logo from '../Logo.vue';
@@ -14,6 +15,16 @@ const props = defineProps(['navigations', 'options']);
 const open = ref(false);
 const openRef = ref(false);
 
+const allowedOptions = ()=>{
+  const allowed = props.options.filter((option)=>{if(option.requiredRole === userStore.role||option.requiredRole==='user'){
+    return option
+  }})
+
+  return allowed
+}
+
+
+allowedOptions()
 onClickOutside(openRef, () => (open.value = false));
 const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow_down'));
 </script>
@@ -31,7 +42,7 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
           clickable
           :icon="navigation.icon"
         />
-        <p :onclick="router.push(navigation.location)">
+        <p :onclick="() => router.push(navigation.location)">
           {{ navigation.name }}
         </p>
       </div>
@@ -55,7 +66,7 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
         <Dropdown
           v-if="open"
           class="-right-1 top-11"
-          :options="options"
+          :options="allowedOptions()"
         />
       </div>
     </div>
