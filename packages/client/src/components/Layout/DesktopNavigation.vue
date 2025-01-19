@@ -15,16 +15,10 @@ const props = defineProps(['navigations', 'options']);
 const open = ref(false);
 const openRef = ref(false);
 
-const allowedOptions = ()=>{
-  const allowed = props.options.filter((option)=>{if(option.requiredRole === userStore.role||option.requiredRole==='user'){
-    return option
-  }})
+const allowedOptions = computed(() => 
+ props.options.filter((option) => option.requiredRole === userStore.role || option.requiredRole === 'user')
+);
 
-  return allowed
-}
-
-
-allowedOptions()
 onClickOutside(openRef, () => (open.value = false));
 const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow_down'));
 </script>
@@ -66,7 +60,7 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
         <Dropdown
           v-if="open"
           class="-right-1 top-11"
-          :options="allowedOptions()"
+          :options="allowedOptions"
         />
       </div>
     </div>

@@ -1,11 +1,12 @@
 <script setup>
-import ArtistCart from './ArtistCard.vue';
 import Swiper from '@components/Swiper.vue';
 
 import artist3 from '../public/aiony-haust-3TLl_97HNJo-unsplash.jpg';
 import artist2 from '../public/angelina-litvin-52R7t7x8CPI-unsplash.jpg';
 import artist4 from '../public/luke-braswell-oYFv-_JKsVk-unsplash.jpg';
 import artist1 from '../public/swapnil-dwivedi-N2IJ31xZ_ks-unsplash.jpg';
+
+import ArtistCart from './ArtistCard.vue';
 
 const artists = [
   {
@@ -38,17 +39,16 @@ const artists = [
   <div
     class="flex min-h-[40rem] w-screen flex-col gap-1 bg-gradient-to-t from-pink-200 to-white !py-10 sm:min-h-[47rem] sm:gap-8"
   >
-  <div>
-
-    <div class="flex flex-col items-center justify-center gap-1 text-center">
-      <p class="font-rouge text-5xl sm:text-7xl">
-        Our best artists
-      </p>
-      <p class="sm:text-md max-w-[21rem] text-sm italic sm:max-w-md">
-        With years of experience and happy clients, we can proudly suggest one of our best artists.
-      </p>
+    <div>
+      <div class="flex flex-col items-center justify-center gap-1 text-center">
+        <p class="font-rouge text-5xl sm:text-7xl">
+          Our best artists
+        </p>
+        <p class="sm:text-md max-w-[21rem] text-sm italic sm:max-w-md">
+          With years of experience and happy clients, we can proudly suggest one of our best artists.
+        </p>
+      </div>
     </div>
-  </div>
     <Swiper
       v-slot="slotProps"
       :data="artists"

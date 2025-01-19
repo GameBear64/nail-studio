@@ -1,12 +1,7 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
-    <div class="w-full">
-galleries
-    </div>
+  <div class="w-full">
+    galleries
+  </div>
 </template>
-
-
-

@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import { setUserData } from '@store/userStore';
-
-import { userStore } from './toolbox/stores/userStore';
+import { userStore } from '@store/userStore';
 
 const routes = [
   {
@@ -37,7 +36,7 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach(async (to, from) => {
+router.beforeEach(async (to) => {
   if (!userStore.id) await setUserData();
   if (!userStore.id && !to.meta?.guestRoute) return { path: '/login' };
   if (userStore.id && to.meta?.adminRoute && userStore.role !== 'admin') return { path: '/' };

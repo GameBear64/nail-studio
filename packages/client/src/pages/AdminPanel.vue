@@ -1,21 +1,23 @@
 <script setup>
-import Icon from '../components/Icon.vue';
-import router from '../router';
+import { useRouter } from 'vue-router';
 
+import Icon from '@components/Icon.vue';
+
+const router = useRouter();
 </script>
 
 <template>
   <div class="relative flex flex-row">
     <div class="hidden h-full w-56 flex-col divide-y rounded-b bg-white p-2 text-gray-600 shadow-sm shadow-gray-400 sm:flex">
       <div
-        :onclick="()=>router.push({name:'artists'})"
+        :onclick="() => router.push({ name: 'artists' })"
         class="flex cursor-pointer flex-row items-center gap-2 rounded px-2 py-3 text-center hover:bg-gray-100"
       >
         <Icon icon="badge" />
         <p>Artists</p>
       </div>
       <div
-        :onclick="()=>router.push({name:'galleries'})"
+        :onclick="() => router.push({ name: 'galleries' })"
         class="flex cursor-pointer flex-row items-center gap-2 rounded px-2 py-3 text-center hover:bg-gray-100"
       >
         <Icon icon="photo_library" />
@@ -33,5 +35,3 @@ import router from '../router';
     </div>
   </div>
 </template>
-
-

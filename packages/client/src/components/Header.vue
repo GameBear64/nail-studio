@@ -1,8 +1,9 @@
 <script setup>
 import { useRouter } from 'vue-router';
 
+import { UserRoles } from '@tools/consts';
 import useFetch from '@tools/useFetch';
-import { setUserData } from '@store/userStore';
+import { removeUserData } from '@store/userStore';
 
 import DesktopNavigation from './Layout/DesktopNavigation.vue';
 import MobileNavigation from './Layout/MobileNavigation.vue';
@@ -10,51 +11,53 @@ import MobileNavigation from './Layout/MobileNavigation.vue';
 const router = useRouter();
 
 const actions = [
-{
+  {
     icon: 'badge',
     name: 'Admin Panel',
-    action: ()=>router.push({name:'artists'}),
+    action: () => router.push({ name: 'artists' }),
     mobileHide: true,
-    requiredRole:'admin'
+    requiredRole: UserRoles.ADMIN,
   },
   {
     icon: 'person',
     name: 'Profile',
-    requiredRole:'user'
+    requiredRole: UserRoles.USER,
   },
   {
     icon: 'calendar_today',
     name: 'Appointments',
-    requiredRole:'user'
-
-  }, 
+    requiredRole: UserRoles.USER,
+  },
   {
     icon: 'settings',
     name: 'Settings',
-    requiredRole:'user'
+    requiredRole: UserRoles.USER,
   },
   {
     icon: 'logout',
     name: 'Logout',
-    requiredRole:'user',
+    requiredRole: UserRoles.USER,
     action: () => {
       useFetch({ url: 'user/logout', method: 'GET' }).then(() => {
-        setUserData().then(() => router.push('/login'));
+        removeUserData();
+        router.push('/login');
       });
     },
   },
 ];
 
-const adminActions=[ {
+const adminActions = [
+  {
     icon: 'badge',
     name: 'Artists',
-    action: ()=>router.push({name:'artists'})
+    action: () => router.push({ name: 'artists' }),
   },
   {
     icon: 'photo_library',
     name: 'Galleries',
-    action: ()=>router.push({name:'galleries'})
-  },]
+    action: () => router.push({ name: 'galleries' }),
+  },
+];
 
 const navigations = [
   { name: 'Home', icon: 'cottage', location: '/' },

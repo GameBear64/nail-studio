@@ -1,5 +1,5 @@
 <script setup>
-import { Navigation,Pagination } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
 const props = defineProps(['data']);

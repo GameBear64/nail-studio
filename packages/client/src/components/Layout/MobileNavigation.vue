@@ -53,9 +53,9 @@ const openIcon = computed(() => (openMobile.value ? 'close' : 'menu'));
           <div
             v-for="option in props.actions"
             :key="option.name"
-            :class="option.mobileHide?'hidden':'flex'"
+            :class="option.mobileHide ? 'hidden' : 'flex'"
             :onclick="option?.action"
-            class=" cursor-pointer flex-row items-center gap-2 rounded px-1 py-2 hover:bg-pink-100 hover:text-pink-600"
+            class="cursor-pointer flex-row items-center gap-2 rounded px-1 py-2 hover:bg-pink-100 hover:text-pink-600"
           >
             <Icon :icon="option.icon" />
             <p>
@@ -64,7 +64,7 @@ const openIcon = computed(() => (openMobile.value ? 'close' : 'menu'));
           </div>
         </div>
         <div
-          v-if="userStore.role==='admin'"
+          v-if="userStore.role === 'admin'"
           class="px-2"
         >
           <p class="font-medium">
