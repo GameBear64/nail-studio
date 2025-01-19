@@ -1,3 +1,10 @@
+export const UserRoles = Object.freeze({
+  GUEST: 'guest',
+  USER: 'user',
+  ARTIST: 'artist',
+  ADMIN: 'admin',
+});
+
 export const difficultyLevel = {
   1: {
     difficulty: 'Weak',

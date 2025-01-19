@@ -11,7 +11,7 @@ router
   .route('/')
   .get((req, res) => {
     const userFile = userSchema.read(req.authUser.id);
-    return res.status(200).json({ id: req.authUser.id, ...pick(userFile, ['name']) });
+    return res.status(200).json({ id: req.authUser.id, ...pick(userFile, ['name', 'role']) });
   })
   .patch(
     skipIfNoChanges,

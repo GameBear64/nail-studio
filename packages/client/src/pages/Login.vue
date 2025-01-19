@@ -7,13 +7,13 @@ import Input from '@components/Form/Input.vue';
 import PasswordInput from '@components/Form/PasswordInput.vue';
 
 import useFetch from '@tools/useFetch';
-import { setUserId } from '@store/userStore';
+import { setUserData } from '@store/userStore';
 
 const router = useRouter();
 
 const login = (data) => {
   useFetch({ url: 'login', method: 'POST', body: data }).then((res) => {
-    setUserId(res.id);
+    setUserData(res.id);
     router.push('/');
   });
 };

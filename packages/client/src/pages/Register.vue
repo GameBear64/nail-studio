@@ -7,7 +7,7 @@ import Input from '@components/Form/Input.vue';
 import StrengthInput from '@components/Form/StrengthInput.vue';
 
 import useFetch from '@tools/useFetch';
-import { setUserId } from '@store/userStore';
+import { setUserData } from '@store/userStore';
 
 const router = useRouter();
 const register = (data) => {
@@ -16,7 +16,7 @@ const register = (data) => {
     method: 'POST',
     body: data,
   }).then((res) => {
-    setUserId(res.id);
+    setUserData(res.id);
     router.push({ path: '/login' });
   });
 };
