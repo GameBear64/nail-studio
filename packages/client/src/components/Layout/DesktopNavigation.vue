@@ -15,8 +15,8 @@ const props = defineProps(['navigations', 'options']);
 const open = ref(false);
 const openRef = ref(false);
 
-const allowedOptions = computed(() => 
- props.options.filter((option) => option.requiredRole === userStore.role || option.requiredRole === 'user')
+const allowedOptions = computed(() =>
+  props.options.filter((option) => option.requiredRole === userStore.role || option.requiredRole === 'user'),
 );
 
 onClickOutside(openRef, () => (open.value = false));

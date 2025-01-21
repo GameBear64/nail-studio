@@ -7,7 +7,7 @@ const router = useRouter();
 </script>
 
 <template>
-  <div class="relative flex flex-row">
+  <div class="relative flex flex-row overflow-hidden">
     <div class="hidden h-full w-56 flex-col divide-y rounded-b bg-white p-2 text-gray-600 shadow-sm shadow-gray-400 sm:flex">
       <div
         :onclick="() => router.push({ name: 'artists' })"
@@ -30,7 +30,7 @@ const router = useRouter();
         ADMIN
       </p>
     </div>
-    <div class="p-3">
+    <div class="w-full p-3">
       <router-view />
     </div>
   </div>

@@ -1,35 +1,17 @@
-<script setup></script>
+<script setup>
+import Table from './Table.vue';
+</script>
 
 <template>
-  <div class="w-full">
-    <table class="w-full">
-      <tr class="rounded bg-gray-100  text-left">
-        <th class="">
-          Name
-        </th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Password</th>
-        <th>Actions</th>
-      </tr>
-      <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
-      </tr>
-      <tr>
-        <td>Centro comercial Moctezuma</td>
-        <td>Francisco Chang</td>
-        <td>Mexico</td>
-      </tr>
-    </table> 
+  <div class="mt-10 flex size-full justify-center">
+    <Table
+      table-name="Artists Management"
+      :headers="['Image', 'Name', 'Email', 'Phone', 'Actions']"
+      :actions="[
+        { icon: 'edit_square', styles: 'text-gray-800', action: () => {} },
+        { icon: 'delete', styles: 'text-red-600', action: () => {} },
+      ]"
+      :data="[['CX', 'Catherine Nikiforova', 'catxrin@gmail.com', '0899999999']]"
+    />
   </div>
 </template>
-
-<style lang="css" scoped>
-
-
-th{
-    @apply font-light !min-w-32 px-2 py-3 uppercase
-}
-</style>
