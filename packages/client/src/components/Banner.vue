@@ -19,7 +19,7 @@ import { leafs } from '@tools/consts';
         </template>
       </div>
 
-      <div class="z-50 flex flex-col gap-3">
+      <div class="z-40 flex flex-col gap-3">
         <div class="font-rouge flex flex-row gap-0">
           <p class="text-7xl sm:text-8xl">
             Studio 96
@@ -31,7 +31,7 @@ import { leafs } from '@tools/consts';
           deserve it!
         </p>
       </div>
-      <div class="z-50 flex flex-row gap-4">
+      <div class="z-40 flex flex-row gap-4">
         <button class="btn-outlined">
           Artists
         </button>
@@ -43,7 +43,7 @@ import { leafs } from '@tools/consts';
     <img
       src="../public/banner.jpg"
       alt="flowers picture"
-      class="z-30 hidden h-auto w-full rounded-md object-cover lg:flex"
+      class="hidden h-auto w-full rounded-md object-cover lg:flex"
     >
   </div>
 </template>
