@@ -33,6 +33,7 @@ const props = defineProps(['tableName', 'headers', 'data', 'actions']);
               <Icon
                 v-for="action in actions"
                 clickable
+                :onclick="action?.action"
                 :class="action?.styles"
                 :icon="action.icon"
               />

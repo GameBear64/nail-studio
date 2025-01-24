@@ -26,7 +26,10 @@ router
       gallery: joi.array().items(joi.string()).optional(),
       phone: joi.number().required(),
       password: joi.string().min(8).max(255).required(),
-      shift: joi.string().valid(Object.values(Shifts)).optional(),
+      shift: joi
+        .string()
+        .valid(...Object.values(Shifts))
+        .optional(),
       confirm_password: joi.string().valid(joi.ref('password')).required(),
     }),
     (req, res) => {
@@ -56,7 +59,10 @@ router
       picture: joi.string().optional(),
       gallery: joi.array().items(joi.string()).optional(),
       phone: joi.number().optional(),
-      shift: joi.string().valid(Object.values(Shifts)).optional(),
+      shift: joi
+        .string()
+        .valid(...Object.values(Shifts))
+        .optional(),
     }),
     (req, res) => {
       userSchema.update(req.params.id, req.body);

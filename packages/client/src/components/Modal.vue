@@ -1,24 +1,46 @@
 <script setup>
-const props= defineProps(["target"])
+import Icon from '@components/Icon.vue';
+
+const props= defineProps(["target", "title", "close"])
 </script>
 
 <template>
-  <Portal
-    :target="props.target"
-    class="m-auto flex size-full items-center justify-center rounded bg-red-300"
+  <Teleport
+    :to="props.target"
   >
-    <div class="absolute flex min-h-96 min-w-96 items-center justify-center rounded bg-pink-100">
-      <div class="flex flex-col">
-        <p> Are you sure you want to delete this user?</p>
-        <div class="flex flex-row justify-center gap-5">
-          <button class="btn-outlined">
-            Delete
-          </button>
-          <button class="btn-outlined">
-            Cancel
-          </button>
+    <div
+      v-if="!closeModal"
+      class="fixed z-50 size-full bg-gray-950/40 drop-shadow-sm backdrop-blur-sm"
+    >
+      <div class="flex size-full items-center justify-center">
+        <div class="flex max-w-96 flex-col rounded border bg-white px-5 py-2 drop-shadow-sm">
+          <div class="flex justify-end">
+            <Icon
+              class="text-lg"
+              :onclick="props.close"
+              clickable
+              icon="close"
+            />
+          </div>
+          <div class="flex flex-col gap-5 p-2">
+            <div class="flex flex-col gap-2">
+              <p>
+                {{ props.title }}
+              </p>
+              <slot name="content" />
+            </div>
+            <div class="flex flex-row justify-end gap-5">
+              <button
+                :onclick="props.close"
+                class="btn-outlined"
+              >
+                Cancel
+              </button>
+              <slot name="buttons" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </Portal>
+  </Teleport>
 </template>
