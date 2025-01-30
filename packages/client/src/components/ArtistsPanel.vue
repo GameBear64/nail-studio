@@ -37,8 +37,8 @@ const data = ref([])
   >
     <template #content />
     <template #buttons>
-      <button class="btn-outlined bg-red-600 text-white">
-        Delete
+      <button class="btn-outlined bg-purple-600 text-white">
+        Create
       </button>
     </template>
   </Modal>

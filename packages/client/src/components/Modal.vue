@@ -9,10 +9,12 @@ const props= defineProps(["target", "title", "close"])
     :to="props.target"
   >
     <div
-      v-if="!closeModal"
       class="fixed z-50 size-full bg-gray-950/40 drop-shadow-sm backdrop-blur-sm"
     >
-      <div class="flex size-full items-center justify-center">
+      <div
+        class="flex size-full items-center justify-center"
+        @click.self="props.close"
+      >
         <div class="flex max-w-96 flex-col rounded border bg-white px-5 py-2 drop-shadow-sm">
           <div class="flex justify-end">
             <Icon
