@@ -63,7 +63,7 @@ router
     joiValidate({ id: joi.string().required() }, InfoTypes.PARAMS),
     joiValidate({ size: joi.number().max(500) }, InfoTypes.QUERY),
     async (req, res) => {
-      const filePath = `db/images/${req.params.id}.jpg`;
+      const filePath = `storage/images/${req.params.id}.jpg`;
 
       const currentFile = fs.existsSync(filePath);
       if (!currentFile) return res.status(404).json('File not found');

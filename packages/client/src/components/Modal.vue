@@ -1,12 +1,12 @@
 <script setup>
 import Icon from '@components/Icon.vue';
 
-const props= defineProps(["target", "title", "close"])
+const props= defineProps([ "title", "close"])
 </script>
 
 <template>
   <Teleport
-    :to="props.target"
+    to="#teleport-target"
   >
     <div
       class="fixed z-50 size-full bg-gray-950/40 drop-shadow-sm backdrop-blur-sm"

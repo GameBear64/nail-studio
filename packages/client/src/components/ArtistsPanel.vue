@@ -1,25 +1,35 @@
 <script setup>
 import { ref } from 'vue';
+import { useRoute } from 'vue-router';
 
 import useFetch from '@tools/useFetch';
 
+import Icon from "../components/Icon.vue"
+
+import Table from './Table/Table.vue';
 import Modal from './Modal.vue';
-import Table from './Table.vue';
 
 const showDelete = ref(false)
 const showCreate = ref(false)
 const data = ref([])
-// useFetch({url:"artist", method:"GET"}).then(res=>{
-//   res?.map((obj)=>{
-//     data.value.push(['CS', obj.name, obj.email, obj.phone])
-//   })
-// })
+const headers =[{title:'Image', key:'image'}, {title:'Name', key:'name'}, {title:'Email', key:'email'},{title:'Phone', key:'phone'}, {title:'Actions', key:'actions'}]
+const route = useRoute()
+useFetch({url:"artist", method:"GET"}).then((res)=>{
+const actions=[
+        { icon: 'edit_square', styles: 'text-gray-800', action: () => {showCreate.value=true} },
+        { icon: 'delete', styles: 'text-red-600', action: () => {showDelete.value=true} },
+      ]
+      
+  Object.values(res).map((artist)=>{
+  data.value.push({...artist, actions})
+  })
+})
+
 </script>
 
 <template>
   <Modal
     v-if="showDelete"
-    target="#teleport-target"
     :close="()=>showDelete=!showDelete"
     title="Are you sure you want to delete this user?"
   >
@@ -31,7 +41,6 @@ const data = ref([])
   </Modal>
   <Modal
     v-if="showCreate"
-    target="#teleport-target"
     :close="()=>showCreate=!showCreate"
     title="Create a new user"
   >
@@ -45,12 +54,31 @@ const data = ref([])
   <div class="mt-10 flex size-full justify-center">
     <Table
       table-name="Artists Management"
-      :headers="['Image', 'Name', 'Email', 'Phone', 'Actions']"
-      :actions="[
-        { icon: 'edit_square', styles: 'text-gray-800', action: () => {showCreate=true} },
-        { icon: 'delete', styles: 'text-red-600', action: () => {showDelete=true} },
-      ]"
-      :data="[['CX', 'Catherine Nikiforova', 'catxrin@gmail.com', '0899999999']]"
-    />
+      :headers="headers"
+      :data="data"
+    >
+      <template #image="{ row }">
+        {{ console.log(route.fullPath + '/api/resource/'+ row.image) }}
+        <img
+          class="size-10 rounded-sm object-cover"
+          :src="'http://localhost:5173/api/resource/'+ row.image"
+          alt="image"
+        >
+      </template>
+
+      <template #actions="{ row }">
+        <div
+          class="flex flex-row justify-center gap-3"
+        >
+          <Icon
+            v-for="action in row?.actions"
+            clickable
+            :onclick="action?.action"
+            :class="action?.styles"
+            :icon="action.icon"
+          />
+        </div>
+      </template>
+    </Table>
   </div>
 </template>
