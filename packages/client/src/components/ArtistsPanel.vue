@@ -1,19 +1,23 @@
 <script setup>
 import { ref } from 'vue';
-import { useRoute } from 'vue-router';
 
 import useFetch from '@tools/useFetch';
 
 import Icon from "../components/Icon.vue"
 
+import DeleteUserModal from './Admin/DeleteUserModal.vue';
+import UpdateUserModal from './Admin/UpdateUserModal.vue';
 import Table from './Table/Table.vue';
-import Modal from './Modal.vue';
 
 const showDelete = ref(false)
 const showCreate = ref(false)
 const data = ref([])
 const headers =[{title:'Image', key:'image'}, {title:'Name', key:'name'}, {title:'Email', key:'email'},{title:'Phone', key:'phone'}, {title:'Actions', key:'actions'}]
-const route = useRoute()
+
+
+const loadImage = (img)=>
+ new URL(origin + '/api/resource/'+ img, import.meta.url).href
+
 useFetch({url:"artist", method:"GET"}).then((res)=>{
 const actions=[
         { icon: 'edit_square', styles: 'text-gray-800', action: () => {showCreate.value=true} },
@@ -25,43 +29,31 @@ const actions=[
   })
 })
 
+
 </script>
 
 <template>
-  <Modal
+  <DeleteUserModal
     v-if="showDelete"
-    :close="()=>showDelete=!showDelete"
-    title="Are you sure you want to delete this user?"
-  >
-    <template #buttons>
-      <button class="btn-outlined bg-red-600 text-white">
-        Delete
-      </button>
-    </template>
-  </Modal>
-  <Modal
+    :on-close="()=>showDelete=!showDelete"
+  />
+ 
+  <UpdateUserModal 
     v-if="showCreate"
-    :close="()=>showCreate=!showCreate"
-    title="Create a new user"
-  >
-    <template #content />
-    <template #buttons>
-      <button class="btn-outlined bg-purple-600 text-white">
-        Create
-      </button>
-    </template>
-  </Modal>
+    :on-close="()=>showCreate=!showCreate
+    "
+  />
+
   <div class="mt-10 flex size-full justify-center">
     <Table
-      table-name="Artists Management"
+      title="Artists Management"
       :headers="headers"
       :data="data"
     >
       <template #image="{ row }">
-        {{ console.log(route.fullPath + '/api/resource/'+ row.image) }}
         <img
           class="size-10 rounded-sm object-cover"
-          :src="'http://localhost:5173/api/resource/'+ row.image"
+          :src="loadImage(row.image)"
           alt="image"
         >
       </template>

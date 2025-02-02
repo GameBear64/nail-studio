@@ -51,7 +51,6 @@ const login = (data) => {
       >
         <div class="flex flex-col gap-1 text-left">
           <Input
-            label="Email"
             name="email"
             :errors="errors?.email"
           />

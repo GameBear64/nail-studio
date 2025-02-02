@@ -1,7 +1,11 @@
 <script setup>
+import { useSlots } from 'vue';
+
 import Icon from '@components/Icon.vue';
 
-const props= defineProps([ "title", "close"])
+const props= defineProps([ "title", "close", "easyClose"])
+
+const slots = useSlots();
 </script>
 
 <template>
@@ -9,38 +13,38 @@ const props= defineProps([ "title", "close"])
     to="#teleport-target"
   >
     <div
-      class="fixed z-50 size-full bg-gray-950/40 drop-shadow-sm backdrop-blur-sm"
+      class="absolute right-0 top-0 z-50 flex h-screen w-screen flex-col items-center justify-center bg-slate-500/40"
+      @click.self="
+        props.easyClose&& props.close
+      "
     >
       <div
-        class="flex size-full items-center justify-center"
-        @click.self="props.close"
+        class="bg-base text-primaryText w-2/3 min-w-[20em] max-w-[80vw] rounded-lg px-4 py-3 md:w-1/2 lg:max-w-[60vw] xl:w-1/3"
       >
-        <div class="flex max-w-96 flex-col rounded border bg-white px-5 py-2 drop-shadow-sm">
-          <div class="flex justify-end">
-            <Icon
-              class="text-lg"
-              :onclick="props.close"
-              clickable
-              icon="close"
-            />
-          </div>
-          <div class="flex flex-col gap-5 p-2">
-            <div class="flex flex-col gap-2">
-              <p>
-                {{ props.title }}
-              </p>
-              <slot name="content" />
-            </div>
-            <div class="flex flex-row justify-end gap-5">
-              <button
-                :onclick="props.close"
-                class="btn-outlined"
-              >
-                Cancel
-              </button>
-              <slot name="buttons" />
-            </div>
-          </div>
+        <div
+          class="flex justify-between pb-1"
+          :class="props.title&&'border-pink-300 border-b-2'"
+        >
+          <p
+            class="text-xl font-bold"
+          >
+            {{ props.title }}
+          </p>
+          <button
+            v-if="props.close"
+            @click="props.close"
+          >
+            <Icon icon="close" />
+          </button>
+        </div>
+        <div class="max-h-[80vh] overflow-auto py-2">
+          <slot />
+        </div>
+        <div
+          v-if="slots.buttons"
+          class="flex justify-end gap-4 pt-4"
+        >
+          <slot name="buttons" />
         </div>
       </div>
     </div>
