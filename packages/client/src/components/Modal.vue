@@ -4,7 +4,6 @@ import { useSlots } from 'vue';
 import Icon from '@components/Icon.vue';
 
 const props= defineProps([ "title", "close", "easyClose"])
-
 const slots = useSlots();
 </script>
 
@@ -15,7 +14,7 @@ const slots = useSlots();
     <div
       class="absolute right-0 top-0 z-50 flex h-screen w-screen flex-col items-center justify-center bg-slate-500/40"
       @click.self="
-        props.easyClose&& props.close
+        props.easyClose&&props.close()
       "
     >
       <div
