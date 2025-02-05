@@ -5,10 +5,11 @@
     import Input from '../Form/Input.vue';
     import Modal from '../Modal.vue';
     
-    const props = defineProps(["onClose"])
+    const props = defineProps(["onClose", "data"])
 
-    const editUser =(data)=>{
-  console.log(data)
+    console.log(props.data)
+    const editUser =(dataa)=>{
+  // console.log(dataa)
 }
 
     </script>

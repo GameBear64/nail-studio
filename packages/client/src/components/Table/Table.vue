@@ -1,14 +1,16 @@
 <script setup>
-const props = defineProps(['title', "headers", "data"]);
-
+const props = defineProps(['header', "headers", "data"]);
 </script>
+
 <template>
   <div class="flex max-w-[50rem] flex-col gap-3">
-    <h1 class="text-2xl text-gray-800">
-      {{ props.title }}
-    </h1>
-    <div class="relative max-h-96 overflow-y-auto">
-      <table class="max-h-96 overflow-y-auto border bg-white">
+    <slot name="header">
+      <h1 class="text-2xl text-gray-800">
+        {{ props.header }}
+      </h1>
+    </slot>
+    <div class="relative max-h-[40rem] overflow-y-auto">
+      <table class="max-h-[40rem] overflow-y-auto border bg-white">
         <thead>
           <tr class="sticky -top-1 rounded bg-gray-100 text-gray-600">
             <th
