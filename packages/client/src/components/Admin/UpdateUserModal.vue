@@ -1,16 +1,13 @@
     <script setup>
     import joi from "joi"
 
+    import { updateUser } from "../../api/artists";
     import Form from '../Form/Form.vue';
     import Input from '../Form/Input.vue';
     import Modal from '../Modal.vue';
-    
+
     const props = defineProps(["onClose", "data"])
 
-    console.log(props.data)
-    const editUser =(dataa)=>{
-  // console.log(dataa)
-}
 
     </script>
 <template>
@@ -25,18 +22,21 @@
         email: joi.string().required(),
         phone: joi.required()
       }"
-      @submit="editUser"
+      @submit="(userData)=>console.log(userData)"
     >
       <Input
         :errors="errors?.name"
+        :value="props.data.name"
         name="name"
       />
       <Input
         :errors="errors?.email"
+        :value="props.data.email"
         name="email"
       />
       <Input
         :errors="errors?.phone"
+        :value="props.data?.phone"
         name="phone"
       />
     </Form>

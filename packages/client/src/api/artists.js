@@ -11,3 +11,7 @@ export const deleteUser = (userId) => {
   data.value = data.value.filter((d) => d.userId == userId);
   //   });
 };
+
+export const updateUser = (dataa) => {
+  console.log(dataa);
+};
