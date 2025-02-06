@@ -1,0 +1,9 @@
+{
+  "name": "anon",
+  "email": "anon@gmail.com",
+  "phone": 88888888888,
+  "password": "$2a$10$xLRSjuHXe9KwD0BUMEDTPehpNe7q5plAQtUhzUkj6Y7ETRrIZlZlm",
+  "role": "artist",
+  "created_at": 1738834408436,
+  "updated_at": 1738834408436
+}

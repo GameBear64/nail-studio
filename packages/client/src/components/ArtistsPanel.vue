@@ -11,8 +11,6 @@ import DeleteUserModal from './Admin/DeleteUserModal.vue';
 import UpdateUserModal from './Admin/UpdateUserModal.vue';
 import Table from './Table/Table.vue';
 
-const showDelete = ref(false)
-const showCreate = ref(false)
 const headers =[{title:'Image', key:'image'}, {title:'Name', key:'name'}, {title:'Email', key:'email'},{title:'Phone', key:'phone'}, {title:'Actions', key:'actions'}]
 
 const loadImage = (img)=>{
@@ -23,16 +21,13 @@ if(!img){
 }
 
 useFetch({url:"artist", method:"GET"}).then((res)=>{
-const actions=[
-        { icon: 'edit_square', styles: 'text-gray-800', action: () => {showCreate.value=true} },
-        { icon: 'delete', styles: 'text-red-600', action: () => {showDelete.value=true} },
-      ]
+
 
 Object.entries(res)?.map((el)=>{
-        data?.value.push({userId:el[0], ...el[1], actions})
+        data?.value.push({userId:el[0], ...el[1]})
       })
 })
-
+console.log(data.value);
 
 </script>
 
@@ -65,27 +60,11 @@ Object.entries(res)?.map((el)=>{
       </template>
 
       <template #actions="{ row }">
-        <UpdateUserModal 
-          v-if="showCreate"
-          :data="row"
-          :on-close="()=>showCreate=!showCreate
-          "
-        />
-        <DeleteUserModal
-          v-if="showDelete"
-          :on-close="()=>showDelete=!showDelete"
-          :user-id="row.userId"
-        />
         <div
           class="flex flex-row justify-center gap-3"
         >
-          <Icon
-            v-for="action in row?.actions"
-            clickable
-            :onclick="action?.action"
-            :class="action?.styles"
-            :icon="action.icon"
-          />
+          <UpdateUserModal :data="row" />
+          <DeleteUserModal :user-id="row.userId" />
         </div>
       </template>
     </Table>

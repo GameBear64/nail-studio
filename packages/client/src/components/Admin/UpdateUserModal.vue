@@ -1,18 +1,28 @@
     <script setup>
+    import { ref } from "vue";
     import joi from "joi"
 
     import { updateUser } from "../../api/artists";
     import Form from '../Form/Form.vue';
     import Input from '../Form/Input.vue';
+    import Icon from "../Icon.vue";
     import Modal from '../Modal.vue';
 
-    const props = defineProps(["onClose", "data"])
-
+    const props = defineProps(["data"])
+    const open = ref(false)
+    const closeModal =()=> {open.value = !open.value}
 
     </script>
 <template>
+  <Icon
+    clickable
+    :onclick="()=>open=!open"
+    class="text-gray-800"
+    icon="edit_square"
+  />
   <Modal
-    :close="props.onClose"
+    v-if="open"
+    :close="closeModal"
     title="Create a new user"
   >
     <Form
@@ -24,19 +34,17 @@
       }"
       @submit="(userData)=>console.log(userData)"
     >
+      <p>{{ props.data.name }}</p>
       <Input
         :errors="errors?.name"
-        :value="props.data.name"
         name="name"
       />
       <Input
         :errors="errors?.email"
-        :value="props.data.email"
         name="email"
       />
       <Input
         :errors="errors?.phone"
-        :value="props.data?.phone"
         name="phone"
       />
     </Form>
