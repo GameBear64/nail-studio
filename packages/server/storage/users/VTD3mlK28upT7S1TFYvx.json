@@ -1,9 +1,15 @@
 {
-  "name": "artist123",
+  "name": "artist12333",
   "email": "artist123@gmail.com",
+  "biography": "",
+  "yearsExperience": 2,
+  "picture": "",
+  "gallery": [],
   "phone": 88888888888,
   "password": "$2a$10$L/fljaCL6fIr5yyK8dk6LO9HsInOt5wcFMV67s4WON7ns472cpIB6",
   "role": "artist",
+  "procedures": "procedures",
+  "shift": "Full",
   "created_at": 1738835355152,
-  "updated_at": 1738835355152
+  "updated_at": 1739135370266
 }

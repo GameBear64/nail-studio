@@ -12,6 +12,9 @@ export const deleteUser = (userId) => {
   // });
 };
 
-export const updateUser = (dataa) => {
-  console.log(dataa);
+export const updateUser = (userId, body) => {
+  console.log(data.value);
+  useFetch({ url: 'artist/' + userId, method: 'PATCH', body })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 };

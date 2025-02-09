@@ -7,7 +7,7 @@ const { checkAdmin } = require('../middleware/auth');
 const { UserRoles, Shifts } = require('../toolbox/consts');
 const { omit } = require('../toolbox/utils');
 
-const userSchema = require('../database/UserSchema');
+const userSchema = require('../database/ArtistSchema');
 
 router
   .route('/')
@@ -53,9 +53,9 @@ router
     skipIfNoChanges,
     joiValidate({
       name: joi.string().min(3).max(50).optional(),
-      email: joi.string().min(10).max(255).required().optional(),
-      biography: joi.string().min(3).max(1000).required(),
-      yearsExperience: joi.number().required(),
+      email: joi.string().min(10).max(255).optional(),
+      biography: joi.string().min(3).max(1000).optional(),
+      yearsExperience: joi.number().optional(),
       picture: joi.string().optional(),
       gallery: joi.array().items(joi.string()).optional(),
       phone: joi.number().optional(),
@@ -65,9 +65,9 @@ router
         .optional(),
     }),
     (req, res) => {
-      userSchema.update(req.params.id, req.body);
+      const updatedUser = userSchema.update(req.params.id, req.body);
 
-      return res.status(200).json();
+      return res.status(200).json(updatedUser);
     },
   )
   .delete(checkAdmin, (req, res) => {

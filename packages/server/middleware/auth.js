@@ -28,7 +28,7 @@ exports.checkAuth = async (req, res, next) => {
 };
 
 exports.checkAdmin = (req, res, next) => {
-  if (req?.authUser?.role === UserRoles.ADMIN) next();
+  if (req?.authUser?.role === UserRoles.ADMIN) return next();
 
   return res.status(401).json('Not authorized, admin route!');
 };

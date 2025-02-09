@@ -23,7 +23,7 @@
   <Modal
     v-if="open"
     :close="closeModal"
-    title="Create a new user"
+    title="Edit a new user"
   >
     <Form
       v-slot="{errors}"
@@ -32,20 +32,22 @@
         email: joi.string().required(),
         phone: joi.required()
       }"
-      @submit="(userData)=>console.log(userData)"
+      @submit="(formData)=>updateUser(props.data.userId, formData)"
     >
-      <p>{{ props.data.name }}</p>
       <Input
-        :errors="errors?.name"
         name="name"
+        :errors="errors?.name"
+        :model-value="props.data.name"
       />
       <Input
-        :errors="errors?.email"
         name="email"
+        :errors="errors?.email"
+        :model-value="props.data.email"
       />
       <Input
-        :errors="errors?.phone"
         name="phone"
+        :errors="errors?.phone"
+        :model-value="props.data.phone"
       />
     </Form>
   </Modal>

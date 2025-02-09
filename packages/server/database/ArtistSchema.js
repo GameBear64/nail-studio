@@ -15,15 +15,18 @@ const artistSchema = db.get('users').schema(
     },
     biography: {
       type: String,
-      required: true,
+      // required: true,
+      default: '',
     },
     yearsExperience: {
       type: Number,
-      required: true,
+      // required: true,
+      default: 2,
     },
     picture: {
       type: String,
-      required: true,
+      // required: true,
+      default: '',
     },
     gallery: {
       type: Array,
@@ -46,18 +49,19 @@ const artistSchema = db.get('users').schema(
     procedures: {
       type: Array,
       populate: 'procedures',
-      required: true,
+      // required: true,
+      default: [],
     },
     shift: {
       type: String,
       enum: Object.values(Shifts),
       default: Shifts.FULL,
     },
-    bookings: {
-      type: Array,
-      default: [],
-      populate: 'bookings',
-    },
+    // bookings: {
+    //   type: Array,
+    //   default: [],
+    //   populate: 'bookings',
+    // },
     passwordChangedAt: {
       type: Number,
     },
