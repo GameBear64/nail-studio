@@ -4,7 +4,7 @@ const joi = require('joi');
  * Skips route if nothing has changed
  */
 exports.skipIfNoChanges = (req, res, next) => {
-  if (Object.keys(req.body).length === 0) return res.status(200).json();
+  if (Object.keys(req.body).length === 0) return res.status(304).json();
   next();
 };
 

@@ -11,7 +11,7 @@ router
     joiValidate({
       artist: joi.string().required(),
       date: joi.number().required(),
-      procedures: joi.array().items(joi.string()),
+      procedures: joi.array().items(joi.string()).required(),
     }),
     (req, res) => {
       const result = bookingSchema.create({ client: req.authUser.id, ...req.body });

@@ -5,7 +5,8 @@ const joi = require('joi');
 
 const { joiValidate } = require('../middleware/validation');
 const { createJWTCookie, omit } = require('../toolbox/utils');
-const userSchema = require('../database/UserSchema');
+const { UserRoles } = require('../toolbox/consts');
+const { user, guest } = require('../database/UserSchema');
 
 router
   .route('/login')
@@ -15,14 +16,14 @@ router
       password: joi.string().required(),
     }),
     async (req, res) => {
-      const [id, userFile] = userSchema.find((user) => user.email == req.body.email, { first: true, omit: [] });
+      const userFile = user.find((u) => u.email == req.body.email, { first: true, omit: [] });
       if (!userFile) return res.status(404).json('User with this email does not exist');
 
       const validPassword = await bcrypt.compare(req.body.password, userFile.password);
       if (!validPassword) return res.status(403).json('Incorrect password');
 
-      res.cookie('jwt', createJWTCookie({ id, role: userFile.role }), { httpOnly: true });
-      res.status(200).json({ id });
+      res.cookie('jwt', createJWTCookie({ id: userFile._id, role: userFile.role }), { httpOnly: true });
+      res.status(200).json({ id: userFile._id });
     },
   )
   .all((_req, res) => {
@@ -40,13 +41,23 @@ router
       confirm_password: joi.string().valid(joi.ref('password')).required(),
     }),
     async (req, res) => {
-      const userFile = userSchema.find((user) => user.email == req.body.email, { first: true });
+      const userFile = user.find((u) => u.email == req.body.email, { first: true });
       if (userFile.length) return res.status(409).json('User with this email already exists');
 
-      const [id] = userSchema.create(omit(req.body, ['confirm_password']));
+      let registeredUser = null;
 
-      res.cookie('jwt', createJWTCookie({ id, role: userFile.role }), { httpOnly: true });
-      res.status(201).json({ id });
+      const guestFile = guest.find({ phone: req.body.phone, role: UserRoles.GUEST }, { first: true });
+
+      if (guestFile) {
+        // create user, keep old data like bookings, delete old guest
+        registeredUser = user.create(omit({ ...guestFile, ...req.body }, ['confirm_password']));
+        guest.destroy(guestFile._id);
+      } else {
+        registeredUser = user.create(omit(...req.body, ['confirm_password']));
+      }
+
+      res.cookie('jwt', createJWTCookie({ id: registeredUser._id, role: registeredUser.role }), { httpOnly: true });
+      res.status(201).json({ id: registeredUser._id });
     },
   )
   .all((_req, res) => {

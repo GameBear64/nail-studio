@@ -24,6 +24,7 @@ const bookingSchema = db.get('bookings').schema(
   },
   {
     timestamps: true,
+    inlineId: true,
   },
 );
 

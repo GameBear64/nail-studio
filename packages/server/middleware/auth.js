@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { wildcardMatch, pick } = require('../toolbox/utils');
 const { noAuthRoutes, UserRoles } = require('../toolbox/consts');
-const userSchema = require('../database/UserSchema');
+const { user } = require('../database/UserSchema');
 
 exports.checkAuth = async (req, res, next) => {
   let isNoAuthRoute = noAuthRoutes.some((route) => wildcardMatch(route.path, req.path) && route.methods.includes(req.method));
@@ -10,11 +10,11 @@ exports.checkAuth = async (req, res, next) => {
   try {
     let decoded = jwt.verify(req.cookies?.jwt, process.env.SECRET);
 
-    const currentUser = userSchema.read(decoded.id);
+    const currentUser = user.read(decoded.id);
     if (!currentUser) throw new Error('The user belonging to this token no longer exist.');
 
     if (currentUser?.passwordChangedAt) {
-      let lastChanged = currentUser.passwordChangedAt.getTime() / 1000;
+      let lastChanged = currentUser.passwordChangedAt / 1000;
       if (decoded.iat < lastChanged) throw new Error('User changed password, please log in again.');
     }
 
@@ -28,7 +28,7 @@ exports.checkAuth = async (req, res, next) => {
 };
 
 exports.checkAdmin = (req, res, next) => {
-  if (req?.authUser?.role === UserRoles.ADMIN) next();
+  if (req?.authUser?.role === UserRoles.ADMIN) return next();
 
   return res.status(401).json('Not authorized, admin route!');
 };

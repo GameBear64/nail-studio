@@ -1,0 +1,17 @@
+{
+  "name": "artist1",
+  "email": "artist1@mail.com",
+  "biography": "An artist with great skills",
+  "yearsExperience": 3,
+  "picture": "ce1cf8e3",
+  "gallery": [],
+  "phone": "+359 98 987 9876",
+  "password": "$2a$10$n2M3DDSlKmMLs2AQsHFoWun9RhQN49.ePL8JebuSx6Il1LpKLssYG",
+  "role": "artist",
+  "procedures": [],
+  "shift": "Full",
+  "bookings": [],
+  "passwordChangedAt": 1739438546863,
+  "created_at": 1739438547864,
+  "updated_at": 1739438547864
+}
