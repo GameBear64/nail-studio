@@ -18,6 +18,7 @@ const label = attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1);
       :id="attrs.name"
       v-bind="$attrs"
       v-model="model"
+      :label="attrs.label?label:attrs.label"
       :class="{ 'input-error': props?.errors }"
     >
     <p class="mt-1 h-4 text-sm font-medium leading-none text-red-600">

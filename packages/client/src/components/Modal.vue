@@ -18,7 +18,7 @@ const slots = useSlots();
       "
     >
       <div
-        class="bg-base text-primaryText w-2/3 min-w-[20em] max-w-[80vw] rounded-lg px-4 py-3 md:w-1/2 lg:max-w-[60vw] xl:w-1/3"
+        class="bg-base text-primaryText w-auto min-w-[20em] max-w-[80vw] rounded-lg px-4 py-3 md:w-auto lg:max-w-[60vw] xl:w-auto"
       >
         <div
           class="flex justify-between pb-1"

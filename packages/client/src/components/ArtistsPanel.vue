@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue';
 
 import Icon from '@components/Icon.vue';
 
@@ -24,10 +23,10 @@ useFetch({url:"artist", method:"GET"}).then((res)=>{
 
 
 Object.entries(res)?.map((el)=>{
+  console.log(el[1])
         data?.value.push({userId:el[0], ...el[1]})
       })
 })
-console.log(data.value);
 
 </script>
 
