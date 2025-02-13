@@ -50,9 +50,9 @@ function uploadFile(req, res, id) {
   if (!extension) return res.status(400).json('Unsupported MIME type');
 
   const hash = shortHash(base64Data);
-  db.get('images').get(id).createFile(`${hash}.${extension}`, Buffer.from(base64Data, 'base64'));
+  db.get('images').createFile(`${hash}.${extension}`, Buffer.from(base64Data, 'base64'));
 
-  res.status(201).json({ message: 'File uploaded successfully', path: `${id}/${hash}` });
+  res.status(201).json({ message: 'File uploaded successfully', path: `${hash}` });
 }
 
 // Different router for naming convenience
@@ -63,7 +63,7 @@ router
     joiValidate({ id: joi.string().required() }, InfoTypes.PARAMS),
     joiValidate({ size: joi.number().max(500) }, InfoTypes.QUERY),
     async (req, res) => {
-      const filePath = `db/images/${req.params.id}.jpg`;
+      const filePath = db.get('images').get(req.params.id).targetFile;
 
       const currentFile = fs.existsSync(filePath);
       if (!currentFile) return res.status(404).json('File not found');

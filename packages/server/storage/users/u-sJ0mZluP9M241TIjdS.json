@@ -1,0 +1,11 @@
+{
+  "name": "RestBook2",
+  "email": "restbook@test.com",
+  "phone": "0 89 999 9999",
+  "password": "$2a$10$5c/sn8Ipg70HiRVOM9VO9e7PD7EdQylAONu/Wj3xPpDSI5rEPGqvC",
+  "role": "admin",
+  "bookings": [],
+  "passwordChangedAt": 1739391639418,
+  "created_at": 1739391640419,
+  "updated_at": 1739396256830
+}

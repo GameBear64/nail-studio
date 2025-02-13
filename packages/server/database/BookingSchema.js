@@ -18,12 +18,13 @@ const bookingSchema = db.get('bookings').schema(
     },
     procedures: {
       type: Array,
-      populate: 'procedures',
+      populate: true,
       required: true,
     },
   },
   {
     timestamps: true,
+    inlineId: true,
   },
 );
 

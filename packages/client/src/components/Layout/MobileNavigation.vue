@@ -2,8 +2,7 @@
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { UserRoles } from '@toolbox/consts';
-
+import { UserRoles } from '@tools/consts';
 import { userStore } from '@store/userStore';
 
 import Icon from '../Icon.vue';
