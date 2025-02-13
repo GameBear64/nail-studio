@@ -4,7 +4,7 @@ import Icon from '@components/Icon.vue';
 
 import useFetch from '@tools/useFetch';
 
-import { data } from '../api/artists';
+import { data, loadImage } from '../api/artists';
 
 import DeleteUserModal from './Admin/DeleteUserModal.vue';
 import UpdateUserModal from './Admin/UpdateUserModal.vue';
@@ -12,18 +12,10 @@ import Table from './Table/Table.vue';
 
 const headers =[{title:'Image', key:'image'}, {title:'Name', key:'name'}, {title:'Email', key:'email'},{title:'Phone', key:'phone'}, {title:'Actions', key:'actions'}]
 
-const loadImage = (img)=>{
-if(!img){
-  return new URL('../public/defaultUserImage.jpg', import.meta.url).href 
-}
- return new URL(origin + '/api/resource/'+ img, import.meta.url).href
-}
-
 useFetch({url:"artist", method:"GET"}).then((res)=>{
 
 
 Object.entries(res)?.map((el)=>{
-  console.log(el[1])
         data?.value.push({userId:el[0], ...el[1]})
       })
 })

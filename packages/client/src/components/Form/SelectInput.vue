@@ -3,9 +3,13 @@ import { useAttrs } from 'vue';
 
 const props = defineProps(['options', 'errors']);
 const model = defineModel();
+// const optionsElement=()=>{
 
+//  console.log( Object.entries(props.options))
+// }
 const attrs = useAttrs();
 const label = attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1);
+// optionsElement()
 </script>
 
 <template>

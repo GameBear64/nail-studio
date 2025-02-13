@@ -2,26 +2,21 @@
     import { ref } from "vue";
     import joi from "joi"
 
-    import { updateUser } from "../../api/artists";
-import { readFile } from "../../toolbox/utils";
+    import { Shifts, UserRoles } from "../../../../server/toolbox/consts";
+    import { loadImage,updateUser } from "../../api/artists";
     import Form from '../Form/Form.vue';
     import Input from '../Form/Input.vue';
-import SelectInput from '../Form/SelectInput.vue'
+    import SelectInput from '../Form/SelectInput.vue'
     import Icon from "../Icon.vue";
     import Modal from '../Modal.vue';
 
     const props = defineProps(["data"])
     const open = ref(false)
     const closeModal =()=> {open.value = !open.value}
-const file = ref('')
-    const loadImage = (img)=>{
-if(!img||img.length<1){
-  return new URL('../../public/defaultUserImage.jpg', import.meta.url).href 
-}
- return new URL(origin + '/api/resource/'+ img, import.meta.url).href
-}
+    const file = ref('')
 
     </script>
+
 <template>
   <Icon
     clickable
@@ -32,7 +27,7 @@ if(!img||img.length<1){
   <Modal
     v-if="open"
     :close="closeModal"
-    title="Edit a new user"
+    title="Edit user"
   >
     <Form
       v-slot="{errors}"
@@ -45,12 +40,12 @@ if(!img||img.length<1){
         shift:joi.string(),
         role:joi.string()
       }"
-      @submit="(formData)=>updateUser(props.data.userId, formData)"
+      @submit="(formData)=>updateUser(props.data.userId, {...props.data,...formData })"
     >
       <div class="flex flex-row gap-10">
         <div>
           <img
-            :src="file"
+            :src="loadImage()"
             alt=""
             srcset=""
           >
@@ -58,11 +53,7 @@ if(!img||img.length<1){
             class="min-w-60"
             type="file"
             accept="image/*"
-            @change="async (e)=>{
-              await readFile(e.target.files[0]).then((res)=>console.log(res))
-              // file= await readFile(e.target.files[0])
-              // console.log(await file.value)
-            }"
+            @change=" ()=>{}"
           >
         </div>
         <div class="flex min-w-60 flex-col gap-3">

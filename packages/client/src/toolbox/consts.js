@@ -5,6 +5,12 @@ export const UserRoles = Object.freeze({
   ADMIN: 'admin',
 });
 
+export const Shifts = Object.freeze({
+  FULL: 'Full',
+  MORNING: 'Morning',
+  AFTERNOON: 'Afternoon',
+});
+
 export const difficultyLevel = {
   1: {
     difficulty: 'Weak',

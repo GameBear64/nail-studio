@@ -13,8 +13,15 @@ export const deleteUser = (userId) => {
 };
 
 export const updateUser = (userId, body) => {
-  console.log(data.value);
+  console.log(body);
   useFetch({ url: 'artist/' + userId, method: 'PATCH', body })
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
+};
+
+export const loadImage = (img) => {
+  if (!img || img.length < 1) {
+    return new URL('../../public/defaultUserImage.jpg', import.meta.url).href;
+  }
+  return new URL(origin + '/api/resource/' + img, import.meta.url).href;
 };

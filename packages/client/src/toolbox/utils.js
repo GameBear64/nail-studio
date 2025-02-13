@@ -1,4 +1,4 @@
-export async function readFile(file) {
+export async function readFile(file, f) {
   if (!file) return Promise.reject('No file provided');
 
   return new Promise((resolve, reject) => {
@@ -6,7 +6,8 @@ export async function readFile(file) {
     reader.readAsDataURL(file);
 
     reader.onload = (event) => {
-      return event.target.result;
+      f = event.target.result.split(';base64,').pop();
+      console.log(f);
     };
 
     reader.onerror = (error) => reject(error);
