@@ -26,11 +26,13 @@ router
     (req, res) => {
       const result = user.update(req.authUser.id, req.body);
 
+      // check against guest profiles, if phone matches delete guest
+
       return res.status(200).json(result);
     },
   )
   .delete(joiValidate({ password: joi.string().min(8).max(255).required() }), async (req, res) => {
-    const [, userFile] = user.read(req.authUser.id);
+    const userFile = user.read(req.authUser.id);
 
     let validPassword = await bcrypt.compare(userFile.password, req.body.password);
     if (!validPassword) return res.status(404).json('Incorrect password');
