@@ -4,14 +4,18 @@ const joi = require('joi');
 
 const { joiValidate } = require('../middleware/validation');
 const procedureSchema = require('../database/ProcedureSchema');
+const { checkAdmin, checkAuth } = require('../middleware/auth');
 
 router
   .route('/')
   .get((req, res) => {
     const result = procedureSchema.find({});
+
     res.status(200).json(result);
   })
   .post(
+    checkAuth,
+    checkAdmin,
     joiValidate({
       name: joi.string().required(),
       description: joi.string().required(),
@@ -30,6 +34,8 @@ router
 router
   .route('/:id')
   .post(
+    checkAuth,
+    checkAdmin,
     joiValidate({
       name: joi.string().optional(),
       description: joi.string().optional(),
@@ -41,7 +47,7 @@ router
       res.status(201).json(result);
     },
   )
-  .delete((req, res) => {
+  .delete(checkAuth, checkAdmin, (req, res) => {
     procedureSchema.destroy(req.params.id);
     res.status(200).json();
   })

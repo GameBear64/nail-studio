@@ -12,16 +12,17 @@ const procedureSchema = db.get('procedures').schema(
     },
     duration: {
       // Minutes
-      type: String,
+      type: Number,
       required: true,
     },
     price: {
-      type: String,
+      type: Number,
       required: true,
     },
   },
   {
     timestamps: true,
+    inlineId: true,
   },
 );
 
