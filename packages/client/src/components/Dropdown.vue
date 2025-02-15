@@ -10,13 +10,14 @@ const props = defineProps(['options']);
       v-for="option in props.options"
       :key="option.name"
       class="flex cursor-pointer flex-row items-center gap-2 rounded p-2 text-gray-600 hover:bg-gray-100"
+      :onclick="option?.action"
     >
       <Icon
         class="text-xl"
         :icon="option.icon"
       />
       <li
-        :onclick="option?.action"
+        v-i18n
         class="w-full"
       >
         {{ option.name }}

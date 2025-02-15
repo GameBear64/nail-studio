@@ -32,6 +32,7 @@ const handleSubmit = (event) => {
   <form @submit.prevent="handleSubmit">
     <slot :errors="error" />
     <button
+      v-i18n
       class="btn mt-4 w-full"
       :class="{ 'bg-gray-300': error }"
       type="submit"

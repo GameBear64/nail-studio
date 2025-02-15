@@ -1,12 +1,13 @@
 <script setup>
 import { useRouter } from 'vue-router';
 
+import DesktopNavigation from '@components/Layout/DesktopNavigation.vue';
+import MobileNavigation from '@components/Layout/MobileNavigation.vue';
+
 import { UserRoles } from '@tools/consts';
 import useFetch from '@tools/useFetch';
+import { bgEnToggle, locale } from '@store/translationStore';
 import { removeUserData } from '@store/userStore';
-
-import DesktopNavigation from './Layout/DesktopNavigation.vue';
-import MobileNavigation from './Layout/MobileNavigation.vue';
 
 const router = useRouter();
 
@@ -27,6 +28,12 @@ const actions = [
     icon: 'calendar_today',
     name: 'Appointments',
     requiredRole: UserRoles.USER,
+  },
+  {
+    icon: 'language',
+    name: 'Language',
+    requiredRole: UserRoles.USER,
+    action: () => bgEnToggle(),
   },
   {
     icon: 'settings',

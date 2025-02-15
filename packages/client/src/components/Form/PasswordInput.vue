@@ -18,6 +18,7 @@ const iconVisible = computed(() => (visibility.value ? 'visibility' : 'visibilit
 <template>
   <div>
     <label
+      v-i18n
       class="font-medium"
       :for="$attrs.name"
     >Password</label>
@@ -38,6 +39,7 @@ const iconVisible = computed(() => (visibility.value ? 'visibility' : 'visibilit
     </div>
     <p
       v-if="!hideErrors"
+      v-i18n
       class="text-error"
     >
       {{ props.errors }}
