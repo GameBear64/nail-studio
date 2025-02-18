@@ -13,11 +13,11 @@ import Table from './Table/Table.vue';
 const headers =[{title:'Image', key:'image'}, {title:'Name', key:'name'}, {title:'Email', key:'email'},{title:'Phone', key:'phone'}, {title:'Actions', key:'actions'}]
 
 useFetch({url:"artist", method:"GET"}).then((res)=>{
-
-
-Object.entries(res)?.map((el)=>{
-        data?.value.push({userId:el[0], ...el[1]})
-      })
+  data.value=res
+// Object.entries(res)?.map((el)=>{
+//   console.log(res, '<---')
+//         data?.value.push({userId:el[0], ...el[1]})
+//       })
 })
 
 </script>
@@ -30,14 +30,14 @@ Object.entries(res)?.map((el)=>{
     >
       <template #header>
         <div class="flex flex-row justify-between">
-          <h1 class="text-2xl text-gray-800">
+          <h1 class="text-xl text-gray-800 md:text-2xl">
             Artists Management
           </h1> 
           <div class="btn flex flex-row items-center gap-1">
             Create 
             <Icon
               icon="add"
-              class="text-md pt-0.5"
+              class="text-sm md:pt-0.5 md:text-base"
             />
           </div>
         </div>
@@ -55,7 +55,7 @@ Object.entries(res)?.map((el)=>{
           class="flex flex-row justify-center gap-3"
         >
           <UpdateUserModal :data="row" />
-          <DeleteUserModal :user-id="row.userId" />
+          <DeleteUserModal :user-id="row._id" />
         </div>
       </template>
     </Table>

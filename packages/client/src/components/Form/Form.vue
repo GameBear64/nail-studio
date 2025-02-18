@@ -11,7 +11,6 @@ const schema = joi.object(props.rules);
 const handleSubmit = (event) => {
   const data = new FormData(event.target);
   const values = Object.fromEntries(data.entries());
-
   let validation = schema.validate(values, {
     abortEarly: false,
     presence: 'required',

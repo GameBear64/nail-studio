@@ -48,33 +48,19 @@ const artistSchema = db.get('users').schema(
     },
     procedures: {
       type: Array,
-<<<<<<< HEAD:packages/server/database/ArtistSchema.js
-      populate: 'procedures',
-      // required: true,
-      default: [],
-=======
       default: [],
       populate: true,
->>>>>>> origin/main:packages/server/database/Users/ArtistSchema.js
     },
     shift: {
       type: String,
       enum: Object.values(Shifts),
       default: Shifts.FULL,
     },
-<<<<<<< HEAD:packages/server/database/ArtistSchema.js
-    // bookings: {
-    //   type: Array,
-    //   default: [],
-    //   populate: 'bookings',
-    // },
-=======
     bookings: {
       type: Array,
       default: [],
       populate: true,
     },
->>>>>>> origin/main:packages/server/database/Users/ArtistSchema.js
     passwordChangedAt: {
       type: Number,
       default: 0,

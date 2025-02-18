@@ -13,15 +13,19 @@ export const deleteUser = (userId) => {
 };
 
 export const updateUser = (userId, body) => {
-  console.log(body);
-  useFetch({ url: 'artist/' + userId, method: 'PATCH', body })
-    .then((res) => console.log(res))
+  const t = Object.assign(body);
+  delete t._id;
+  console.log(t);
+  useFetch({ url: 'artist/' + userId, method: 'PATCH', body: t })
+    .then((res) => {
+      console.log(res);
+    })
     .catch((err) => console.log(err));
 };
 
 export const loadImage = (img) => {
   if (!img || img.length < 1) {
-    return new URL('../../public/defaultUserImage.jpg', import.meta.url).href;
+    return new URL('../public/defaultUserImage.jpg', import.meta.url).href;
   }
   return new URL(origin + '/api/resource/' + img, import.meta.url).href;
 };
