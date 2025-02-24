@@ -5,22 +5,20 @@ import useFetch from '../toolbox/useFetch';
 export const data = ref([]);
 
 export const deleteUser = (userId) => {
-  // useFetch({ url: 'artist/' + userId, method: 'DELETE' }).then(() => {
-  // Waiting for the back end to be fixed
-  console.log(data.value.filter((d) => d.userId != userId));
-  console.log(data.value, userId);
-  // });
+  useFetch({ url: 'artist/' + userId, method: 'DELETE' }).then(() => {
+    data.value = data.value.filter((d) => d.userId != userId);
+  })
 };
 
 export const updateUser = (userId, body) => {
-  const t = Object.assign(body);
-  delete t._id;
-  console.log(t);
-  useFetch({ url: 'artist/' + userId, method: 'PATCH', body: t })
+  const userData = Object.assign(body);
+  delete userData._id;
+
+  useFetch({ url: 'artist/' + userId, method: 'PATCH', body: userData })
     .then((res) => {
-      console.log(res);
+      data.value[data.value.findIndex((user) => user._id === res._id)] = res;
     })
-    .catch((err) => console.log(err));
+ 
 };
 
 export const loadImage = (img) => {
@@ -28,4 +26,8 @@ export const loadImage = (img) => {
     return new URL('../public/defaultUserImage.jpg', import.meta.url).href;
   }
   return new URL(origin + '/api/resource/' + img, import.meta.url).href;
+};
+
+export const createUser = (body) => {
+  useFetch({url:'artist/', method:'POST', body}).then(res=>{data.value = [...data.value, res]})
 };

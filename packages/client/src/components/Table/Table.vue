@@ -1,9 +1,9 @@
 <script setup>
-const props = defineProps(['header', "headers", "data"]);
+const props = defineProps(['header', 'headers', 'data']);
 </script>
 
 <template>
-  <div class="flex  min-w-10 max-w-[30rem] flex-col gap-3 md:max-w-[50rem]">
+  <div class="flex min-w-10 max-w-[30rem] flex-col gap-3 md:max-w-[50rem]">
     <slot name="header">
       <h1 class="text-2xl text-gray-800">
         {{ props.header }}

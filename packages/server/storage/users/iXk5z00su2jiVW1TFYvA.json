@@ -1,9 +1,0 @@
-{
-  "name": "artist1234",
-  "email": "artist1234@gmail.com",
-  "phone": 88888888888,
-  "password": "$2a$10$YG3DdYUpeqOhwMBBfWYCJOK7HJKf9Jzp7LcVUzePmToBEnrLbodj2",
-  "role": "artist",
-  "created_at": 1738835358913,
-  "updated_at": 1738835358913
-}

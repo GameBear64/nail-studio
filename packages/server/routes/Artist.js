@@ -71,6 +71,7 @@ router
     }),
     (req, res) => {
       const data = artist.update(req.params.id, req.body);
+
       return res.status(200).json(data);
     },
   )
