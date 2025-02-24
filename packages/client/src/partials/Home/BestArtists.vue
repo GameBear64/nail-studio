@@ -31,7 +31,7 @@ const artists = [
 <template>
   <div class="min-h-1 bg-gradient-to-r from-pink-200 to-pink-50" />
   <div
-    class="flex min-h-[40rem] w-screen flex-col gap-1 bg-gradient-to-t from-pink-200 to-white !py-10 sm:min-h-[47rem] sm:gap-8"
+    class="flex w-screen flex-col gap-1 bg-gradient-to-t from-pink-200 to-white !py-10"
   >
     <div>
       <div class="flex flex-col items-center justify-center gap-1 text-center">

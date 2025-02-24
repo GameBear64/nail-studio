@@ -53,7 +53,7 @@ import { leafs } from '@tools/consts';
       </div>
     </div>
     <img
-      :src="'/api/resource/banner.jpg'"
+      :src="'/api/resource/banner'"
       alt="flowers picture"
       class="z-30 hidden h-auto w-full rounded-md object-cover lg:flex"
     >
