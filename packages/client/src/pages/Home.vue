@@ -1,7 +1,7 @@
 <script setup>
-import Banner from '@components/Banner.vue';
-import BestArtists from '@components/BestArtists.vue';
-import Footer from '@components/Footer.vue';
+import Footer from '@components/Layout/Footer.vue';
+import Banner from '@partials/Home/Banner.vue';
+import BestArtists from '@partials/Home/BestArtists.vue';
 </script>
 
 <template>

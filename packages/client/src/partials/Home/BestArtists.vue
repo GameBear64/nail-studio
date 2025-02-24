@@ -1,33 +1,27 @@
 <script setup>
+import ArtistCart from '@components/ArtistCard.vue';
 import Swiper from '@components/Swiper.vue';
-
-import artist3 from '../public/aiony-haust-3TLl_97HNJo-unsplash.jpg';
-import artist2 from '../public/angelina-litvin-52R7t7x8CPI-unsplash.jpg';
-import artist4 from '../public/luke-braswell-oYFv-_JKsVk-unsplash.jpg';
-import artist1 from '../public/swapnil-dwivedi-N2IJ31xZ_ks-unsplash.jpg';
-
-import ArtistCart from './ArtistCard.vue';
 
 const artists = [
   {
-    image: artist3,
+    image: 'aiony-haust',
     name: 'Aiony Brat',
     description:
       'An amazing artist and listener, giving you the prettiest nails and see you leaving with a smilling face is my proprity!',
   },
   {
-    image: artist2,
+    image: 'angelina-litvin',
     name: 'Angelina Litvin',
     description:
       "With years of experience, wrinckes, and doing my wife's manicure for years, i am sure that we can give your nails the care they deserve. Trust me.",
   },
   {
-    image: artist4,
+    image: 'luke-braswell',
     name: 'Like Branswell',
     description: 'Your nails are my priority! I am here to bring the life in your nails, and make sure you leave happy.',
   },
   {
-    image: artist1,
+    image: 'swapnil-dwivedi',
     name: 'Swapnil Dwivedi',
     description: 'Always here to give you a professional service',
   },
@@ -41,10 +35,16 @@ const artists = [
   >
     <div>
       <div class="flex flex-col items-center justify-center gap-1 text-center">
-        <p class="font-rouge text-5xl sm:text-7xl">
+        <p
+          v-i18n
+          class="font-fancy text-5xl sm:text-7xl"
+        >
           Our best artists
         </p>
-        <p class="sm:text-md max-w-[21rem] text-sm italic sm:max-w-md">
+        <p
+          v-i18n
+          class="sm:text-md max-w-[21rem] text-sm italic sm:max-w-md"
+        >
           With years of experience and happy clients, we can proudly suggest one of our best artists.
         </p>
       </div>

@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router';
 import Form from '@components/Form/Form.vue';
 import Input from '@components/Form/Input.vue';
 import StrengthInput from '@components/Form/StrengthInput.vue';
+import LocaleButton from '@components/Locale/Button.vue';
 
 import useFetch from '@tools/useFetch';
 import { setUserData } from '@store/userStore';
@@ -32,6 +33,7 @@ const rules = {
 
 <template>
   <div class="flex h-full max-w-full items-center justify-center bg-gradient-to-r from-purple-400 to-pink-400">
+    <LocaleButton class="absolute right-3 top-3" />
     <div class="card flex flex-col gap-5 p-10 text-center">
       <div>
         <h1

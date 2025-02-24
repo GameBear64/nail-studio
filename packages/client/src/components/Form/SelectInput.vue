@@ -11,6 +11,7 @@ const label = attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1);
 <template>
   <div>
     <label
+      v-i18n
       class="font-medium"
       :for="$attrs.name"
     >{{ label.split('_').join(' ') }}</label>
@@ -25,7 +26,10 @@ const label = attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1);
         {{ option }}
       </option>
     </select>
-    <p class="text-error">
+    <p
+      v-i18n
+      class="text-error"
+    >
       {{ props.errors }}
     </p>
   </div>

@@ -12,7 +12,10 @@ const model = defineModel();
         type="hidden"
         value="false"
       >
-      <label :for="$attrs.name">{{ label }}</label>
+      <label
+        v-i18n
+        :for="$attrs.name"
+      >{{ label }}</label>
       <input
         v-model="model"
         type="checkbox"
@@ -21,7 +24,10 @@ const model = defineModel();
         value="true"
       >
     </div>
-    <p class="text-error">
+    <p
+      v-i18n
+      class="text-error"
+    >
       {{ props.errors }}
     </p>
   </div>

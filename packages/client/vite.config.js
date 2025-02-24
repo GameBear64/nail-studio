@@ -12,6 +12,7 @@ export default defineConfig({
       '@tools': fileURLToPath(new URL('./src/toolbox', import.meta.url)),
       '@store': fileURLToPath(new URL('./src/toolbox/stores', import.meta.url)),
       '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
+      '@partials': fileURLToPath(new URL('./src/partials', import.meta.url)),
     },
   },
   server: {
