@@ -72,6 +72,8 @@ router
     (req, res) => {
       const data = artist.update(req.params.id, req.body);
 
+      // check if old image is edited, remove old image if so
+
       return res.status(200).json(data);
     },
   )

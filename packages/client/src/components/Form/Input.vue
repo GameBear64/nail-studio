@@ -11,6 +11,7 @@ const inputLabel = (attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1)).sp
 <template>
   <div>
     <label
+      v-i18n
       class="font-medium"
       :for="attrs.name"
     >{{ attrs.label?attrs.label:inputLabel }}</label>
@@ -20,7 +21,10 @@ const inputLabel = (attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1)).sp
       v-model="model"
       :class="{ 'input-error': props?.errors }"
     >
-    <p class="mt-1 h-4 text-sm font-medium leading-none text-red-600">
+    <p
+      v-i18n
+      class="mt-1 h-4 text-sm font-medium leading-none text-red-600"
+    >
       {{ props.errors }}
     </p>
   </div>

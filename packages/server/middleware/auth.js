@@ -32,3 +32,9 @@ exports.checkAdmin = (req, res, next) => {
 
   return res.status(401).json('Not authorized, admin route!');
 };
+
+exports.checkArtist = (req, res, next) => {
+  if ([UserRoles.ARTIST, UserRoles.ADMIN].includes(req?.authUser?.role)) return next();
+
+  return res.status(401).json('Not authorized, artist route!');
+};

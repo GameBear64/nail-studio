@@ -40,6 +40,7 @@ watch(value, (password) => {
       />
       <p
         v-if="errors"
+        v-i18n
         class="text-error"
       >
         {{ props.errors }}
@@ -52,12 +53,18 @@ watch(value, (password) => {
           v-if="pp > 0 && messages[0]"
           class="text-txtSecondary flex flex-row gap-1"
         >
-          <p class="font-semibold">
+          <p
+            v-i18n
+            class="font-semibold"
+          >
             Hint:
           </p>
-          <p>{{ messages[0]?.message }}</p>
+          <p v-i18n>
+            {{ messages[0]?.message }}
+          </p>
         </div>
         <p
+          v-i18n
           class="ml-auto items-end font-medium"
           :class="difficultyLevel[pp]?.color"
         >

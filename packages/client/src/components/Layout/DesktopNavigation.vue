@@ -36,7 +36,10 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
           clickable
           :icon="navigation.icon"
         />
-        <p :onclick="() => router.push(navigation.location)">
+        <p
+          v-i18n
+          :onclick="() => router.push(navigation.location)"
+        >
           {{ navigation.name }}
         </p>
       </div>

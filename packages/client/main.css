@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,7 +37,7 @@
   }
 
   textarea,
-  input,
+  input:not([type='file']),
   select {
     @apply rounded bg-base-m text-txtPrimary h-10 px-2 w-full border border-base-s focus:border-pink-500 focus:outline-none;
   }

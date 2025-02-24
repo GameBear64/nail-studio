@@ -1,54 +1,47 @@
-import { reactive } from 'vue';
+import { watchEffect } from 'vue';
+
+import { useStorage } from '@vueuse/core';
 
 import translations from '../../translations.json';
 
-const locales = ['bg', 'de', 'jp'];
+export const locales = ['bg', 'de'];
+export const locale = useStorage('locale', 'bg');
 
-export const useTranslationStore = () => {
-  const state = reactive({
-    locale: 'bg',
-    missingTranslations: {},
-  });
+export const bgEnToggle = () => {
+  locale.value = locale.value == 'bg' ? 'en' : 'bg';
+};
 
-  const t = (key) => {
-    const translation = translations[key]?.[locales.indexOf(state.locale)];
-    if (!translation && state.locale !== 'en') {
-      handleMissingTranslation(key, state);
-    }
-    return translation || key;
-  };
-
-  const setLocale = (locale) => {
-    state.locale = locales.includes(locale) ? locale : 'en';
-  };
-
-  const handleMissingTranslation = (text) => {
-    if (!window?.missingTranslations) {
-      window.missingTranslations = {};
-      // eslint-disable-next-line no-console
-      console.log(
-        'Missing translations detected, "window.missingTranslations" was created and it will be filled with strings in the current translation format as you explore the website.',
-      );
-    }
-
-    window.missingTranslations[text] = locales;
-
-    return text;
-  };
-
-  return { t, setLocale, state };
+export const t = (key) => {
+  const translation = translations[key]?.[locales.indexOf(locale.value)];
+  if (!translation && locale.value !== 'en') {
+    handleMissingTranslation(key);
+  }
+  return translation || key;
 };
 
 export const i18nDirective = {
   beforeMount(el) {
-    const { t } = useTranslationStore();
-
     const text = el.innerText.trim();
     el.originalText = text;
     el.innerText = t(text);
   },
-  updated(el) {
-    const { t } = useTranslationStore();
-    el.innerText = t(el.originalText);
+  mounted(el) {
+    watchEffect(() => {
+      el.innerText = t(el.originalText);
+    });
   },
+};
+
+const handleMissingTranslation = (text) => {
+  if (!window?.missingTranslations) {
+    window.missingTranslations = {};
+    // eslint-disable-next-line no-console
+    console.log(
+      'Missing translations detected, "window.missingTranslations" was created and it will be filled with strings in the current translation format as you explore the website.',
+    );
+  }
+
+  window.missingTranslations[text] = locales;
+
+  return text;
 };

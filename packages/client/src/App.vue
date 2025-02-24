@@ -3,7 +3,7 @@ import { useRoute } from 'vue-router';
 
 import Loading from '@pages/Loading.vue';
 
-import Header from '@components/Header.vue';
+import Header from '@components/Layout/Header.vue';
 
 import { themes } from '@store/themeStore';
 

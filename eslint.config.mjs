@@ -105,7 +105,7 @@ export default [
             // Packages starting with `@`
             ['^@'],
             // My custom aliases
-            ['^@components'],
+            ['^@components', '^@partials'],
             ['^@form'],
             ['^@tools', '^@store'],
             // Imports starting with `../`

@@ -1,17 +1,14 @@
 /* eslint-disable no-console */
-const express = require('express');
-require('express-async-errors');
-// require('./toolbox/routeGrouper')(express);
-const app = express();
-
 require('dotenv').config({ path: '../../.env' });
 
 //============= API ==============
+const express = require('express');
+const app = express();
 const cors = require('cors');
+require('express-async-errors');
 const { normalizeBodyFields, getCookies } = require('./middleware/global');
 
 app.use(cors());
-app.use(express.json());
 app.use(express.json({ limit: '50mb' }));
 app.use(getCookies);
 app.use(normalizeBodyFields);

@@ -4,5 +4,69 @@
   "Sign up here": ["Регистрация", "Registrieren", "登録"],
   "Register": ["Регистрация", "Registrieren", "登録"],
   "Already have an account?": ["Вече имате акаунт?", "Sie haben schon ein Konto?", "すでにアカウントをお持ちですか？"],
-  "Sign in here": ["Вход", "Anmelden", "ログイン"]
+  "Sign in here": ["Вход", "Anmelden", "ログイン"],
+  "Appointments": ["Часове", "Termine", "予約"],
+  "Artists": ["Артисти", "Künstler", "アーティスト"],
+  "Book": ["Запази", "Buchen", "予約する"],
+  "Home": ["Начало", "Startseite", "ホーム"],
+  "Language": ["Език", "Sprache", "言語"],
+  "Logout": ["Изход", "Abmelden", "ログアウト"],
+  "Profile": ["Профил", "Profil", "プロフィール"],
+  "Settings": ["Настройки", "Einstellungen", "設定"],
+  "Studio 96": ["Студио 96", "Studio 96", "スタジオ96"],
+  "Discover the perfect blend of style, relaxation, and precision. Whether you're here for a bold design, timeless elegance, or a moment of self-care, we're dedicated to making every visit extraordinary. Let us pamper you—your nails deserve it!": [
+    "Открийте перфектната комбинация от стил, релакс и прецизност. Независимо дали сте тук за смел дизайн, вечна елегантност или момент на грижа за себе си, ние сме посветени на това да направим всяко посещение изключително. Позволете ни да ви поглезим – вашите нокти го заслужават!",
+    "Entdecken Sie die perfekte Kombination aus Stil, Entspannung und Präzision. Ob Sie ein mutiges Design, zeitlose Eleganz oder einen Moment der Selbstpflege suchen – wir setzen alles daran, jeden Besuch außergewöhnlich zu gestalten. Lassen Sie sich verwöhnen – Ihre Nägel verdienen es!",
+    "スタイル、リラックス、精密さの完璧な融合を発見してください。大胆なデザイン、時代を超えたエレガンス、または自分自身のケアのひとときのために訪れたなら、私たちはあなたの訪問を特別なものにすることに全力を尽くします。どうぞくつろいでください—あなたのネイルはそれに値します！"
+  ],
+  "Our best artists": ["Нашите най-добри артисти", "Unsere besten Künstler", "最高のアーティスト"],
+  "With years of experience and happy clients, we can proudly suggest one of our best artists.": [
+    "С години опит и доволни клиенти, с гордост можем да предложим един от нашите най-добри артисти.",
+    "Mit jahrelanger Erfahrung und zufriedenen Kunden können wir Ihnen stolz einen unserer besten Künstler empfehlen.",
+    "長年の経験と満足した顧客を持つ私たちは、自信を持って最高のアーティストの一人をお勧めできます。"
+  ],
+  "Aiony Brat": ["Айони Брат", "Aiony Brat", "アイオニー・ブラット"],
+  "5 years of experience": ["5 години опит", "5 Jahre Erfahrung", "5年の経験"],
+  "An amazing artist and listener, giving you the prettiest nails and see you leaving with a smilling face is my proprity!": [
+    "Изключителен артист и слушател, моята цел е да ви осигуря най-красивите нокти и да ви видя да си тръгнете с усмивка!",
+    "Ein großartiger Künstler und Zuhörer – mein Ziel ist es, Ihnen die schönsten Nägel zu geben und Sie mit einem Lächeln gehen zu sehen!",
+    "素晴らしいアーティストであり聞き上手です。あなたに最高に美しいネイルを提供し、笑顔で帰ってもらうことが私の最優先です！"
+  ],
+  "Book me": ["Запази ме", "Buche mich", "予約する"],
+  "See more": ["Виж повече", "Mehr sehen", "もっと見る"],
+  "Angelina Litvin": ["Анджелина Литвин", "Angelina Litvin", "アンジェリーナ・リトヴィン"],
+  "With years of experience, wrinckes, and doing my wife's manicure for years, i am sure that we can give your nails the care they deserve. Trust me.": [
+    "С години опит, бръчки и след като правя маникюра на жена си от години, съм сигурен, че можем да дадем на вашите нокти грижата, която заслужават. Доверете ми се.",
+    "Mit jahrelanger Erfahrung, Falten und jahrelanger Maniküre für meine Frau bin ich sicher, dass wir Ihren Nägeln die Pflege geben können, die sie verdienen. Vertrauen Sie mir.",
+    "長年の経験、しわ、そして妻のネイルを何年もケアしてきたことで、あなたのネイルにふさわしいケアを提供できると確信しています。私を信じてください。"
+  ],
+  "Like Branswell": ["Лайк Брансвел", "Like Branswell", "ライク・ブランスウェル"],
+  "Your nails are my priority! I am here to bring the life in your nails, and make sure you leave happy.": [
+    "Вашите нокти са мой приоритет! Тук съм, за да вдъхна живот в тях и да се уверя, че ще си тръгнете щастливи.",
+    "Ihre Nägel sind meine Priorität! Ich bin hier, um ihnen Leben einzuhauchen und sicherzustellen, dass Sie glücklich gehen.",
+    "あなたのネイルが私の最優先事項です！あなたのネイルに命を吹き込み、満足して帰っていただけるよう努めます。"
+  ],
+  "Swapnil Dwivedi": ["Суапнил Двиведи", "Swapnil Dwivedi", "スワプニル・ドゥイヴェディ"],
+  "Always here to give you a professional service": [
+    "Винаги съм тук, за да ви предоставя професионално обслужване.",
+    "Ich bin immer hier, um Ihnen einen professionellen Service zu bieten.",
+    "常にプロフェッショナルなサービスを提供するためにここにいます。"
+  ],
+  "Contacts": ["Контакти", "Kontakte", "連絡先"],
+  "For more contacts - look for outlets": [
+    "За повече контакти - потърсете нашите клонове.",
+    "Für weitere Kontakte – suchen Sie nach unseren Filialen.",
+    "さらに多くの連絡先については、販売店を探してください。"
+  ],
+  "Admin Panel": ["Админ панел", "Admin-Panel", "管理パネル"],
+  "Directives": ["Директиви", "Direktiven", "指令"],
+  "Actions": ["Действия", "Aktionen", "アクション"],
+  "Galleries": ["Галерии", "Galerien", "ギャラリー"],
+  "Email": ["Имейл", "E-Mail", "メール"],
+  "Password": ["Парола", "Passwort", "パスワード"],
+  "Submit": ["Изпрати", "Absenden", "送信"],
+  "Name": ["Име", "Name", "名前"],
+  "Phone": ["Телефон", "Telefon", "電話"],
+  "Confirm password": ["Потвърди парола", "Passwort bestätigen", "パスワードを確認"],
+  "ADMIN": ["АДМИН", "ADMIN", "管理者"]
 }

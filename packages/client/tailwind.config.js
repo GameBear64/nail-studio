@@ -34,7 +34,7 @@ export default {
         // 2xl 1536px
       },
       fontFamily: {
-        rouge: ['Rouge Script', 'cursive'],
+        fancy: ['Great Vibes', 'serif'],
       },
     },
   },

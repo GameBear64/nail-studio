@@ -1,12 +1,12 @@
 <script setup>
-import Shape from '@components/Shape.vue';
+import Shape from '@partials/Home/Shape.vue';
 
 import { leafs } from '@tools/consts';
 </script>
 
 <template>
-  <div class="z-40 flex min-h-[80vh] flex-row justify-between gap-2 bg-white">
-    <div class="bg-base-x relative flex flex-col justify-center gap-4 overflow-hidden rounded-md px-5">
+  <div class="bg-base z-40 flex min-h-[80vh] flex-row justify-between gap-2 p-2">
+    <div class="bg-base-x relative flex flex-col justify-center gap-4 overflow-hidden rounded-md border border-pink-100 px-5">
       <div class="absolute size-full">
         <template
           v-for="leaf in leafs"
@@ -19,29 +19,41 @@ import { leafs } from '@tools/consts';
         </template>
       </div>
 
-      <div class="z-40 flex flex-col gap-3">
-        <div class="font-rouge flex flex-row gap-0">
-          <p class="text-7xl sm:text-8xl">
+      <div class="z-50 flex flex-col gap-3">
+        <div class="font-fancy flex flex-row gap-0">
+          <p
+            v-i18n
+            class="text-7xl sm:text-8xl"
+          >
             Studio 96
           </p>
         </div>
-        <p class="italic">
+        <p
+          v-i18n
+          class="italic"
+        >
           Discover the perfect blend of style, relaxation, and precision. Whether you're here for a bold design, timeless
-          elegance, or a moment of self-care, we’re dedicated to making every visit extraordinary. Let us pamper you—your nails
+          elegance, or a moment of self-care, we're dedicated to making every visit extraordinary. Let us pamper you—your nails
           deserve it!
         </p>
       </div>
-      <div class="z-40 flex flex-row gap-4">
-        <button class="btn-outlined">
+      <div class="z-50 flex flex-row gap-4">
+        <button
+          v-i18n
+          class="btn-outlined"
+        >
           Artists
         </button>
-        <button class="btn-outlined">
+        <button
+          v-i18n
+          class="btn-outlined"
+        >
           Book
         </button>
       </div>
     </div>
     <img
-      src="../public/banner.jpg"
+      :src="'/api/resource/banner'"
       alt="flowers picture"
       class="hidden h-auto w-full rounded-md object-cover lg:flex"
     >
