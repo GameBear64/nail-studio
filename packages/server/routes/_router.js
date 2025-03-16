@@ -20,4 +20,5 @@ module.exports = function (app) {
   app.use(checkAuth);
   app.use('/user', userRoutes);
   app.use('/booking', bookingRoutes);
+  app.use('/artist', artistRoutes);
 };

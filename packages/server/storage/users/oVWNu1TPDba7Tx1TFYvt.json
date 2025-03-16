@@ -1,0 +1,17 @@
+{
+  "name": "artist12",
+  "email": "artist12@gmail.com",
+  "biography": "sdas",
+  "yearsExperience": 222,
+  "picture": "76efb5d7",
+  "gallery": [],
+  "phone": 88888888888,
+  "password": "$2a$10$A3XNP97P26qqiynzTeeFnOGmkIlhNYf8akcXsqkI5vGWfxpeIQbmq",
+  "role": "artist",
+  "procedures": [],
+  "shift": "Morning",
+  "bookings": [],
+  "passwordChangedAt": 0,
+  "created_at": 1738835351329,
+  "updated_at": 1740142180986
+}

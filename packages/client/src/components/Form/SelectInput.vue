@@ -3,9 +3,9 @@ import { useAttrs } from 'vue';
 
 const props = defineProps(['options', 'errors']);
 const model = defineModel();
-
 const attrs = useAttrs();
 const label = attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1);
+// optionsElement()
 </script>
 
 <template>
@@ -16,14 +16,17 @@ const label = attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1);
       :for="$attrs.name"
     >{{ label.split('_').join(' ') }}</label>
     <select
-      v-for="{ option, value } in options"
       v-bind="$attrs"
       :id="$attrs.name"
-      :key="value"
       v-model="model"
     >
-      <option :value="value">
-        {{ option }}
+      <option
+        v-for="data in options"
+        :key="data.value"
+        :selected="data.value === model"
+        :value="data.value"
+      >
+        {{ data.label }}
       </option>
     </select>
     <p

@@ -1,26 +1,28 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, inject, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 import { onClickOutside } from '@vueuse/core';
 
-import { userStore } from '../../toolbox/stores/userStore';
-import Dropdown from '../Dropdown.vue';
-import Icon from '../Icon.vue';
-import Logo from '../Logo.vue';
+import Dropdown from '@components/Dropdown.vue';
+import Icon from '@components/Icon.vue';
+import Logo from '@components/Logo.vue';
+
+import { userStore } from '@store/userStore';
 
 const router = useRouter();
 
 const props = defineProps(['navigations', 'options']);
-const open = ref(false);
 const openRef = ref(false);
+const isOpen = inject('isOpen')
 
-const allowedOptions = computed(() => 
- props.options.filter((option) => option.requiredRole === userStore.role || option.requiredRole === 'user')
+const allowedOptions = computed(() =>
+  props.options.filter((option) => option.requiredRole === userStore.role || option.requiredRole === 'user'),
 );
 
-onClickOutside(openRef, () => (open.value = false));
-const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow_down'));
+const arrow = computed(() => (isOpen.value ? 'keyboard_arrow_up' : 'keyboard_arrow_down'));
+
+onClickOutside(openRef, () => (isOpen.value = false));
 </script>
 
 <template>
@@ -52,16 +54,16 @@ const arrow = computed(() => (open.value ? 'keyboard_arrow_up' : 'keyboard_arrow
         icon="person"
         clickable
         class="rounded bg-pink-400 p-1 text-white"
-        @click="() => (open = !open)"
+        @click="() => (isOpen = !isOpen)"
       />
       <div class="relative flex justify-end">
         <Icon
           :icon="arrow"
           clickable
-          @click="() => (open = !open)"
+          @click="() => (isOpen = !isOpen)"
         />
         <Dropdown
-          v-if="open"
+          v-if="isOpen"
           class="-right-1 top-11"
           :options="allowedOptions"
         />

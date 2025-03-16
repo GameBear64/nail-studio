@@ -55,7 +55,7 @@ import { leafs } from '@tools/consts';
     <img
       :src="'/api/resource/banner'"
       alt="flowers picture"
-      class="z-30 hidden h-auto w-full rounded-md object-cover lg:flex"
+      class="hidden h-auto w-full rounded-md object-cover lg:flex"
     >
   </div>
 </template>

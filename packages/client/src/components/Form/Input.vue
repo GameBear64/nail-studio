@@ -5,7 +5,7 @@ const props = defineProps(['errors']);
 const model = defineModel();
 
 const attrs = useAttrs();
-const label = attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1);
+const inputLabel = (attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1)).split('_').join(' ');
 </script>
 
 <template>
@@ -14,7 +14,7 @@ const label = attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1);
       v-i18n
       class="font-medium"
       :for="attrs.name"
-    >{{ label.split('_').join(' ') }}</label>
+    >{{ attrs.label?attrs.label:inputLabel }}</label>
     <input
       :id="attrs.name"
       v-bind="$attrs"

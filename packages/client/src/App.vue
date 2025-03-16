@@ -20,8 +20,13 @@ const route = useRoute();
     :class="`theme-${themes.theme}`"
     class="bg-base text-primaryText flex h-screen flex-col"
   >
+    <div
+      id="teleport-target"
+      class="z-[100]"
+    />
     <Header v-if="!route.meta.guestRoute" />
     <RouterView
+      id="router-view"
       v-slot="{ Component }"
       class="flex-1 overflow-x-auto"
     >
