@@ -6,13 +6,12 @@ import Form from '@components/Form/Form.vue';
 import Input from '@components/Form/Input.vue';
 import MediaInput from '@components/Form/MediaInput.vue';
 import SelectInput from '@components/Form/SelectInput.vue';
+import Icon from '@components/Icon.vue';
+import Modal from '@components/Modal.vue';
 
 import { Shifts } from '@tools/consts';
 import useFetch from '@tools/useFetch';
-
-import { loadImage, updateUser } from '../../api/artists';
-import Icon from '../Icon.vue';
-import Modal from '../Modal.vue';
+import { loadImage, updateUser } from '@api/artists';
 
 const props = defineProps(['data']);
 const open = ref(false);

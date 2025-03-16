@@ -107,7 +107,7 @@ export default [
             // My custom aliases
             ['^@components', '^@partials'],
             ['^@form'],
-            ['^@tools', '^@store'],
+            ['^@tools', '^@store', '^@api'],
             // Imports starting with `../`
             ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
             // Imports starting with `./`

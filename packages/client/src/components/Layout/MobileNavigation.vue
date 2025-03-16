@@ -1,18 +1,18 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, inject } from 'vue';
 import { useRouter } from 'vue-router';
+
+import Icon from '@components/Icon.vue';
+import Logo from '@components/Logo.vue';
 
 import { UserRoles } from '@tools/consts';
 import { userStore } from '@store/userStore';
 
-import Icon from '../Icon.vue';
-import Logo from '../Logo.vue';
-
 const router = useRouter();
 const props = defineProps(['navigations', 'actions', 'adminActions']);
-const openMobile = ref(false);
+const isOpen = inject('isOpen')
 
-const openIcon = computed(() => (openMobile.value ? 'close' : 'menu'));
+const openIcon = computed(() => (isOpen.value ? 'close' : 'menu'));
 </script>
 
 <template>
@@ -22,15 +22,15 @@ const openIcon = computed(() => (openMobile.value ? 'close' : 'menu'));
       <Icon
         :icon="openIcon"
         clickable
-        @click="() => (openMobile = !openMobile)"
+        @click="() => (isOpen = !isOpen)"
       />
     </div>
     <div
-      :class="{ 'absolute h-full w-screen bg-black/30 backdrop-blur-sm': openMobile }"
-      @click.self="() => (openMobile = false)"
+      :class="{ 'absolute h-full w-screen bg-black/30 backdrop-blur-sm': isOpen }"
+      @click.self="() => (isOpen = false)"
     >
       <div
-        v-if="openMobile"
+        v-if="isOpen"
         class="absolute right-0 mb-auto flex h-full w-52 flex-col gap-5 bg-white px-1 py-2 shadow-md"
       >
         <div class="px-2">

@@ -7,13 +7,12 @@ import Input from '@components/Form/Input.vue';
 import MediaInput from '@components/Form/MediaInput.vue';
 import PasswordInput from '@components/Form/PasswordInput.vue';
 import SelectInput from '@components/Form/SelectInput.vue';
+import Icon from '@components/Icon.vue';
+import Modal from '@components/Modal.vue';
 
 import { Shifts } from '@tools/consts';
 import useFetch from '@tools/useFetch';
-
-import { createUser, loadImage } from '../../api/artists';
-import Icon from '../Icon.vue';
-import Modal from '../Modal.vue';
+import { createUser, loadImage } from '@api/artists';
 
 const open = ref(false);
 const userPicture = ref(loadImage(null));

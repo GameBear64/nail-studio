@@ -1,9 +1,10 @@
 <script setup>
 import { ref } from 'vue';
 
-import { deleteUser } from '../../api/artists';
-import Icon from '../Icon.vue';
-import Modal from '../Modal.vue';
+import Icon from '@components/Icon.vue';
+import Modal from '@components/Modal.vue';
+
+import { deleteUser } from '@api/artists';
 
 const props = defineProps(['userId']);
 const open = ref(false);

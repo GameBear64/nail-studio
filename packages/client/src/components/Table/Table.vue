@@ -10,14 +10,14 @@ const props = defineProps(['header', 'headers', 'data']);
       </h1>
     </slot>
     <div class="relative max-h-[40rem] min-w-10 max-w-[30rem] overflow-auto md:max-w-full">
-      <table class="max-h-[40rem] overflow-y-auto border bg-white">
+      <table class="overflow-y-auto border bg-white">
         <thead>
           <tr class="sticky -top-1 rounded bg-gray-100 text-gray-600">
             <th
-              v-for="header in headers"
-              :key="header.key"
+              v-for="tableHeader in headers"
+              :key="tableHeader.key"
             >
-              {{ header.title }}
+              {{ tableHeader.title }}
             </th>
           </tr>
         </thead>
@@ -27,14 +27,14 @@ const props = defineProps(['header', 'headers', 'data']);
             :key="rowIndex"
           >
             <td
-              v-for="header in headers"
-              :key="header.key"
+              v-for="tableHeader in headers"
+              :key="tableHeader.key"
             >
               <slot
-                :name="header.key"
+                :name="tableHeader.key"
                 :row="row"
               >
-                {{ row[header.key] }}
+                {{ row[tableHeader.key] }}
               </slot>
             </td>
           </tr>

@@ -1,4 +1,5 @@
 <script setup>
+import { provide, ref } from 'vue'
 import { useRouter } from 'vue-router';
 
 import DesktopNavigation from '@components/Layout/DesktopNavigation.vue';
@@ -6,8 +7,12 @@ import MobileNavigation from '@components/Layout/MobileNavigation.vue';
 
 import { UserRoles } from '@tools/consts';
 import useFetch from '@tools/useFetch';
-import { bgEnToggle, locale } from '@store/translationStore';
+import { bgEnToggle } from '@store/translationStore';
 import { removeUserData } from '@store/userStore';
+
+const isOpen = ref(false)
+
+provide('isOpen', isOpen)
 
 const router = useRouter();
 

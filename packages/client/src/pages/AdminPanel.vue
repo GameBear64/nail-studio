@@ -37,7 +37,7 @@ const router = useRouter();
         ADMIN
       </p>
     </div>
-    <div class="overflow-auto p-3">
+    <div class="flex-1 overflow-auto p-3">
       <router-view />
     </div>
   </div>

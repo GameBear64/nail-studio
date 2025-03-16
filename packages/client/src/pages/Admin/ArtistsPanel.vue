@@ -1,14 +1,12 @@
 <script setup>
-import Icon from '@components/Icon.vue';
+import CreateUserModal from '@components/Admin/CreateUserModal.vue';
+import DeleteUserModal from '@components/Admin/DeleteUserModal.vue';
+import UpdateUserModal from '@components/Admin/UpdateUserModal.vue';
+import Table from '@components/Table/Table.vue';
 
 import useFetch from '@tools/useFetch';
 
-import { data, loadImage } from '../api/artists';
-
-import CreateUserModal from './Admin/CreateUserModal.vue';
-import DeleteUserModal from './Admin/DeleteUserModal.vue';
-import UpdateUserModal from './Admin/UpdateUserModal.vue';
-import Table from './Table/Table.vue';
+import { data, loadImage } from '../../api/artists';
 
 const headers = [
   { title: 'Image', key: 'image' },
@@ -24,7 +22,7 @@ useFetch({ url: 'artist', method: 'GET' }).then((res) => {
 </script>
 
 <template>
-  <div class="mt-10 flex size-full justify-center">
+  <div class="mt-10 flex justify-center">
     <Table
       :headers="headers"
       :data="data"
