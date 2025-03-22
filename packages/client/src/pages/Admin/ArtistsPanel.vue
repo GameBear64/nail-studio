@@ -1,12 +1,10 @@
 <script setup>
-import CreateUserModal from '@components/Admin/CreateUserModal.vue';
-import DeleteUserModal from '@components/Admin/DeleteUserModal.vue';
-import UpdateUserModal from '@components/Admin/UpdateUserModal.vue';
+import CreateUserModal from '@components/Admin/Artists/CreateUserModal.vue';
+import DeleteUserModal from '@components/Admin/Artists/DeleteUserModal.vue';
+import UpdateUserModal from '@components/Admin/Artists/UpdateUserModal.vue';
 import Table from '@components/Table/Table.vue';
 
-import useFetch from '@tools/useFetch';
-
-import { data, loadImage } from '../../api/artists';
+import { data, loadImage,readAllArtists } from '@api/artists';
 
 const headers = [
   { title: 'Image', key: 'image' },
@@ -16,26 +14,23 @@ const headers = [
   { title: 'Actions', key: 'actions' },
 ];
 
-useFetch({ url: 'artist', method: 'GET' }).then((res) => {
-  data.value = res;
-});
+readAllArtists();
 </script>
 
 <template>
-  <div class="mt-10 flex justify-center">
+  <div class="m-auto mt-10 flex max-w-3xl flex-col justify-center">
+    <div class="my-4 flex flex-row justify-between">
+      <h1 class="text-xl text-gray-800 md:text-2xl">
+        Artists Management
+      </h1>
+
+      <CreateUserModal />
+    </div>
+
     <Table
       :headers="headers"
       :data="data"
     >
-      <template #header>
-        <div class="flex flex-row justify-between">
-          <h1 class="text-xl text-gray-800 md:text-2xl">
-            Artists Management
-          </h1>
-
-          <CreateUserModal />
-        </div>
-      </template>
       <template #image="{ row }">
         <img
           class="size-10 rounded-sm object-cover"

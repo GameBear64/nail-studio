@@ -19,8 +19,8 @@ router
     joiValidate({
       name: joi.string().required(),
       description: joi.string().required(),
-      price: joi.number().required(),
-      duration: joi.number().required(), // In minutes!
+      price: joi.number().min(1).required(),
+      duration: joi.number().min(1).required(), // In minutes!
     }),
     (req, res) => {
       const result = procedureSchema.create(req.body);
@@ -33,14 +33,14 @@ router
 
 router
   .route('/:id')
-  .post(
+  .patch(
     checkAuth,
     checkAdmin,
     joiValidate({
       name: joi.string().optional(),
       description: joi.string().optional(),
-      price: joi.number().optional(),
-      duration: joi.number().optional(), // In minutes!
+      price: joi.number().min(1).optional(),
+      duration: joi.number().min(1).optional(), // In minutes!
     }),
     (req, res) => {
       const result = procedureSchema.update(req.params.id, req.body);

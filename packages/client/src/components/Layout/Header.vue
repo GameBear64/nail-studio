@@ -65,6 +65,11 @@ const adminActions = [
     action: () => router.push({ name: 'artists' }),
   },
   {
+    icon: 'badge',
+    name: 'Procedure',
+    action: () => router.push({ name: 'procedures' }),
+  },
+  {
     icon: 'photo_library',
     name: 'Galleries',
     action: () => router.push({ name: 'galleries' }),

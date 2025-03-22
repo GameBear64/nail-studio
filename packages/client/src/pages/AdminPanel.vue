@@ -19,6 +19,15 @@ const router = useRouter();
         </p>
       </div>
       <div
+        :onclick="() => router.push({ name: 'procedures' })"
+        class="flex cursor-pointer flex-row items-center gap-2 rounded px-2 py-3 text-center hover:bg-gray-100"
+      >
+        <Icon icon="badge" />
+        <p v-i18n>
+          Procedures
+        </p>
+      </div>
+      <div
         :onclick="() => router.push({ name: 'galleries' })"
         class="flex cursor-pointer flex-row items-center gap-2 rounded px-2 py-3 text-center hover:bg-gray-100"
       >

@@ -15,13 +15,13 @@ import useFetch from '@tools/useFetch';
 import { createUser, loadImage } from '@api/artists';
 
 const open = ref(false);
-const userPicture = ref(loadImage(null));
+const userPicture = ref(loadImage());
 const closeModal = () => {
   open.value = !open.value;
 };
 
 const formatObject = (obj) =>
-  Object.entries(obj).map(([key, val]) => {
+  Object.entries(obj).map(([_key, val]) => {
     return { label: val, value: val };
   });
   
@@ -65,8 +65,7 @@ const handleUpload = (image) => {
       }"
       @submit="
         (formData) => {
-          console.log(formData)
-          createUser({...formData, picture: userPicture===loadImage(null)?'':userPicture});
+          createUser({...formData, picture: userPicture === loadImage() ? '' : userPicture });
           closeModal();
         }
       "

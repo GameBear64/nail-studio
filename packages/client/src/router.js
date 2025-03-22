@@ -27,6 +27,7 @@ const routes = [
     meta: { adminRoute: true },
     children: [
       { path: 'artists', name: 'artists', component: () => import('@pages/Admin/ArtistsPanel.vue') },
+      { path: 'procedures', name: 'procedures', component: () => import('@pages/Admin/ProcedurePanel.vue') },
       { path: 'galleries', name: 'galleries', component: () => import('@pages/Admin/GalleryPanel.vue') },
     ],
   },
