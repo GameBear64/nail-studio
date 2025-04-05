@@ -1,17 +1,15 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 
 import Select from '@components/Select.vue';
 
-import { data, readAllArtists } from '@api/artists';
-
-readAllArtists();
+import { data } from '@api/artists';
 
 const artistOptions = computed(() =>
   data.value?.map((artist) => ({ label: artist.name, picture: artist.picture, value: artist._id })),
 );
 
-const selectedOption = ref(null);
+const selectedOption = defineModel()
 </script>
 
 <template>

@@ -2,10 +2,9 @@
 import { useAttrs } from 'vue';
 
 const props = defineProps(['options', 'errors']);
-const model = defineModel();
+const model = defineModel(); // should be an array for multiselect
 const attrs = useAttrs();
 const label = attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1);
-// optionsElement()
 </script>
 
 <template>

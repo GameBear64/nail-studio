@@ -1,10 +1,11 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import joi from 'joi';
 
 import Form from '@components/Form/Form.vue';
 import Input from '@components/Form/Input.vue';
 import MediaInput from '@components/Form/MediaInput.vue';
+import MultiSelect from '@components/Form/MultiSelect.vue';
 import SelectInput from '@components/Form/SelectInput.vue';
 import Icon from '@components/Icon.vue';
 import Modal from '@components/Modal.vue';
@@ -21,10 +22,7 @@ const closeModal = () => {
   open.value = !open.value;
 };
 
-const formatObject = (obj) =>
-  Object.entries(obj).map(([key, val]) => {
-    return { label: val, value: val };
-  });
+const formattedShifts = Object.entries(Shifts).map(([_key, val]) => ({ label: val, value: val }));
 
 const handleUpload = (image) => {
   useFetch({ url: 'resource', method: 'POST', body: { data: image } }).then((id) => {
@@ -54,8 +52,9 @@ const handleUpload = (image) => {
         picture: joi.required(),
         biography: joi.string(),
         yearsExperience: joi.number().required(),
-        shift: joi.string(),
-        role: joi.string(),
+        shift: joi.string().required(),
+        // procedures: joi.string().required(),
+        role: joi.string().required(),
       }"
       @submit="
         (formData) => {
@@ -103,12 +102,13 @@ const handleUpload = (image) => {
             name="shift"
             :errors="errors?.shift"
             :model-value="props.data.shift"
-            :options="formatObject(Shifts)"
+            :options="formattedShifts"
           />
-          <SelectInput
+          <!-- <MultiSelect
             name="procedures"
-            :options="[]"
-          />
+            :errors="errors?.procedures"
+            :options="formattedProcedures"
+          /> -->
           <SelectInput
             name="role"
             :errors="errors?.role"

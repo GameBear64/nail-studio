@@ -5,6 +5,7 @@ import UpdateUserModal from '@components/Admin/Artists/UpdateUserModal.vue';
 import Table from '@components/Table.vue';
 
 import { data, loadImage, readAllArtists } from '@api/artists';
+import { readAllProcedures } from '@api/procedures';
 
 const headers = [
   { title: 'Image', key: 'image' },
@@ -15,6 +16,7 @@ const headers = [
 ];
 
 readAllArtists();
+readAllProcedures();
 </script>
 
 <template>

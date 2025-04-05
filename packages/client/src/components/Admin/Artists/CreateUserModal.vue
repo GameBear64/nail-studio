@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { computed,ref } from 'vue';
 import joi from 'joi';
 
 import Form from '@components/Form/Form.vue';
@@ -20,10 +20,7 @@ const closeModal = () => {
   open.value = !open.value;
 };
 
-const formatObject = (obj) =>
-  Object.entries(obj).map(([_key, val]) => {
-    return { label: val, value: val };
-  });
+const formattedShifts = Object.entries(Shifts).map(([_key, val]) => ({ label: val, value: val }));
   
 const handleUpload = (image) => {
   useFetch({ url: 'resource', method: 'POST', body: { data: image } }).then((id) => {
@@ -103,11 +100,7 @@ const handleUpload = (image) => {
           <SelectInput
             name="shift"
             :errors="errors?.shift"
-            :options="formatObject(Shifts)"
-          />
-          <SelectInput
-            name="procedures"
-            :options="[]"
+            :options="formattedShifts"
           />
           <SelectInput
             name="role"

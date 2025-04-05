@@ -4,7 +4,7 @@ import joi from 'joi';
 
 const props = defineProps(['rules']);
 const emit = defineEmits(['submit']);
-const error = ref(null);
+const error = ref(null); // provide and inject
 
 const schema = joi.object(props.rules);
 
