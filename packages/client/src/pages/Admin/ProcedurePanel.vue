@@ -2,7 +2,7 @@
 import CreateProceduresModal from '@components/Admin/Procedures/CreateProceduresModal.vue';
 import DeleteProceduresModal from '@components/Admin/Procedures/DeleteProceduresModal.vue';
 import UpdateProceduresModal from '@components/Admin/Procedures/UpdateProceduresModal.vue';
-import Table from '@components/Table/Table.vue';
+import Table from '@components/Table.vue';
 
 import { data, readAllProcedures } from '@api/procedures';
 

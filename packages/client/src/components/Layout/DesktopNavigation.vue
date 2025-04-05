@@ -4,9 +4,9 @@ import { useRouter } from 'vue-router';
 
 import { onClickOutside } from '@vueuse/core';
 
-import Dropdown from '@components/Dropdown.vue';
 import Icon from '@components/Icon.vue';
-import Logo from '@components/Logo.vue';
+import Dropdown from '@components/Layout/Dropdown.vue';
+import Logo from '@components/Layout/Logo.vue';
 
 import { userStore } from '@store/userStore';
 

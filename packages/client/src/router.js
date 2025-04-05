@@ -7,6 +7,14 @@ import { UserRoles } from './toolbox/consts';
 
 const routes = [
   {
+    path: '/',
+    component: () => import('@pages/Home.vue'),
+  },
+  {
+    path: '/book',
+    component: () => import('@pages/Booking.vue'),
+  },
+  {
     path: '/login',
     component: () => import('@pages/Login.vue'),
     meta: { guestRoute: true },
@@ -15,10 +23,6 @@ const routes = [
     path: '/register',
     component: () => import('@pages/Register.vue'),
     meta: { guestRoute: true },
-  },
-  {
-    path: '/',
-    component: () => import('@pages/Home.vue'),
   },
   {
     path: '/admin',

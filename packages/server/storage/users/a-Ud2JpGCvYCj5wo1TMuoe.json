@@ -3,7 +3,7 @@
   "email": "alina@gmail.com",
   "biography": "hiii",
   "yearsExperience": 2,
-  "picture": "",
+  "picture": "4d079c",
   "gallery": [],
   "phone": 8888888888,
   "password": "$2a$10$mCZO/PXQ/cGRP4DO7qpauOGSDpjG5Kmj0xKMisbxXv9Dw795kHmwi",
@@ -13,5 +13,5 @@
   "bookings": [],
   "passwordChangedAt": 1740387877422,
   "created_at": 1740387878422,
-  "updated_at": 1740387878422
+  "updated_at": 1743450724002
 }

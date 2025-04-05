@@ -1,8 +1,8 @@
 <script setup>
+import Banner from '@components/Home/Banner.vue';
+import BestArtists from '@components/Home/BestArtists.vue';
+import Showcase from '@components/Home/Showcase.vue';
 import Footer from '@components/Layout/Footer.vue';
-import Banner from '@partials/Home/Banner.vue';
-import BestArtists from '@partials/Home/BestArtists.vue';
-import Showcase from '@partials/Home/Showcase.vue';
 </script>
 
 <template>

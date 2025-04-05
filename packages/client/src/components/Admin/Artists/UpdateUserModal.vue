@@ -16,6 +16,7 @@ import { loadImage, updateUser } from '@api/artists';
 const props = defineProps(['data']);
 const open = ref(false);
 const userPicture = ref(loadImage(props.data.picture));
+
 const closeModal = () => {
   open.value = !open.value;
 };
@@ -27,7 +28,7 @@ const formatObject = (obj) =>
 
 const handleUpload = (image) => {
   useFetch({ url: 'resource', method: 'POST', body: { data: image } }).then((id) => {
-    userPicture.value = id.path;
+    userPicture.value = id;
   });
 };
 </script>

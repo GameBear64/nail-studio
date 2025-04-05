@@ -7,7 +7,7 @@ const props = defineProps(['data']);
     <div class="flex flex-col items-center gap-2">
       <div class="size-44 rounded-lg p-2 shadow-[inset_0px_0px_37px_50px_rgba(236,_72,_153,_0.15)] sm:size-52">
         <img
-          :src="'/api/resource/' + props.data?.image"
+          :src="'/api/resource/' + props.data?.picture"
           alt="image"
           class="size-40 rounded object-cover sm:size-full"
         >
@@ -24,30 +24,32 @@ const props = defineProps(['data']);
             v-i18n
             class="text-sm text-gray-500"
           >
-            5 years of experience
+            {{ props.data.yearsExperience }} years of experience
           </p>
         </div>
         <p
           v-i18n
           class="sm:text-md line-clamp-[3] max-h-28 text-center text-sm"
         >
-          {{ props.data?.description }}
+          {{ props.data?.biography }}
         </p>
       </div>
     </div>
-    <div class="my-2 flex flex-row justify-center gap-6">
-      <button
-        v-i18n
-        class="btn-outlined sm:text-md text-sm"
-      >
-        Book me
-      </button>
-      <button
-        v-i18n
-        class="btn-outlined sm:text-md text-sm"
-      >
-        See more
-      </button>
-    </div>
+    <slot name="buttons">
+      <div class="my-2 flex flex-row justify-center gap-6">
+        <button
+          v-i18n
+          class="btn-outlined sm:text-md text-sm"
+        >
+          Book me
+        </button>
+        <button
+          v-i18n
+          class="btn-outlined sm:text-md text-sm"
+        >
+          See more
+        </button>
+      </div>
+    </slot>
   </div>
 </template>

@@ -20,18 +20,27 @@ const actions = [
   {
     icon: 'badge',
     name: 'Admin Panel',
-    action: () => router.push({ name: 'artists' }),
+    action: () => {
+      router.push({ name: 'artists' })
+      isOpen.value = false
+    },
     mobileHide: true,
     requiredRole: UserRoles.ADMIN,
   },
   {
     icon: 'person',
     name: 'Profile',
+    action: () => {
+      isOpen.value = false
+    },
     requiredRole: UserRoles.USER,
   },
   {
     icon: 'calendar_today',
     name: 'Appointments',
+    action: () => {
+      isOpen.value = false
+    },
     requiredRole: UserRoles.USER,
   },
   {
@@ -43,6 +52,9 @@ const actions = [
   {
     icon: 'settings',
     name: 'Settings',
+    action: () => {
+      isOpen.value = false
+    },
     requiredRole: UserRoles.USER,
   },
   {
@@ -54,6 +66,7 @@ const actions = [
         removeUserData();
         router.push('/login');
       });
+      isOpen.value = false
     },
   },
 ];
@@ -62,17 +75,26 @@ const adminActions = [
   {
     icon: 'badge',
     name: 'Artists',
-    action: () => router.push({ name: 'artists' }),
+    action: () => {
+      router.push({ name: 'artists' })
+      isOpen.value = false
+    },
   },
   {
     icon: 'badge',
     name: 'Procedure',
-    action: () => router.push({ name: 'procedures' }),
+    action: () => {
+      router.push({ name: 'procedures' })
+      isOpen.value = false
+    },
   },
   {
     icon: 'photo_library',
     name: 'Galleries',
-    action: () => router.push({ name: 'galleries' }),
+    action: () => {
+      router.push({ name: 'galleries' })
+      isOpen.value = false
+    },
   },
 ];
 

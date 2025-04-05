@@ -3,7 +3,7 @@ import { computed, inject } from 'vue';
 import { useRouter } from 'vue-router';
 
 import Icon from '@components/Icon.vue';
-import Logo from '@components/Logo.vue';
+import Logo from '@components/Layout/Logo.vue';
 
 import { UserRoles } from '@tools/consts';
 import { userStore } from '@store/userStore';

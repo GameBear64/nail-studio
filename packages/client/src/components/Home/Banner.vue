@@ -1,5 +1,5 @@
 <script setup>
-import Shape from '@partials/Home/Shape.vue';
+import Shape from '@components/Home/Shape.vue';
 
 import { leafs } from '@tools/consts';
 </script>

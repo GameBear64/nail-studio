@@ -2,9 +2,9 @@
 import CreateUserModal from '@components/Admin/Artists/CreateUserModal.vue';
 import DeleteUserModal from '@components/Admin/Artists/DeleteUserModal.vue';
 import UpdateUserModal from '@components/Admin/Artists/UpdateUserModal.vue';
-import Table from '@components/Table/Table.vue';
+import Table from '@components/Table.vue';
 
-import { data, loadImage,readAllArtists } from '@api/artists';
+import { data, loadImage, readAllArtists } from '@api/artists';
 
 const headers = [
   { title: 'Image', key: 'image' },
