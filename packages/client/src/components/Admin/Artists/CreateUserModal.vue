@@ -1,5 +1,5 @@
 <script setup>
-import { computed,ref } from 'vue';
+import { ref } from 'vue';
 import joi from 'joi';
 
 import Form from '@components/Form/Form.vue';
@@ -101,12 +101,6 @@ const handleUpload = (image) => {
             name="shift"
             :errors="errors?.shift"
             :options="formattedShifts"
-          />
-          <SelectInput
-            name="role"
-            model-value="artist"
-            :errors="errors?.role"
-            :options="[{ label: 'artist', value: 'artist'}]"
           />
         </div>
       </div>

@@ -1,7 +1,18 @@
 <script setup>
- const procedures = defineModel()
+import { computed } from 'vue';
+
+import MultiSelect from '@components/MultiSelect.vue';
+
+import { data } from '@api/procedures';
+
+const selectedOption = defineModel()
+
+const procedures = computed(() => data.value.map((p) => ({label: p.name, value: p._id})))
 </script>
 
 <template>
-  procedures
+  <MultiSelect
+    v-model="selectedOption"
+    :options="procedures"
+  />
 </template>

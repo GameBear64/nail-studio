@@ -6,8 +6,10 @@ import Date from '@components/Booking/Date.vue';
 import Procedures from '@components/Booking/Procedures.vue';
 
 import { readAllArtists } from '@api/artists';
+import { readAllProcedures } from '@api/procedures';
 
 readAllArtists();
+readAllProcedures();
 
 const booking = reactive({
   artist: null,
@@ -18,12 +20,15 @@ const booking = reactive({
 </script>
 
 <template>
-  {{ booking.artist }}
+  {{ booking.procedures }}
 
   <Artists v-model="booking.artist" />
   <Procedures
-    v-model="booking.artist"
-    :artist="booking.procedures"
+    v-if="booking?.artist"
+    v-model="booking.procedures"
   />
-  <Date />
+  <Date
+    v-if="booking?.procedures?.length > 0"
+    v-model="booking.date"
+  />
 </template>

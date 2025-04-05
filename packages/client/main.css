@@ -37,9 +37,9 @@
   }
 
   textarea,
-  input:not([type='file']),
+  input:not([type='file']):not([type='checkbox']),
   select {
-    @apply rounded bg-base-m text-txtPrimary h-10 px-2 w-full border border-base-s focus:border-pink-500 focus:outline-none;
+    @apply rounded bg-base-m text-txtPrimary h-10 px-2 w-full border border-base-s hover:border-pink-500 focus:border-pink-500 focus:outline-none;
   }
 
   textarea {

@@ -1,11 +1,10 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import joi from 'joi';
 
 import Form from '@components/Form/Form.vue';
 import Input from '@components/Form/Input.vue';
 import MediaInput from '@components/Form/MediaInput.vue';
-import MultiSelect from '@components/Form/MultiSelect.vue';
 import SelectInput from '@components/Form/SelectInput.vue';
 import Icon from '@components/Icon.vue';
 import Modal from '@components/Modal.vue';
@@ -109,12 +108,6 @@ const handleUpload = (image) => {
             :errors="errors?.procedures"
             :options="formattedProcedures"
           /> -->
-          <SelectInput
-            name="role"
-            :errors="errors?.role"
-            :model-value="props.data.role"
-            :options="[{ label: 'artist', value: 'artist'}]"
-          />
         </div>
       </div>
     </Form>

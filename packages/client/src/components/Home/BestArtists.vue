@@ -1,6 +1,6 @@
 <script setup>
 import ArtistCart from '@components/Home/ArtistCard.vue';
-import Swiper from '@components/Layout/Swiper.vue';
+import Swiper from '@components/Swiper.vue';
 
 import { data, readAllArtists } from '@api/artists';
 

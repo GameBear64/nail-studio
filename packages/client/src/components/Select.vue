@@ -19,9 +19,9 @@ const selectOption = (option) => {
 </script>
 
 <template>
-  <div class="relative w-full">
+  <div class="border-base-s relative w-full rounded border hover:border-pink-500">
     <button
-      class="w-full rounded-md border px-4 py-2 focus:outline-none"
+      class="bg-base-m w-full rounded-md border px-4 py-2 focus:outline-none"
       @click="isOpen = !isOpen"
     >
       <slot
@@ -33,7 +33,7 @@ const selectOption = (option) => {
     </button>
     <div
       v-if="isOpen"
-      class="absolute mt-2 w-full rounded-md border bg-white shadow-lg"
+      class="bg-base-m absolute mt-2 w-full rounded-md border shadow-lg"
     >
       <slot
         name="options"
