@@ -44,12 +44,10 @@ const openIcon = computed(() => (isOpen.value ? 'close' : 'menu'));
             v-for="navigation in props.navigations"
             :key="navigation.name"
             class="flex cursor-pointer flex-row items-center gap-2 rounded px-1 py-2 hover:bg-pink-100 hover:text-pink-600"
+            :onclick="() => router.push(navigation.location)"
           >
             <Icon :icon="navigation.icon" />
-            <p
-              v-i18n
-              :onclick="() => router.push(navigation.location)"
-            >
+            <p v-i18n>
               {{ navigation.name }}
             </p>
           </div>

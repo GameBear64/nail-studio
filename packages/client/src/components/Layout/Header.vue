@@ -21,7 +21,7 @@ const actions = [
     icon: 'badge',
     name: 'Admin Panel',
     action: () => {
-      router.push({ name: 'artists' })
+      router.push({ name: 'admin/artists' })
       isOpen.value = false
     },
     mobileHide: true,
@@ -76,7 +76,7 @@ const adminActions = [
     icon: 'badge',
     name: 'Artists',
     action: () => {
-      router.push({ name: 'artists' })
+      router.push({ name: 'admin/artists' })
       isOpen.value = false
     },
   },
@@ -84,24 +84,24 @@ const adminActions = [
     icon: 'badge',
     name: 'Procedure',
     action: () => {
-      router.push({ name: 'procedures' })
+      router.push({ name: 'admin/procedures' })
       isOpen.value = false
     },
   },
-  {
-    icon: 'photo_library',
-    name: 'Galleries',
-    action: () => {
-      router.push({ name: 'galleries' })
-      isOpen.value = false
-    },
-  },
+  // {
+  //   icon: 'photo_library',
+  //   name: 'Galleries',
+  //   action: () => {
+  //     router.push({ name: 'galleries' })
+  //     isOpen.value = false
+  //   },
+  // },
 ];
 
 const navigations = [
   { name: 'Home', icon: 'cottage', location: '/' },
-  { name: 'Artists', icon: 'groups', location: '' },
-  { name: 'Book', icon: 'checkbook', location: '' },
+  { name: 'Artists', icon: 'groups', location: '/artists' },
+  { name: 'Book', icon: 'checkbook', location: '/book' },
 ];
 </script>
 

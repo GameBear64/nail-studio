@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 
 const db = require('../_database');
-const { UserRoles, Shifts } = require('../../toolbox/consts');
+const { UserRoles } = require('../../toolbox/consts');
 
 const artistSchema = db.get('users').schema(
   {
@@ -46,16 +46,16 @@ const artistSchema = db.get('users').schema(
       enum: Object.values(UserRoles),
       default: UserRoles.ARTIST,
     },
-    procedures: {
-      type: Array,
-      default: [],
-      populate: true,
-    },
-    shift: {
-      type: String,
-      enum: Object.values(Shifts),
-      default: Shifts.FULL,
-    },
+    // procedures: {
+    //   type: Array,
+    //   default: [],
+    //   populate: true,
+    // },
+    // shift: {
+    //   type: String,
+    //   enum: Object.values(Shifts),
+    //   default: Shifts.FULL,
+    // },
     bookings: {
       type: Array,
       default: [],

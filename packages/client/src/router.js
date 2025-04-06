@@ -7,12 +7,10 @@ import { UserRoles } from './toolbox/consts';
 
 const routes = [
   {
+    name: 'home',
     path: '/',
     component: () => import('@pages/Home.vue'),
-  },
-  {
-    path: '/book',
-    component: () => import('@pages/Booking.vue'),
+    meta: { guestRoute: true },
   },
   {
     path: '/login',
@@ -25,14 +23,32 @@ const routes = [
     meta: { guestRoute: true },
   },
   {
+    name: 'artist',
+    path: '/artist/:id',
+    component: () => import('@pages/Artist.vue'),
+    meta: { guestRoute: true },
+  },
+  {
+    name: 'artists',
+    path: '/artists',
+    component: () => import('@pages/ArtistList.vue'),
+    meta: { guestRoute: true },
+  },
+  {
+    name: 'book',
+    path: '/book',
+    // idea: options in query params to preselect option
+    component: () => import('@pages/Booking.vue'),
+  },
+  {
     path: '/admin',
     redirect: () => '/admin/artists',
     component: () => import('@pages/AdminPanel.vue'),
     meta: { adminRoute: true },
     children: [
-      { path: 'artists', name: 'artists', component: () => import('@pages/Admin/ArtistsPanel.vue') },
-      { path: 'procedures', name: 'procedures', component: () => import('@pages/Admin/ProcedurePanel.vue') },
-      { path: 'galleries', name: 'galleries', component: () => import('@pages/Admin/GalleryPanel.vue') },
+      { path: 'artists', name: 'admin/artists', component: () => import('@pages/Admin/ArtistsPanel.vue') },
+      { path: 'procedures', name: 'admin/procedures', component: () => import('@pages/Admin/ProcedurePanel.vue') },
+      // { path: 'galleries', name: 'galleries', component: () => import('@pages/Admin/GalleryPanel.vue') },
     ],
   },
 ];
@@ -45,9 +61,10 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
   if (!userStore.id) await setUserData();
+
   if (!userStore.id && !to.meta?.guestRoute) return { path: '/login' };
   if (userStore.id && to.meta?.adminRoute && userStore.role !== UserRoles.ADMIN) return { path: '/' };
-  if (userStore.id && to.meta?.guestRoute) return { path: '/' };
+  // if (userStore.id && to.meta?.guestRoute) return { path: '/' };
 });
 
 export default router;

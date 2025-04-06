@@ -1,5 +1,9 @@
 <script setup>
+import { useRouter } from 'vue-router';
+
 const props = defineProps(['data']);
+
+const router = useRouter();
 </script>
 
 <template>
@@ -40,12 +44,14 @@ const props = defineProps(['data']);
         <button
           v-i18n
           class="btn-outlined sm:text-md text-sm"
+          @click="router.push({ name: 'book'})"
         >
           Book me
         </button>
         <button
           v-i18n
           class="btn-outlined sm:text-md text-sm"
+          @click="router.push({ name: 'artist', params: { id: props.data._id } })"
         >
           See more
         </button>

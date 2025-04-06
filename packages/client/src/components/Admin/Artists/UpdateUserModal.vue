@@ -51,7 +51,7 @@ const handleUpload = (image) => {
         picture: joi.required(),
         biography: joi.string(),
         yearsExperience: joi.number().required(),
-        shift: joi.string().required(),
+        // shift: joi.string().required(),
         // procedures: joi.string().required(),
         role: joi.string().required(),
       }"
@@ -97,12 +97,12 @@ const handleUpload = (image) => {
             :errors="errors?.phone"
             :model-value="props.data.phone"
           />
-          <SelectInput
+          <!-- <SelectInput
             name="shift"
             :errors="errors?.shift"
             :model-value="props.data.shift"
             :options="formattedShifts"
-          />
+          /> -->
           <!-- <MultiSelect
             name="procedures"
             :errors="errors?.procedures"

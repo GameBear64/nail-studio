@@ -10,7 +10,7 @@ const router = useRouter();
   <div class="relative flex flex-row overflow-hidden">
     <div class="hidden h-full w-56 flex-col divide-y rounded-b bg-white p-2 text-gray-600 shadow-sm shadow-gray-400 sm:flex">
       <div
-        :onclick="() => router.push({ name: 'artists' })"
+        :onclick="() => router.push({ name: 'admin/artists' })"
         class="flex cursor-pointer flex-row items-center gap-2 rounded px-2 py-3 text-center hover:bg-gray-100"
       >
         <Icon icon="badge" />
@@ -19,7 +19,7 @@ const router = useRouter();
         </p>
       </div>
       <div
-        :onclick="() => router.push({ name: 'procedures' })"
+        :onclick="() => router.push({ name: 'admin/procedures' })"
         class="flex cursor-pointer flex-row items-center gap-2 rounded px-2 py-3 text-center hover:bg-gray-100"
       >
         <Icon icon="badge" />
@@ -27,7 +27,7 @@ const router = useRouter();
           Procedures
         </p>
       </div>
-      <div
+      <!-- <div
         :onclick="() => router.push({ name: 'galleries' })"
         class="flex cursor-pointer flex-row items-center gap-2 rounded px-2 py-3 text-center hover:bg-gray-100"
       >
@@ -35,7 +35,7 @@ const router = useRouter();
         <p v-i18n>
           Galleries
         </p>
-      </div>
+      </div> -->
     </div>
     <div class="absolute left-0 flex w-screen flex-col items-center">
       <div class="h-1 w-full rounded-l-full bg-pink-400" />

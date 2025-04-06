@@ -33,15 +33,13 @@ onClickOutside(openRef, () => (isOpen.value = false));
         v-for="navigation in props.navigations"
         :key="navigation.name"
         class="flex cursor-pointer flex-row items-center gap-2 rounded-xl p-2 hover:bg-pink-100 hover:text-pink-600"
+        :onclick="() => router.push(navigation.location)"
       >
         <Icon
           clickable
           :icon="navigation.icon"
         />
-        <p
-          v-i18n
-          :onclick="() => router.push(navigation.location)"
-        >
+        <p v-i18n>
           {{ navigation.name }}
         </p>
       </div>
