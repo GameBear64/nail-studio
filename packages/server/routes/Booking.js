@@ -7,6 +7,10 @@ const bookingSchema = require('../database/BookingSchema');
 
 router
   .route('/')
+  .get((req, res) => {
+    const result = bookingSchema.find({ client: req.authUser.id });
+    res.status(200).json(result);
+  })
   .post(
     joiValidate({
       artist: joi.string().required(),

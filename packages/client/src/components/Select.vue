@@ -33,7 +33,7 @@ const selectOption = (option) => {
     </button>
     <div
       v-if="isOpen"
-      class="bg-base-m absolute mt-2 w-full rounded-md border shadow-lg"
+      class="bg-base-m absolute z-10 mt-2 w-full rounded-md border shadow-lg"
     >
       <slot
         name="options"

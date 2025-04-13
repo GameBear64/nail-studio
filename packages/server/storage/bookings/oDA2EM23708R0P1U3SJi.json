@@ -1,0 +1,12 @@
+{
+  "artist": "artist_id",
+  "client": "u-sJ0mZluP9M241TIjdS",
+  "date": 1739429899,
+  "procedures": [
+    "id1",
+    "id2",
+    "id3"
+  ],
+  "created_at": 1744533016078,
+  "updated_at": 1744533016078
+}

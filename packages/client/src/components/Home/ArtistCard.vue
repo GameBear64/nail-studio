@@ -7,7 +7,7 @@ const router = useRouter();
 </script>
 
 <template>
-  <div>
+  <div class="flex flex-col justify-between gap-2 rounded-lg border border-pink-200 bg-white py-5">
     <div class="flex flex-col items-center gap-2">
       <div class="size-44 rounded-lg p-2 shadow-[inset_0px_0px_37px_50px_rgba(236,_72,_153,_0.15)] sm:size-52">
         <img

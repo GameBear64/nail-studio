@@ -55,7 +55,7 @@ const handleUpload = (image) => {
         picture: joi.required(),
         biography: joi.string(),
         yearsExperience: joi.number().required(),
-        // shift: joi.string().required(),
+        shift: joi.string().required(),
         role: joi.string().required(),
         password:joi.string().min(8).required(),
         confirm_password:joi.valid(joi.ref('password')).messages({'any.only':'Passwords don\'t match'})
@@ -97,11 +97,11 @@ const handleUpload = (image) => {
             name="phone"
             :errors="errors?.phone"
           />
-          <!-- <SelectInput
+          <SelectInput
             name="shift"
             :errors="errors?.shift"
             :options="formattedShifts"
-          /> -->
+          />
         </div>
       </div>
       <PasswordInput

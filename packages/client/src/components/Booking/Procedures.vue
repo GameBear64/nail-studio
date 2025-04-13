@@ -7,7 +7,7 @@ import { data } from '@api/procedures';
 
 const selectedOption = defineModel()
 
-const procedures = computed(() => data.value.map((p) => ({label: p.name, value: p._id})))
+const procedures = computed(() => data.value.map((p) => ({label: `${p.name} (${p.price} лв)`, value: p._id, price: p.price})))
 </script>
 
 <template>

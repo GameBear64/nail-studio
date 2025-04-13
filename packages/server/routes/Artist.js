@@ -4,7 +4,7 @@ const joi = require('joi');
 
 const { joiValidate, skipIfNoChanges } = require('../middleware/validation');
 const { checkAdmin, checkAuth } = require('../middleware/auth');
-const { UserRoles } = require('../toolbox/consts');
+const { UserRoles, Shifts } = require('../toolbox/consts');
 const { omit } = require('../toolbox/utils');
 
 const { artist } = require('../database/UserSchema');
@@ -28,10 +28,10 @@ router
       gallery: joi.array().items(joi.string()).optional(),
       // procedures: joi.array().items(joi.string()).optional(),
       phone: joi.number().required(),
-      // shift: joi
-      //   .string()
-      //   .valid(...Object.values(Shifts))
-      //   .optional(),
+      shift: joi
+        .string()
+        .valid(...Object.values(Shifts))
+        .optional(),
       password: joi.string().min(8).max(255).required(),
       confirm_password: joi.string().valid(joi.ref('password')).required(),
     }),
@@ -64,10 +64,10 @@ router
       gallery: joi.array().items(joi.string()).optional(),
       // procedures: joi.array().items(joi.string()).optional(),
       phone: joi.number().optional(),
-      // shift: joi
-      //   .string()
-      //   .valid(...Object.values(Shifts))
-      //   .optional(),
+      shift: joi
+        .string()
+        .valid(...Object.values(Shifts))
+        .optional(),
     }),
     (req, res) => {
       const data = artist.update(req.params.id, req.body);

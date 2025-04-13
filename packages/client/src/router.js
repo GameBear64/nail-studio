@@ -35,6 +35,11 @@ const routes = [
     meta: { guestRoute: true },
   },
   {
+    name: 'appointments',
+    path: '/appointments',
+    component: () => import('@pages/Appointments.vue'),
+  },
+  {
     name: 'book',
     path: '/book',
     // idea: options in query params to preselect option

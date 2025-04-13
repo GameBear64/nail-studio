@@ -27,18 +27,19 @@ const actions = [
     mobileHide: true,
     requiredRole: UserRoles.ADMIN,
   },
-  {
-    icon: 'person',
-    name: 'Profile',
-    action: () => {
-      isOpen.value = false
-    },
-    requiredRole: UserRoles.USER,
-  },
+  // {
+  //   icon: 'person',
+  //   name: 'Profile',
+  //   action: () => {
+  //     isOpen.value = false
+  //   },
+  //   requiredRole: UserRoles.USER,
+  // },
   {
     icon: 'calendar_today',
     name: 'Appointments',
     action: () => {
+      router.push({ name: 'appointments' })
       isOpen.value = false
     },
     requiredRole: UserRoles.USER,
@@ -88,14 +89,6 @@ const adminActions = [
       isOpen.value = false
     },
   },
-  // {
-  //   icon: 'photo_library',
-  //   name: 'Galleries',
-  //   action: () => {
-  //     router.push({ name: 'galleries' })
-  //     isOpen.value = false
-  //   },
-  // },
 ];
 
 const navigations = [
