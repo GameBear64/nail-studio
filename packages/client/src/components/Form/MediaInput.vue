@@ -31,14 +31,14 @@ const processFile = (event) => {
       <img
         v-if="imgPreview && preview"
         :src="imgPreview"
-        class="my-2 max-h-60 max-w-72 rounded"
+        class="my-2 max-h-60 max-w-72 rounded-sm"
       >
     </label>
     <input
       :id="id"
       v-bind="$attrs"
       type="file"
-      class="bg-base-m text-txtPrimary border-base-s w-full cursor-pointer rounded border text-sm font-medium file:mr-4 file:cursor-pointer file:border-0 file:bg-pink-500 file:px-4 file:py-2 file:text-white focus:border-pink-500 focus:outline-none"
+      class="bg-base-m text-txtPrimary border-base-s w-full cursor-pointer rounded-sm border text-sm font-medium file:mr-4 file:cursor-pointer file:border-0 file:bg-pink-500 file:px-4 file:py-2 file:text-white focus:border-pink-500 focus:outline-hidden"
       @change="processFile"
     >
     <p class="mt-1 h-4 text-sm font-medium leading-none text-red-600">

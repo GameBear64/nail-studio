@@ -6,9 +6,9 @@ const props = defineProps(['data']);
 </script>
 
 <template>
-  <div class="flex w-screen flex-col gap-7 !py-10 sm:gap-8">
+  <div class="flex w-screen flex-col gap-7 py-10! sm:gap-8">
     <Swiper
-      class="!px-12 sm:!px-32"
+      class="px-12! sm:px-32!"
       thumbs-swiper=".my-thumbs"
       :loop="true"
       :modules="[Pagination, Navigation]"
@@ -27,7 +27,7 @@ const props = defineProps(['data']);
       <SwiperSlide
         v-for="el in props.data"
         :key="el"
-        class="!bg-transparent"
+        class="bg-transparent!"
       >
         <slot :data="el" />
       </SwiperSlide>

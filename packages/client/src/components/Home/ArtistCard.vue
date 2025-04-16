@@ -13,7 +13,7 @@ const router = useRouter();
         <img
           :src="'/api/resource/' + props.data?.picture"
           alt="image"
-          class="size-40 rounded object-cover sm:size-full"
+          class="size-40 rounded-sm object-cover sm:size-full"
         >
       </div>
       <div class="flex flex-col items-center gap-2 px-4">
@@ -33,7 +33,7 @@ const router = useRouter();
         </div>
         <p
           v-i18n
-          class="sm:text-md line-clamp-[3] max-h-28 text-center text-sm"
+          class="sm:text-md line-clamp-3 max-h-28 text-center text-sm"
         >
           {{ props.data?.biography }}
         </p>

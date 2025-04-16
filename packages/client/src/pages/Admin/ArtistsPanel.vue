@@ -35,7 +35,7 @@ readAllProcedures();
     >
       <template #image="{ row }">
         <img
-          class="size-10 rounded-sm object-cover"
+          class="size-10 rounded-xs object-cover"
           :src="loadImage(row.picture)"
           alt="image"
         >

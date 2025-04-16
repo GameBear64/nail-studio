@@ -26,7 +26,7 @@ const openIcon = computed(() => (isOpen.value ? 'close' : 'menu'));
       />
     </div>
     <div
-      :class="{ 'absolute h-full w-screen bg-black/30 backdrop-blur-sm': isOpen }"
+      :class="{ 'absolute h-full w-screen bg-black/30 backdrop-blur-xs': isOpen }"
       @click.self="() => (isOpen = false)"
     >
       <div
@@ -43,7 +43,7 @@ const openIcon = computed(() => (isOpen.value ? 'close' : 'menu'));
           <div
             v-for="navigation in props.navigations"
             :key="navigation.name"
-            class="flex cursor-pointer flex-row items-center gap-2 rounded px-1 py-2 hover:bg-pink-100 hover:text-pink-600"
+            class="flex cursor-pointer flex-row items-center gap-2 rounded-sm px-1 py-2 hover:bg-pink-100 hover:text-pink-600"
             :onclick="() => router.push(navigation.location)"
           >
             <Icon :icon="navigation.icon" />
@@ -64,7 +64,7 @@ const openIcon = computed(() => (isOpen.value ? 'close' : 'menu'));
             :key="option.name"
             :class="option.mobileHide ? 'hidden' : 'flex'"
             :onclick="option?.action"
-            class="cursor-pointer flex-row items-center gap-2 rounded px-1 py-2 hover:bg-pink-100 hover:text-pink-600"
+            class="cursor-pointer flex-row items-center gap-2 rounded-sm px-1 py-2 hover:bg-pink-100 hover:text-pink-600"
           >
             <Icon :icon="option.icon" />
             <p v-i18n>
@@ -86,7 +86,7 @@ const openIcon = computed(() => (isOpen.value ? 'close' : 'menu'));
             v-for="option in props.adminActions"
             :key="option.name"
             :onclick="option?.action"
-            class="flex cursor-pointer flex-row items-center gap-2 rounded px-1 py-2 hover:bg-pink-100 hover:text-pink-600"
+            class="flex cursor-pointer flex-row items-center gap-2 rounded-sm px-1 py-2 hover:bg-pink-100 hover:text-pink-600"
           >
             <Icon :icon="option.icon" />
             <p v-i18n>

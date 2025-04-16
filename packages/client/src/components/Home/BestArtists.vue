@@ -8,9 +8,9 @@ readAllArtists();
 </script>
 
 <template>
-  <div class="min-h-1 bg-gradient-to-r from-pink-200 to-pink-50" />
+  <div class="min-h-1 bg-linear-to-r from-pink-200 to-pink-50" />
   <div
-    class="flex w-screen flex-col gap-1 bg-gradient-to-t from-pink-200 to-white !py-10"
+    class="flex w-screen flex-col gap-1 bg-linear-to-t from-pink-200 to-white py-10!"
   >
     <div>
       <div class="flex flex-col items-center justify-center gap-1 text-center">
@@ -35,5 +35,5 @@ readAllArtists();
       <ArtistCart :data="slotProps.data" />
     </Swiper>
   </div>
-  <div class="min-h-1 w-screen bg-gradient-to-r from-pink-300 to-pink-50" />
+  <div class="min-h-1 w-screen bg-linear-to-r from-pink-300 to-pink-50" />
 </template>

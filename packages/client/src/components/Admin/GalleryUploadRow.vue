@@ -28,10 +28,10 @@ const props = defineProps(['images', 'loading']);
     >
       <img
         :src="`/api/resource/${image}?size=300`"
-        class="max-h-60 max-w-72 rounded"
+        class="max-h-60 max-w-72 rounded-sm"
       >
       <div
-        class="absolute right-1 top-1 flex size-10 cursor-pointer items-center justify-center rounded border border-red-300 bg-red-500"
+        class="absolute right-1 top-1 flex size-10 cursor-pointer items-center justify-center rounded-sm border border-red-300 bg-red-500"
         @click="emit('delete', image)"
       >
         <Icon

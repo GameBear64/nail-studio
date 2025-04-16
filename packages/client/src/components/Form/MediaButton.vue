@@ -28,7 +28,7 @@
 
 <template>
   <div class="flex flex-col items-center">
-    <div class="flex h-60 w-72 items-center justify-center rounded border-2 border-dashed border-pink-500">
+    <div class="flex h-60 w-72 items-center justify-center rounded-sm border-2 border-dashed border-pink-500">
       <label :for="id">
         <div class="flex size-20 cursor-pointer items-center justify-center rounded-full bg-pink-500">
           <Icon

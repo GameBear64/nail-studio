@@ -19,9 +19,9 @@ const selectOption = (option) => {
 </script>
 
 <template>
-  <div class="border-base-s relative w-full rounded border hover:border-pink-500">
+  <div class="border-base-s relative w-full rounded-sm border hover:border-pink-500">
     <button
-      class="bg-base-m w-full rounded-md border px-4 py-2 focus:outline-none"
+      class="bg-base-m w-full rounded-md border px-4 py-2 focus:outline-hidden"
       @click="isOpen = !isOpen"
     >
       <slot
