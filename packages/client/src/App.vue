@@ -24,7 +24,7 @@ const route = useRoute();
   >
     <div
       id="teleport-target"
-      class="z-100"
+      class="z-[100]"
     />
     <Header v-if="!route.meta.guestRoute || userStore?.id" />
     <RouterView

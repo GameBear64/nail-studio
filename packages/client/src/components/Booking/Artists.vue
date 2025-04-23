@@ -26,7 +26,7 @@ const selectedOption = defineModel()
           <img
             :src="'/api/resource/' + selected.picture + '?size=50'"
             alt="image"
-            class="size-10! rounded-sm object-cover sm:size-full"
+            class="!size-10 rounded object-cover sm:size-full"
           >
           <span>{{ selected.label }}</span>
         </span>
@@ -48,7 +48,7 @@ const selectedOption = defineModel()
         <img
           :src="'/api/resource/' + option.picture + '?size=50'"
           alt="image"
-          class="size-10! rounded-sm object-cover sm:size-full"
+          class="!size-10 rounded object-cover sm:size-full"
         >
         <span>{{ option.label }}</span>
       </div>

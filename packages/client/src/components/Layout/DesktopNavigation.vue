@@ -51,7 +51,7 @@ onClickOutside(openRef, () => (isOpen.value = false));
       <Icon
         icon="person"
         clickable
-        class="rounded-sm bg-pink-400 p-1 text-white"
+        class="rounded bg-pink-400 p-1 text-white"
         @click="() => (isOpen = !isOpen)"
       />
       <div class="relative flex justify-end">

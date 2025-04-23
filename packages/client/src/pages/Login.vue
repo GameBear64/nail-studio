@@ -21,7 +21,7 @@ const login = (data) => {
 </script>
 
 <template>
-  <div class="flex h-full max-w-full items-center justify-center bg-linear-to-r from-purple-400 to-pink-400">
+  <div class="flex h-full max-w-full items-center justify-center bg-gradient-to-r from-purple-400 to-pink-400">
     <LocaleButton class="absolute right-3 top-3" />
     <div class="card flex flex-col gap-5 p-10 text-center">
       <div>

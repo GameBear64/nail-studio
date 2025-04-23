@@ -6,7 +6,7 @@ const props = defineProps(['headers', 'data']);
   <div class="overflow-auto">
     <table class="w-full border bg-white">
       <thead>
-        <tr class="sticky -top-1 rounded-sm bg-gray-100 text-gray-600">
+        <tr class="sticky -top-1 rounded bg-gray-100 text-gray-600">
           <th
             v-for="tableHeader in props.headers"
             :key="tableHeader.key"

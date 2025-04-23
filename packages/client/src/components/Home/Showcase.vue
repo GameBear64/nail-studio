@@ -17,7 +17,7 @@ useFetch({ url: 'gallery/' + props.group }).then(imgs => { images.value = imgs }
       v-for="image in images"
       :key="image"
       :src="`/api/resource/${image}?size=300`"
-      class="max-h-60 max-w-72 rounded-sm"
+      class="max-h-60 max-w-72 rounded"
     >
   </div>
 </template>

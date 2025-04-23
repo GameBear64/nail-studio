@@ -27,14 +27,14 @@ const actions = [
     mobileHide: true,
     requiredRole: UserRoles.ADMIN,
   },
-  {
-    icon: 'person',
-    name: 'Profile',
-    action: () => {
-      isOpen.value = false
-    },
-    requiredRole: UserRoles.ARTIST,
-  },
+  // {
+  //   icon: 'person',
+  //   name: 'Profile',
+  //   action: () => {
+  //     isOpen.value = false
+  //   },
+  //   requiredRole: UserRoles.USER,
+  // },
   {
     icon: 'calendar_today',
     name: 'Appointments',
@@ -50,14 +50,14 @@ const actions = [
     requiredRole: UserRoles.USER,
     action: () => bgEnToggle(),
   },
-  // {
-  //   icon: 'settings',
-  //   name: 'Settings',
-  //   action: () => {
-  //     isOpen.value = false
-  //   },
-  //   requiredRole: UserRoles.USER,
-  // },
+  {
+    icon: 'settings',
+    name: 'Settings',
+    action: () => {
+      isOpen.value = false
+    },
+    requiredRole: UserRoles.USER,
+  },
   {
     icon: 'logout',
     name: 'Logout',

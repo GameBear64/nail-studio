@@ -4,7 +4,7 @@ const props = defineProps(['size']);
 
 <template>
   <svg
-    class="absolute w-full blur-xs"
+    class="absolute w-full blur-sm"
     viewBox="0 0 200 200"
     :class="props.size"
   >

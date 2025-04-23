@@ -79,7 +79,7 @@ function nextDay() {
 </script>
 
 <template>
-  <div class="w-full max-w-xl rounded-lg bg-white p-4 shadow-sm">
+  <div class="w-full max-w-xl rounded-lg bg-white p-4 shadow">
     <!-- Date Navigation -->
     <div class="mb-4 flex items-center justify-between">
       <button
@@ -105,7 +105,7 @@ function nextDay() {
         :key="i"
         :disabled=" slot.isBooked"
         :class="[
-          'rounded-sm border px-4 py-2 text-sm transition',
+          'rounded border px-4 py-2 text-sm transition',
           slot.isBooked ? 'cursor-not-allowed bg-gray-300' :
           slot.timestamp === selected ? 'bg-pink-500 text-white' : 'bg-white hover:bg-pink-100'
         ]"
