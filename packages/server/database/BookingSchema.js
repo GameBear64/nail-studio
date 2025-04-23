@@ -4,12 +4,12 @@ const bookingSchema = db.get('bookings').schema(
   {
     artist: {
       type: String,
-      populate: 'users',
+      populate: true,
       required: true,
     },
     client: {
       type: String,
-      populate: 'users',
+      populate: true,
       required: true,
     },
     date: {

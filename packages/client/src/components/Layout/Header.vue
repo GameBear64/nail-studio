@@ -36,7 +36,7 @@ const actions = [
       router.push('/user/' + userStore?.id);
       isOpen.value = false;
     },
-    requiredRole: UserRoles.USER,
+    requiredRole: UserRoles.ARTIST,
   },
   {
     icon: 'calendar_today',
