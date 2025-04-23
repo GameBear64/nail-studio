@@ -1,5 +1,5 @@
 <script setup>
-import { provide, ref } from 'vue'
+import { provide, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 import DesktopNavigation from '@components/Layout/DesktopNavigation.vue';
@@ -10,9 +10,11 @@ import useFetch from '@tools/useFetch';
 import { bgEnToggle } from '@store/translationStore';
 import { removeUserData } from '@store/userStore';
 
-const isOpen = ref(false)
+import { userStore } from '../../toolbox/stores/userStore';
 
-provide('isOpen', isOpen)
+const isOpen = ref(false);
+
+provide('isOpen', isOpen);
 
 const router = useRouter();
 
@@ -21,26 +23,27 @@ const actions = [
     icon: 'badge',
     name: 'Admin Panel',
     action: () => {
-      router.push({ name: 'admin/artists' })
-      isOpen.value = false
+      router.push({ name: 'admin/artists' });
+      isOpen.value = false;
     },
     mobileHide: true,
     requiredRole: UserRoles.ADMIN,
   },
-  // {
-  //   icon: 'person',
-  //   name: 'Profile',
-  //   action: () => {
-  //     isOpen.value = false
-  //   },
-  //   requiredRole: UserRoles.USER,
-  // },
+  {
+    icon: 'person',
+    name: 'Profile',
+    action: () => {
+      router.push('/user/' + userStore?.id);
+      isOpen.value = false;
+    },
+    requiredRole: UserRoles.USER,
+  },
   {
     icon: 'calendar_today',
     name: 'Appointments',
     action: () => {
-      router.push({ name: 'appointments' })
-      isOpen.value = false
+      router.push({ name: 'appointments' });
+      isOpen.value = false;
     },
     requiredRole: UserRoles.USER,
   },
@@ -50,14 +53,14 @@ const actions = [
     requiredRole: UserRoles.USER,
     action: () => bgEnToggle(),
   },
-  {
-    icon: 'settings',
-    name: 'Settings',
-    action: () => {
-      isOpen.value = false
-    },
-    requiredRole: UserRoles.USER,
-  },
+  // {
+  //   icon: 'settings',
+  //   name: 'Settings',
+  //   action: () => {
+  //     isOpen.value = false;
+  //   },
+  //   requiredRole: UserRoles.USER,
+  // },
   {
     icon: 'logout',
     name: 'Logout',
@@ -67,7 +70,7 @@ const actions = [
         removeUserData();
         router.push('/login');
       });
-      isOpen.value = false
+      isOpen.value = false;
     },
   },
 ];
@@ -77,16 +80,26 @@ const adminActions = [
     icon: 'badge',
     name: 'Artists',
     action: () => {
-      router.push({ name: 'admin/artists' })
-      isOpen.value = false
+      router.push({ name: 'admin/artists' });
+      isOpen.value = false;
     },
   },
   {
     icon: 'badge',
     name: 'Procedure',
     action: () => {
-      router.push({ name: 'admin/procedures' })
-      isOpen.value = false
+      router.push({ name: 'admin/procedures' });
+      isOpen.value = false;
+      router.push({ name: 'procedures' });
+      isOpen.value = false;
+    },
+  },
+  {
+    icon: 'photo_library',
+    name: 'Galleries',
+    action: () => {
+      router.push({ name: 'galleries' });
+      isOpen.value = false;
     },
   },
 ];

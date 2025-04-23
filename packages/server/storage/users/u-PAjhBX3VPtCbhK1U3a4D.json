@@ -1,0 +1,11 @@
+{
+  "name": "artist",
+  "email": "artist@gmail.com",
+  "phone": 8888888888,
+  "password": "$2a$10$lzflTss7.MLWS8ombaIRtO5cDxywqmLF/Z8LTUNZAYhcKZMWZbfLu",
+  "role": "user",
+  "bookings": [],
+  "passwordChangedAt": 1744361358251,
+  "created_at": 1744361359252,
+  "updated_at": 1744361359252
+}

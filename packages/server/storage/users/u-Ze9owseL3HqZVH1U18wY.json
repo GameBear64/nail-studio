@@ -1,0 +1,11 @@
+{
+  "name": "Hurricane",
+  "email": "h@gmail.com",
+  "phone": "0899927648\"",
+  "password": "$2a$10$hYiwbeqvQ./HAodZfRmF8eHS.4iTcY1IVPg46Iuqe1cm3FUVntX0u",
+  "role": "user",
+  "bookings": [],
+  "passwordChangedAt": 1743878771711,
+  "created_at": 1743878772711,
+  "updated_at": 1743878772711
+}

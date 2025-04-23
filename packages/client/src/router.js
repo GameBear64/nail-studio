@@ -56,6 +56,7 @@ const routes = [
       // { path: 'galleries', name: 'galleries', component: () => import('@pages/Admin/GalleryPanel.vue') },
     ],
   },
+  { path: '/user/:id', component: () => import('@pages/ArtistProfile.vue') },
 ];
 
 const router = createRouter({

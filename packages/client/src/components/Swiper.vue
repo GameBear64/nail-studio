@@ -22,13 +22,11 @@ const props = defineProps(['data']);
       space-between="120"
       :pagination="{
         clickable: true,
-      }"
-    >
+      }">
       <SwiperSlide
         v-for="el in props.data"
         :key="el"
-        class="!bg-transparent"
-      >
+        class="!flex flex-col items-center !justify-between gap-2 rounded-lg border border-pink-200 bg-white py-5">
         <slot :data="el" />
       </SwiperSlide>
     </Swiper>

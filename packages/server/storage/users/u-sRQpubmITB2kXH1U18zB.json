@@ -1,0 +1,11 @@
+{
+  "name": "anna",
+  "email": "anna@gmail.com",
+  "phone": 899927648,
+  "password": "$2a$10$Ovoh9Lx37vBk/PG5CrzL7OEDEM6Gps04RGpMizl/ZwGHBKzCd0s6y",
+  "role": "user",
+  "bookings": [],
+  "passwordChangedAt": 1743878934910,
+  "created_at": 1743878935910,
+  "updated_at": 1743878935910
+}

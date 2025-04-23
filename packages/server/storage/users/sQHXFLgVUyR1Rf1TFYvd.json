@@ -1,10 +1,10 @@
 {
   "name": "artist1",
   "email": "artist1@gmail.com",
-  "biography": "sss",
+  "biography": "През трите десетилетия в практиката съм работила с хиляди клиенти, обучавала съм млади таланти и съм проследила развитието на тенденциите от класиката до най-иновативните техники. Специализирам в маникюр, гел лак, изграждане, терапевтична грижа и художествен nail art.",
   "yearsExperience": 2,
   "picture": "d4ba00fe",
-  "gallery": [],
+  "gallery": ["mp523cc", "233jkkh", "arr564bv", "m657ps"],
   "phone": 88888888888,
   "password": "$2a$10$.4hXZ5LF.fOT2kWkgjN6EucrWoylZkaofv/h.oLij.W6Sg6KyXX76",
   "role": "artist",
