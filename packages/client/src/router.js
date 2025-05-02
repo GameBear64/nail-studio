@@ -23,9 +23,9 @@ const routes = [
     meta: { guestRoute: true },
   },
   {
-    name: 'artist',
-    path: '/artist/:id',
-    component: () => import('@pages/Artist.vue'),
+    name: 'user',
+    path: '/user/:id',
+    component: () => import('@pages/ArtistProfile.vue'),
     meta: { guestRoute: true },
   },
   {

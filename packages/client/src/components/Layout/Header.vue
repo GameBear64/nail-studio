@@ -53,14 +53,7 @@ const actions = [
     requiredRole: UserRoles.USER,
     action: () => bgEnToggle(),
   },
-  // {
-  //   icon: 'settings',
-  //   name: 'Settings',
-  //   action: () => {
-  //     isOpen.value = false;
-  //   },
-  //   requiredRole: UserRoles.USER,
-  // },
+
   {
     icon: 'logout',
     name: 'Logout',
@@ -112,13 +105,6 @@ const navigations = [
 </script>
 
 <template>
-  <MobileNavigation
-    :navigations="navigations"
-    :actions="actions"
-    :admin-actions="adminActions"
-  />
-  <DesktopNavigation
-    :navigations="navigations"
-    :options="actions"
-  />
+  <MobileNavigation :navigations="navigations" :actions="actions" :admin-actions="adminActions" />
+  <DesktopNavigation :navigations="navigations" :options="actions" />
 </template>
