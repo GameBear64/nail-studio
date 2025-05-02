@@ -31,17 +31,8 @@ const handleUpload = (image) => {
 </script>
 
 <template>
-  <Icon
-    clickable
-    :onclick="() => (open = !open)"
-    class="text-gray-800"
-    icon="edit_square"
-  />
-  <Modal
-    v-if="open"
-    :close="closeModal"
-    title="Edit user"
-  >
+  <Icon clickable :onclick="() => (open = !open)" class="text-gray-800" icon="edit_square" />
+  <Modal v-if="open" :close="closeModal" title="Edit user">
     <Form
       v-slot="{ errors }"
       :rules="{
@@ -60,49 +51,28 @@ const handleUpload = (image) => {
           updateUser(props.data._id, { ...props.data, ...formData, picture: userPicture });
           closeModal();
         }
-      "
-    >
+      ">
       <div class="flex flex-col gap-3 md:flex-row md:gap-10">
         <MediaInput
           name="picture"
           :errors="errors?.picture"
           :initial-image="userPicture"
           :preview="true"
-          @update="handleUpload"
-        />
+          @update="handleUpload" />
         <div class="flex flex-col gap-3">
-          <Input
-            name="name"
-            :errors="errors?.name"
-            :model-value="props.data.name"
-          />
-          <Input
-            name="email"
-            :errors="errors?.email"
-            :model-value="props.data.email"
-          /><Input
+          <Input name="name" :errors="errors?.name" :model-value="props.data.name" />
+          <Input name="email" :errors="errors?.email" :model-value="props.data.email" /><Input
             name="biography"
             :errors="errors?.biography"
-            :model-value="props.data.biography"
-          /><Input
+            :model-value="props.data.biography" /><Input
             label="Years of experience"
             name="yearsExperience"
             :errors="errors?.yearsExperience"
-            :model-value="props.data.yearsExperience"
-          />
+            :model-value="props.data.yearsExperience" />
         </div>
         <div class="flex min-w-60 flex-col gap-3">
-          <Input
-            name="phone"
-            :errors="errors?.phone"
-            :model-value="props.data.phone"
-          />
-          <SelectInput
-            name="shift"
-            :errors="errors?.shift"
-            :model-value="props.data.shift"
-            :options="formattedShifts"
-          />
+          <Input name="phone" :errors="errors?.phone" :model-value="props.data.phone" />
+          <SelectInput name="shift" :errors="errors?.shift" :model-value="props.data.shift" :options="formattedShifts" />
           <!-- <MultiSelect
             name="procedures"
             :errors="errors?.procedures"

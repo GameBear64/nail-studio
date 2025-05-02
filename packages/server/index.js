@@ -24,6 +24,6 @@ app.use((error, _req, res, _next) => {
 });
 
 //===== Listen on port #### =====
-app.listen(process.env.VITE_SERVER_PORT, () => {
-  console.log(`Listening on http://localhost:${process.env.VITE_SERVER_PORT}/`);
+app.listen(3030, () => {
+  console.log(`Listening on http://localhost:${3030}/`);
 });

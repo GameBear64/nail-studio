@@ -1,8 +1,8 @@
 {
-  "name": "new",
-  "description": "aaaa",
-  "duration": 17,
-  "price": 7,
+  "name": "French Pedicure",
+  "description": "A clean and elegant style with a soft pink or nude base and white tips, perfect for a polished, natural look.",
+  "duration": 40,
+  "price": 20,
   "created_at": 1743861899074,
-  "updated_at": 1743861899074
+  "updated_at": 1746175413990
 }

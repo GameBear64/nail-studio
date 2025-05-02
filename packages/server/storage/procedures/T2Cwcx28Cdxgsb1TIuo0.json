@@ -1,8 +1,8 @@
 {
   "name": "Nail painting",
-  "description": "Painting nails in any color.",
-  "duration": 20,
-  "price": 10,
+  "description": "Painting nails in any color and decor.",
+  "duration": 50,
+  "price": 20,
   "created_at": 1739434552335,
-  "updated_at": 1739434552335
+  "updated_at": 1746175439145
 }

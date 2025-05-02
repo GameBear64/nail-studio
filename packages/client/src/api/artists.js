@@ -33,7 +33,7 @@ export const deleteUser = (userId) => {
 
 export const loadImage = (img) => {
   if (!img || img.length < 1) {
-    return new URL('../public/defaultUserImage.jpg', import.meta.url).href;
+    return new URL('../../public/defaultUserImage.jpg', import.meta.url).href;
   }
   return new URL(origin + '/api/resource/' + img, import.meta.url).href;
 };
