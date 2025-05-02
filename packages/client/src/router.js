@@ -69,8 +69,10 @@ router.beforeEach(async (to) => {
   if (!userStore.id) await setUserData();
 
   if (!userStore.id && !to.meta?.guestRoute) return { path: '/login' };
-  if (userStore.id && to.meta?.adminRoute && userStore.role !== UserRoles.ADMIN) return { path: '/' };
-  // if (userStore.id && to.meta?.guestRoute) return { path: '/' };
+  if (userStore.id) {
+    if (to.meta?.guestRoute && to.fullPath != '/') return { path: '/' };
+    if (to.meta?.adminRoute && userStore.role !== UserRoles.ADMIN) return { path: '/' };
+  }
 });
 
 export default router;

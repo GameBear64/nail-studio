@@ -14,7 +14,7 @@ const userSchema = db.get('users').schema(
       required: true,
     },
     phone: {
-      type: [String, Number],
+      type: [Number, String],
       required: true,
     },
     password: {
@@ -30,7 +30,7 @@ const userSchema = db.get('users').schema(
     bookings: {
       type: Array,
       default: [],
-      populate: 'bookings',
+      populate: true,
     },
     passwordChangedAt: {
       type: Number,

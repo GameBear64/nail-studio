@@ -25,10 +25,22 @@ const login = (data) => {
     <LocaleButton class="absolute right-3 top-3" />
     <div class="card flex flex-col gap-5 p-10 text-center">
       <div>
-        <h1 v-i18n class="text-2xl font-bold">Login</h1>
+        <h1
+          v-i18n
+          class="text-2xl font-bold"
+        >
+          Login
+        </h1>
         <div class="flex flex-row justify-center gap-1.5">
-          <p v-i18n>Don't have an account yet?</p>
-          <RouterLink v-i18n to="/register"> Sign up here </RouterLink>
+          <p v-i18n>
+            Don't have an account yet?
+          </p>
+          <RouterLink
+            v-i18n
+            to="/register"
+          >
+            Sign up here
+          </RouterLink>
         </div>
       </div>
       <Form
@@ -37,10 +49,17 @@ const login = (data) => {
           email: joi.string().required(),
           password: joi.string().required(),
         }"
-        @submit="login">
+        @submit="login"
+      >
         <div class="flex flex-col gap-1 text-left">
-          <Input name="email" :errors="errors?.email" />
-          <PasswordInput name="password" :errors="errors?.password" />
+          <Input
+            name="email"
+            :errors="errors?.email"
+          />
+          <PasswordInput
+            name="password"
+            :errors="errors?.password"
+          />
         </div>
       </Form>
     </div>
