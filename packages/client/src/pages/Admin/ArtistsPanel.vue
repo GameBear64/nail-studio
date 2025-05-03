@@ -1,7 +1,7 @@
 <script setup>
-import CreateUserModal from '@components/Admin/Artists/CreateUserModal.vue';
 import DeleteUserModal from '@components/Admin/Artists/DeleteUserModal.vue';
-import UpdateUserModal from '@components/Admin/Artists/UpdateUserModal.vue';
+import UpsertUserModal from '@components/Admin/Artists/UpsertUserModal.vue';
+import Icon from '@components/Icon.vue';
 import Table from '@components/Table.vue';
 
 import { data, loadImage, readAllArtists } from '@api/artists';
@@ -26,7 +26,20 @@ readAllProcedures();
         Artists Management
       </h1>
 
-      <CreateUserModal />
+      <UpsertUserModal>
+        <template #trigger="{ click }">
+          <div
+            :onclick="click"
+            class="btn flex cursor-pointer flex-row items-center gap-1"
+          >
+            Create
+            <Icon
+              icon="add"
+              class="text-sm md:pt-0.5 md:text-base"
+            />
+          </div>
+        </template>
+      </UpsertUserModal>
     </div>
 
     <Table
@@ -43,7 +56,16 @@ readAllProcedures();
 
       <template #actions="{ row }">
         <div class="flex flex-row justify-center gap-3">
-          <UpdateUserModal :data="row" />
+          <UpsertUserModal :data="row">
+            <template #trigger="{ click }">
+              <Icon
+                clickable
+                :onclick="click"
+                class="text-gray-800"
+                icon="edit_square"
+              />
+            </template>
+          </UpsertUserModal>
           <DeleteUserModal :user-id="row._id" />
         </div>
       </template>

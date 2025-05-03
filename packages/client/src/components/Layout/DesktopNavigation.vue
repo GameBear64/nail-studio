@@ -26,7 +26,7 @@ onClickOutside(openRef, () => (isOpen.value = false));
 </script>
 
 <template>
-  <div class="sticky z-50 hidden w-screen items-center justify-between bg-white px-3 py-2 shadow-md sm:flex">
+  <div class="sticky z-30 hidden w-screen items-center justify-between bg-white px-3 py-2 shadow-md sm:flex">
     <Logo />
     <div class="flex flex-row gap-20 text-lg text-gray-600">
       <div

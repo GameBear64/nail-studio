@@ -17,8 +17,17 @@ const closeModal = () => {
 </script>
 
 <template>
-  <Icon clickable :onclick="() => (open = !open)" class="text-gray-800" icon="edit_square" />
-  <Modal v-if="open" :close="closeModal" title="Edit user">
+  <Icon
+    clickable
+    :onclick="() => (open = !open)"
+    class="text-gray-800"
+    icon="edit_square"
+  />
+  <Modal
+    v-if="open"
+    :close="closeModal"
+    title="Edit user"
+  >
     <Form
       v-slot="{ errors }"
       :rules="{
@@ -32,12 +41,33 @@ const closeModal = () => {
           updateProcedure(props.data._id, formData);
           closeModal();
         }
-      ">
+      "
+    >
       <div class="flex flex-col gap-3">
-        <Input name="name" :model-value="props.data.name" :errors="errors?.name" />
-        <Input name="description" :model-value="props.data.description" :errors="errors?.description" />
-        <Input name="price" type="number" min="1" :model-value="props.data.price" :errors="errors?.price" />
-        <Input type="number" name="duration" min="1" :model-value="props.data.duration" :errors="errors?.duration" />
+        <Input
+          name="name"
+          :model-value="props.data.name"
+          :errors="errors?.name"
+        />
+        <Input
+          name="description"
+          :model-value="props.data.description"
+          :errors="errors?.description"
+        />
+        <Input
+          name="price"
+          type="number"
+          min="1"
+          :model-value="props.data.price"
+          :errors="errors?.price"
+        />
+        <Input
+          type="number"
+          name="duration"
+          min="1"
+          :model-value="props.data.duration"
+          :errors="errors?.duration"
+        />
       </div>
     </Form>
   </Modal>

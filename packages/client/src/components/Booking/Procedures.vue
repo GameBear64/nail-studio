@@ -11,5 +11,9 @@ const procedures = computed(() => data.value.map((p) => ({ label: `${p.name} (${
 </script>
 
 <template>
-  <MultiSelect v-model="selectedOption" class="w-96" :options="procedures" />
+  <MultiSelect
+    v-model="selectedOption"
+    class="w-96"
+    :options="procedures"
+  />
 </template>

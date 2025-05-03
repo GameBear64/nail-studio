@@ -10,7 +10,7 @@ const router = useRouter();
 </script>
 
 <template>
-  <div class="bg-base z-40 flex min-h-[80vh] flex-row justify-between gap-2 p-2">
+  <div class="bg-base z-20 flex min-h-[80vh] flex-row justify-between gap-2 p-2">
     <div class="bg-base-x relative flex flex-col justify-center gap-4 overflow-hidden rounded-md border border-pink-100 px-5">
       <div class="absolute size-full">
         <template

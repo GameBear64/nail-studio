@@ -1,17 +1,30 @@
 {
   "name": "artist1",
   "email": "artist1@mail.com",
-  "biography": "Специализирам в класически и комбиниран маникюр, гел лак, изграждане с гел и акригел, както и в модерни техники за декорация и nail art. ",
-  "yearsExperience": 4,
+  "biography": "Специализирам в класически и комбиниран маникюр, гел лак, изграждане с гел и акригел, както и в модерни техники за декорация и nail art.",
+  "yearsExperience": 5,
   "picture": "ce1cf8e3",
-  "gallery": ["mp523cc", "4d079c", "4d079c", "4d079c", "4d079c", "4d079c", "4d079c"],
+  "gallery": [
+    "mp523cc",
+    "4d079c",
+    "4d079c",
+    "4d079c",
+    "4d079c",
+    "4d079c",
+    "4d079c"
+  ],
   "phone": "+359 98 987 9876",
   "password": "$2a$10$O0Ty/iDnRfH8SNnq3wDXuekpFqFs2Ett1eE4W3Ui1puQHV.AAYMk.",
   "role": "artist",
-  "procedures": [],
+  "procedures": [
+    {
+      "label": "Nail painting",
+      "value": "T2Cwcx28Cdxgsb1TIuo0"
+    }
+  ],
   "shift": "Full",
   "bookings": [],
   "passwordChangedAt": 1739884080258,
   "created_at": 1739884081258,
-  "updated_at": 1739906864448
+  "updated_at": 1746268383827
 }

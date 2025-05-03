@@ -26,7 +26,7 @@ router
       yearsExperience: joi.number().required(),
       picture: joi.string().required(),
       gallery: joi.array().items(joi.string()).optional(),
-      // procedures: joi.array().items(joi.string()).optional(),
+      procedures: joi.array().items(joi.string()).optional(),
       phone: joi.number().required(),
       shift: joi
         .string()
@@ -62,7 +62,7 @@ router
       yearsExperience: joi.number().optional(),
       picture: joi.string().optional(),
       gallery: joi.array().items(joi.string()).optional(),
-      // procedures: joi.array().items(joi.string()).optional(),
+      procedures: joi.array().items(joi.string()).optional(),
       phone: joi.number().optional(),
       shift: joi
         .string()

@@ -55,7 +55,7 @@ const removeOption = (option) => {
     class="relative w-full"
   >
     <div
-      class="flex cursor-pointer flex-wrap gap-2 rounded-lg border border-gray-300 p-2"
+      class="flex cursor-pointer flex-wrap gap-2 rounded border border-gray-300 p-2"
       @click="toggleDropdown"
     >
       <span
