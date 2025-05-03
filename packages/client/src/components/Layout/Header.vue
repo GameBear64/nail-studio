@@ -37,7 +37,6 @@ const actions = [
     name: 'Profile',
     action: () => {
       router.push('/user/' + userStore?.id);
-      console.log(userStore?.id);
       isOpen.value = false;
     },
     requiredRole: UserRoles.ARTIST,

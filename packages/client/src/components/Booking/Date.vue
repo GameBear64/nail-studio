@@ -37,7 +37,7 @@ const selected = computed(() => model.value);
 
 const slots = computed(() => {
   const result = [];
-  for (let h = props.startHour * 60; h < props.endHour * 60; h += 60) {
+  for (let h = props.startHour * 60; h < props.endHour * 60; h += 30) {
     const hours = Math.floor(h / 60);
     const minutes = h % 60;
 

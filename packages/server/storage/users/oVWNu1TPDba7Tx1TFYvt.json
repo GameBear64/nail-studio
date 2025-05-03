@@ -1,17 +1,22 @@
 {
   "name": "artist12",
   "email": "artist12@gmail.com",
-  "biography": "Педикюрист с опит в сферата на естетичната грижа и дизайна на ноктите. Специализирам в класически, медицински и СПА педикюр, както и в креативен nail art, гел лак и терапевтични процедури за крака. ",
-  "yearsExperience": 222,
+  "biography": "Педикюрист с опит в сферата на естетичната грижа и дизайна на ноктите. Специализирам в класически, медицински и СПА педикюр, както и в креативен nail art, гел лак и терапевтични процедури за крака.",
+  "yearsExperience": 10,
   "picture": "76efb5d7",
   "gallery": [],
   "phone": 88888888888,
   "password": "$2a$10$A3XNP97P26qqiynzTeeFnOGmkIlhNYf8akcXsqkI5vGWfxpeIQbmq",
   "role": "artist",
-  "procedures": [],
+  "procedures": [
+    {
+      "label": "French Manicure",
+      "value": "IR2qcGrJID9Pls1U1491"
+    }
+  ],
   "shift": "Morning",
   "bookings": [],
   "passwordChangedAt": 0,
   "created_at": 1738835351329,
-  "updated_at": 1740142180986
+  "updated_at": 1746271603612
 }

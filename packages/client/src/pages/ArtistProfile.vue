@@ -1,19 +1,19 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 import Icon from '@components/Icon.vue';
-import Swiper from '@components/Swiper.vue';
 
 import { loadImage } from '../api/artists';
 import useFetch from '../toolbox/useFetch';
 
 const artist = ref();
 const route = useRoute();
+const router = useRouter();
+
 onMounted(() => {
   useFetch({ url: '/artist/' + route.params.id }).then((res) => {
     artist.value = res;
-    console.log(res);
   });
 });
 </script>
@@ -55,8 +55,7 @@ onMounted(() => {
         </p>
       </div>
     </div>
-    <div class="flex flex-col items-center justify-center gap-5">
-      {{ console.log(artist?.gallery) }}
+    <div v-if="artist?.gallery.length >= 1" class="flex flex-col items-center justify-center gap-5">
       <p class="flex-start text-xl font-semibold">Gallery</p>
       <div class="flex w-full flex-row flex-wrap items-center justify-center gap-5">
         <img
@@ -66,6 +65,7 @@ onMounted(() => {
           :src="'/api/resource/' + image" />
       </div>
     </div>
+    <p v-else class="text-center">This artist doesn't have any images to show</p>
   </div>
 </template>
 
