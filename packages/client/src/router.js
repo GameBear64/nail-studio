@@ -46,6 +46,11 @@ const routes = [
     component: () => import('@pages/Booking.vue'),
   },
   {
+    name: 'procedures',
+    path: '/procedures',
+    component: () => import('@pages/Procedures.vue'),
+  },
+  {
     path: '/admin',
     redirect: () => '/admin/artists',
     component: () => import('@pages/AdminPanel.vue'),
@@ -56,7 +61,7 @@ const routes = [
       // { path: 'galleries', name: 'galleries', component: () => import('@pages/Admin/GalleryPanel.vue') },
     ],
   },
-  { path: '/user/:id', component: () => import('@pages/ArtistProfile.vue') },
+  // { path: '/user/:id', component: () => import('@pages/ArtistProfile.vue') },
 ];
 
 const router = createRouter({

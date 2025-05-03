@@ -10,7 +10,9 @@ import { userStore } from '@store/userStore';
 
 const router = useRouter();
 const props = defineProps(['navigations', 'actions', 'adminActions']);
-const isOpen = inject('isOpen')
+
+const isOpen = inject('isOpen');
+const toggleMenu = inject('toggleMenu');
 
 const openIcon = computed(() => (isOpen.value ? 'close' : 'menu'));
 </script>
@@ -19,33 +21,17 @@ const openIcon = computed(() => (isOpen.value ? 'close' : 'menu'));
   <div class="z-50 w-screen sm:hidden">
     <div class="sticky top-0 mb-auto flex w-full items-center justify-between bg-white px-3 py-2 shadow-md">
       <Logo />
-      <Icon
-        :icon="openIcon"
-        clickable
-        @click="() => (isOpen = !isOpen)"
-      />
+      <Icon :icon="openIcon" clickable @click="toggleMenu(!isOpen)" />
     </div>
-    <div
-      :class="{ 'absolute h-full w-screen bg-black/30 backdrop-blur-sm': isOpen }"
-      @click.self="() => (isOpen = false)"
-    >
-      <div
-        v-if="isOpen"
-        class="absolute right-0 mb-auto flex h-full w-52 flex-col gap-5 bg-white px-1 py-2 shadow-md"
-      >
+    <div :class="{ 'absolute h-full w-screen bg-black/30 backdrop-blur-sm': isOpen }" @click.self="() => (isOpen = false)">
+      <div v-if="isOpen" class="absolute right-0 mb-auto flex h-full w-52 flex-col gap-5 bg-white px-1 py-2 shadow-md">
         <div class="px-2">
-          <p
-            v-i18n
-            class="font-medium"
-          >
-            Directives
-          </p>
+          <p v-i18n class="font-medium">Directives</p>
           <div
             v-for="navigation in props.navigations"
             :key="navigation.name"
             class="flex cursor-pointer flex-row items-center gap-2 rounded px-1 py-2 hover:bg-pink-100 hover:text-pink-600"
-            :onclick="() => router.push(navigation.location)"
-          >
+            :onclick="() => router.push(navigation.location)">
             <Icon :icon="navigation.icon" />
             <p v-i18n>
               {{ navigation.name }}
@@ -53,41 +39,26 @@ const openIcon = computed(() => (isOpen.value ? 'close' : 'menu'));
           </div>
         </div>
         <div class="px-2">
-          <p
-            v-i18n
-            class="font-medium"
-          >
-            Actions
-          </p>
+          <p v-i18n class="font-medium">Actions</p>
           <div
             v-for="option in props.actions"
             :key="option.name"
             :class="option.mobileHide ? 'hidden' : 'flex'"
             :onclick="option?.action"
-            class="cursor-pointer flex-row items-center gap-2 rounded px-1 py-2 hover:bg-pink-100 hover:text-pink-600"
-          >
+            class="cursor-pointer flex-row items-center gap-2 rounded px-1 py-2 hover:bg-pink-100 hover:text-pink-600">
             <Icon :icon="option.icon" />
             <p v-i18n>
               {{ option.name }}
             </p>
           </div>
         </div>
-        <div
-          v-if="userStore.role === UserRoles.ADMIN"
-          class="px-2"
-        >
-          <p
-            v-i18n
-            class="font-medium"
-          >
-            Admin Panel
-          </p>
+        <div v-if="userStore.role === UserRoles.ADMIN" class="px-2">
+          <p v-i18n class="font-medium">Admin Panel</p>
           <div
             v-for="option in props.adminActions"
             :key="option.name"
             :onclick="option?.action"
-            class="flex cursor-pointer flex-row items-center gap-2 rounded px-1 py-2 hover:bg-pink-100 hover:text-pink-600"
-          >
+            class="flex cursor-pointer flex-row items-center gap-2 rounded px-1 py-2 hover:bg-pink-100 hover:text-pink-600">
             <Icon :icon="option.icon" />
             <p v-i18n>
               {{ option.name }}

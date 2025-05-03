@@ -15,6 +15,9 @@ import { userStore } from '../../toolbox/stores/userStore';
 const isOpen = ref(false);
 
 provide('isOpen', isOpen);
+provide('toggleMenu', (open) => {
+  isOpen.value = open;
+});
 
 const router = useRouter();
 
@@ -34,6 +37,7 @@ const actions = [
     name: 'Profile',
     action: () => {
       router.push('/user/' + userStore?.id);
+      console.log(userStore?.id);
       isOpen.value = false;
     },
     requiredRole: UserRoles.ARTIST,
@@ -79,7 +83,7 @@ const adminActions = [
   },
   {
     icon: 'badge',
-    name: 'Procedure',
+    name: 'Procedures',
     action: () => {
       router.push({ name: 'admin/procedures' });
       isOpen.value = false;
@@ -100,6 +104,7 @@ const adminActions = [
 const navigations = [
   { name: 'Home', icon: 'cottage', location: '/' },
   { name: 'Artists', icon: 'groups', location: '/artists' },
+  { name: 'Procedures', icon: 'health_and_beauty', location: '/procedures' },
   { name: 'Book', icon: 'checkbook', location: '/book' },
 ];
 </script>

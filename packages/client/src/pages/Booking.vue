@@ -50,21 +50,22 @@ const makeBooking = () => {
 <template>
   <div class="flex flex-col bg-pink-50">
     <div class="flex h-72 w-screen items-center justify-center bg-[url(../../public/blossom.jpg)]">
-      <p class="text-bold flex size-full items-center justify-center text-2xl italic text-pink-50 backdrop-brightness-50">
+      <p
+        class="text-bold text-md flex size-full items-center justify-center px-2 py-4 text-center italic text-pink-50 backdrop-brightness-50 sm:text-2xl">
         Schedule your next visit for flawless, salon-perfect nails.
       </p>
     </div>
     <div class="flex size-full items-center justify-center">
       <div class="flex w-[55rem] flex-col rounded bg-white p-16 shadow-sm">
-        <div class="flex flex-row gap-10">
-          <div class="flex flex-col gap-5">
+        <div class="flex flex-col gap-10 sm:flex-row">
+          <div class="flex flex-col items-center justify-center gap-5">
             <div>
               <p class="text-sm">First, choose an artist</p>
-              <Artists v-model="booking.artist" />
+              <Artists v-model="booking.artist" class="w-64 sm:w-96" />
             </div>
             <div>
               <p class="text-sm">Second, choose a procedure</p>
-              <Procedures v-model="booking.procedures" />
+              <Procedures v-model="booking.procedures" class="w-64 sm:w-96" />
             </div>
           </div>
           <Date
