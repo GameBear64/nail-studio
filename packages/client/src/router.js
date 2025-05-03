@@ -35,6 +35,11 @@ const routes = [
     // meta: { guestRoute: true },
   },
   {
+    name: 'settings',
+    path: '/settings',
+    component: () => import('@pages/Settings.vue'),
+  },
+  {
     name: 'appointments',
     path: '/appointments',
     component: () => import('@pages/Appointments.vue'),

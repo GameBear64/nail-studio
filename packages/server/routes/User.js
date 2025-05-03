@@ -11,7 +11,7 @@ router
   .route('/')
   .get((req, res) => {
     const userFile = user.read(req.authUser.id);
-    return res.status(200).json({ id: req.authUser.id, ...pick(userFile, ['name', 'role']) });
+    return res.status(200).json({ id: req.authUser.id, ...pick(userFile, ['name', 'email', 'phone', 'role']) });
   })
   .patch(
     skipIfNoChanges,
@@ -25,8 +25,6 @@ router
     }),
     (req, res) => {
       const result = user.update(req.authUser.id, req.body);
-
-      // check against guest profiles, if phone matches delete guest
 
       return res.status(200).json(result);
     },

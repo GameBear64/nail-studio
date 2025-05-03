@@ -56,7 +56,15 @@ const actions = [
     requiredRole: UserRoles.USER,
     action: () => bgEnToggle(),
   },
-
+  {
+    icon: 'settings',
+    name: 'Settings',
+    requiredRole: UserRoles.USER,
+    action: () => {
+      router.push({ name: 'settings' });
+      isOpen.value = false;
+    },
+  },
   {
     icon: 'logout',
     name: 'Logout',
@@ -109,6 +117,13 @@ const navigations = [
 </script>
 
 <template>
-  <MobileNavigation :navigations="navigations" :actions="actions" :admin-actions="adminActions" />
-  <DesktopNavigation :navigations="navigations" :options="actions" />
+  <MobileNavigation
+    :navigations="navigations"
+    :actions="actions"
+    :admin-actions="adminActions"
+  />
+  <DesktopNavigation
+    :navigations="navigations"
+    :options="actions"
+  />
 </template>

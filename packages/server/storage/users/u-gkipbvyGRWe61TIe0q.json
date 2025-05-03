@@ -1,11 +1,11 @@
 {
   "name": "Gamriel",
   "email": "gam@bar.com",
-  "phone": 1234567890,
+  "phone": 1234567894,
   "password": "$2a$10$aSGXTGYHks9efZkiAowxiuV5uoySJbvkJi6E2BRUVoK/y/bfi4frK",
   "role": "admin",
   "bookings": [],
   "passwordChangedAt": 1739371585442,
   "created_at": 1739371586442,
-  "updated_at": 1739371586442
+  "updated_at": 1746272829863
 }
