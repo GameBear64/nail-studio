@@ -45,15 +45,8 @@ const handleSubmit = (formData) => {
 </script>
 
 <template>
-  <slot
-    name="trigger"
-    :click="() => (open = !open)"
-  />
-  <Modal
-    v-if="open"
-    :close="closeModal"
-    :title="isEditMode ? 'Edit user' : 'Create user'"
-  >
+  <slot name="trigger" :click="() => (open = !open)" />
+  <Modal v-if="open" :close="closeModal" :title="isEditMode ? 'Edit user' : 'Create user'">
     <Form
       v-slot="{ errors }"
       :rules="{
@@ -65,57 +58,28 @@ const handleSubmit = (formData) => {
         yearsExperience: joi.number().required(),
         shift: joi.string().required(),
       }"
-      @submit="handleSubmit"
-    >
+      @submit="handleSubmit">
       <div class="flex flex-col gap-3 md:flex-row md:gap-10">
         <MediaInput
           name="picture"
           :errors="errors?.picture"
           :initial-image="'/api/resource/' + userPicture"
           :preview="true"
-          @update="handleUpload"
-        />
+          @update="handleUpload" />
         <div class="flex flex-col gap-3">
-          <Input
-            name="name"
-            :errors="errors?.name"
-            :model-value="props.data?.name"
-          />
-          <Input
-            name="email"
-            :errors="errors?.email"
-            :model-value="props.data?.email"
-          />
-          <Input
-            name="biography"
-            :errors="errors?.biography"
-            :model-value="props.data?.biography"
-          />
+          <Input name="name" :errors="errors?.name" :model-value="props.data?.name" />
+          <Input name="email" :errors="errors?.email" :model-value="props.data?.email" />
+          <Input name="biography" :errors="errors?.biography" :model-value="props.data?.biography" />
           <Input
             label="Years of experience"
             name="yearsExperience"
             :errors="errors?.yearsExperience"
-            :model-value="props.data?.yearsExperience"
-          />
+            :model-value="props.data?.yearsExperience" />
         </div>
         <div class="flex min-w-60 flex-col gap-3">
-          <Input
-            name="phone"
-            :errors="errors?.phone"
-            :model-value="props.data?.phone"
-          />
-          <SelectInput
-            name="shift"
-            :errors="errors?.shift"
-            :model-value="props.data?.shift"
-            :options="formattedShifts"
-          />
-          <MultiSelect
-            v-model="selectedOptions"
-            class="max-w-72"
-            :errors="errors?.procedures"
-            :options="formattedProcedures"
-          />
+          <Input name="phone" :errors="errors?.phone" :model-value="props.data?.phone" />
+          <SelectInput name="shift" :errors="errors?.shift" :model-value="props.data?.shift" :options="formattedShifts" />
+          <MultiSelect v-model="selectedOptions" class="max-w-72" :errors="errors?.procedures" :options="formattedProcedures" />
         </div>
       </div>
     </Form>

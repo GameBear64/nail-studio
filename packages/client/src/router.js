@@ -56,6 +56,7 @@ const routes = [
     component: () => import('@pages/Procedures.vue'),
     meta: { guestRoute: true },
   },
+
   {
     path: '/admin',
     redirect: () => '/admin/artists',
@@ -64,6 +65,7 @@ const routes = [
     children: [
       { path: 'artists', name: 'admin/artists', component: () => import('@pages/Admin/ArtistsPanel.vue') },
       { path: 'procedures', name: 'admin/procedures', component: () => import('@pages/Admin/ProcedurePanel.vue') },
+      { path: 'translations', name: 'admin/translations', component: () => import('@pages/Admin/TranslationsPanel.vue') },
       // { path: 'galleries', name: 'galleries', component: () => import('@pages/Admin/GalleryPanel.vue') },
     ],
   },
@@ -82,7 +84,6 @@ router.beforeEach(async (to) => {
   if (!userStore.id && !to.meta?.guestRoute) return { path: '/login' };
   if (userStore.id) {
     if (!to.meta?.guestRoute && !userStore.role) return { path: '/' };
-
     if (to.meta?.adminRoute && userStore.role !== UserRoles.ADMIN) return { path: '/' };
   }
 });
