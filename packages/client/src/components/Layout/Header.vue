@@ -98,14 +98,6 @@ const adminActions = [
       isOpen.value = false;
     },
   },
-  {
-    icon: 'photo_library',
-    name: 'Galleries',
-    action: () => {
-      router.push({ name: 'galleries' });
-      isOpen.value = false;
-    },
-  },
 ];
 
 const navigations = [

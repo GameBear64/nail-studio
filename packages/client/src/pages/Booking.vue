@@ -1,5 +1,5 @@
 <script setup>
-import { computed, reactive } from 'vue';
+import { computed, reactive, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 
 import Artists from '@components/Booking/Artists.vue';
@@ -22,6 +22,17 @@ const booking = reactive({
   procedures: [],
   date: null,
 });
+
+const bookedHours = ref([]);
+
+watch(
+  () => booking.artist,
+  (artist) => {
+    useFetch({ url: 'booking/for/' + artist, method: 'GET' }).then((res) => {
+      bookedHours.value = res;
+    });
+  }
+)
 
 const bookingReady = computed(() => booking.artist && booking.procedures.length > 0 && booking.date);
 
@@ -51,7 +62,8 @@ const makeBooking = () => {
   <div class="flex flex-col bg-pink-50">
     <div class="flex h-72 w-screen items-center justify-center bg-[url(/blossom.jpg)]">
       <p
-        class="text-bold text-md flex size-full items-center justify-center px-2 py-4 text-center italic text-pink-50 backdrop-brightness-50 sm:text-2xl">
+        class="text-bold text-md flex size-full items-center justify-center px-2 py-4 text-center italic text-pink-50 backdrop-brightness-50 sm:text-2xl"
+      >
         Schedule your next visit for flawless, salon-perfect nails.
       </p>
     </div>
@@ -60,19 +72,30 @@ const makeBooking = () => {
         <div class="flex flex-col gap-10 sm:flex-row">
           <div class="flex flex-col items-center justify-center gap-5">
             <div>
-              <p class="text-sm">First, choose an artist</p>
-              <Artists v-model="booking.artist" class="w-64 sm:w-96" />
+              <p class="text-sm">
+                First, choose an artist
+              </p>
+              <Artists
+                v-model="booking.artist"
+                class="w-64 sm:w-96"
+              />
             </div>
             <div>
-              <p class="text-sm">Second, choose a procedure</p>
-              <Procedures v-model="booking.procedures" class="w-64 sm:w-96" />
+              <p class="text-sm">
+                Second, choose a procedure
+              </p>
+              <Procedures
+                v-model="booking.procedures"
+                class="w-64 sm:w-96"
+              />
             </div>
           </div>
           <Date
             v-model="booking.date"
             :start-hour="artistShift[0]"
             :end-hour="artistShift[1]"
-            :booked="booking.artistDetails?.bookings" />
+            :booked="bookedHours"
+          />
         </div>
         <button
           v-i18n
@@ -80,7 +103,8 @@ const makeBooking = () => {
           :class="{ 'bg-pink-300': !bookingReady }"
           :disabled="!bookingReady"
           type="button"
-          @click="makeBooking">
+          @click="makeBooking"
+        >
           Make booking <span class="mx-1">({{ totalPrice }} лв)</span>
         </button>
       </div>

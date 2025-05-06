@@ -5,8 +5,7 @@ const joi = require('joi');
 
 const { joiValidate } = require('../middleware/validation');
 const { createJWTCookie, omit } = require('../toolbox/utils');
-const { UserRoles } = require('../toolbox/consts');
-const { user, guest } = require('../database/UserSchema');
+const { user } = require('../database/UserSchema');
 
 router
   .route('/login')
@@ -44,16 +43,7 @@ router
       const userFile = user.find((u) => u.email == req.body.email, { first: true });
       if (userFile._id) return res.status(409).json('User with this email already exists');
 
-      let registeredUser = null;
-
-      // const guestFile = guest.find({ phone: req.body.phone, role: UserRoles.GUEST }, { first: true });
-
-      // if (guestFile) {
-      //   // create user, keep old data like bookings, delete old guest
-      //   registeredUser = user.create(omit({ ...guestFile, ...req.body }, ['confirm_password']));
-      //   guest.destroy(guestFile._id);
-
-      registeredUser = user.create(omit(req.body, ['confirm_password']));
+      let registeredUser = user.create(omit(req.body, ['confirm_password']));
 
       res.cookie('jwt', createJWTCookie({ id: registeredUser._id, role: registeredUser.role }), { httpOnly: true });
       res.status(201).json({ id: registeredUser._id });

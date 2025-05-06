@@ -16,12 +16,7 @@
   "phone": "+359 98 987 9876",
   "password": "$2a$10$O0Ty/iDnRfH8SNnq3wDXuekpFqFs2Ett1eE4W3Ui1puQHV.AAYMk.",
   "role": "artist",
-  "procedures": [
-    {
-      "label": "Nail painting",
-      "value": "T2Cwcx28Cdxgsb1TIuo0"
-    }
-  ],
+  "procedures": ["T2Cwcx28Cdxgsb1TIuo0"],
   "shift": "Full",
   "bookings": [],
   "passwordChangedAt": 1739884080258,

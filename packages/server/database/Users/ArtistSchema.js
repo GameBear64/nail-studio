@@ -15,17 +15,17 @@ const artistSchema = db.get('users').schema(
     },
     biography: {
       type: String,
-      // required: true,
+      required: true,
       default: '',
     },
     yearsExperience: {
       type: Number,
-      // required: true,
+      required: true,
       default: 2,
     },
     picture: {
       type: String,
-      // required: true,
+      required: true,
       default: '',
     },
     gallery: {
@@ -55,11 +55,6 @@ const artistSchema = db.get('users').schema(
       type: String,
       enum: Object.values(Shifts),
       default: Shifts.FULL,
-    },
-    bookings: {
-      type: Array,
-      default: [],
-      populate: true,
     },
     passwordChangedAt: {
       type: Number,

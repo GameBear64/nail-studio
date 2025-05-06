@@ -27,15 +27,6 @@ const router = useRouter();
           Procedures
         </p>
       </div>
-      <!-- <div
-        :onclick="() => router.push({ name: 'galleries' })"
-        class="flex cursor-pointer flex-row items-center gap-2 rounded px-2 py-3 text-center hover:bg-gray-100"
-      >
-        <Icon icon="photo_library" />
-        <p v-i18n>
-          Galleries
-        </p>
-      </div> -->
     </div>
     <div class="absolute left-0 flex w-screen flex-col items-center">
       <div class="h-1 w-full rounded-l-full bg-pink-400" />

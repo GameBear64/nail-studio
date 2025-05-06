@@ -49,14 +49,14 @@ router.route('/logout').get((req, res) => {
   return res.status(200).json();
 });
 
-router
-  .route('/password')
-  .patch((req, res) => {
-    //todo: later
-    return res.status(501).json('TODO');
-  })
-  .all((_req, res) => {
-    res.status(405).json('Use another method');
-  });
+// router
+//   .route('/password')
+//   .patch((req, res) => {
+//     //todo: later
+//     return res.status(501).json('TODO');
+//   })
+//   .all((_req, res) => {
+//     res.status(405).json('Use another method');
+//   });
 
 module.exports = router;
