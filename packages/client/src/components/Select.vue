@@ -19,7 +19,7 @@ const selectOption = (option) => {
 </script>
 
 <template>
-  <div class="border-base-s relative w-full rounded border border-gray-200 p-1 hover:border-pink-100">
+  <div class="border-base-s relative w-full rounded border border-gray-300 p-2 hover:border-pink-100">
     <button class="w-full rounded bg-white p-1 focus:outline-none" @click="isOpen = !isOpen">
       <slot name="selected" :selected="selected">
         {{ selected?.label || 'Select an option' }}

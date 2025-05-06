@@ -49,7 +49,7 @@ const makeBooking = () => {
 
 <template>
   <div class="flex flex-col bg-pink-50">
-    <div class="flex h-72 w-screen items-center justify-center bg-[url(../../public/blossom.jpg)]">
+    <div class="flex h-72 w-screen items-center justify-center bg-[url(/blossom.jpg)]">
       <p
         class="text-bold text-md flex size-full items-center justify-center px-2 py-4 text-center italic text-pink-50 backdrop-brightness-50 sm:text-2xl">
         Schedule your next visit for flawless, salon-perfect nails.

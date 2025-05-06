@@ -1,0 +1,11 @@
+{
+  "name": "nani",
+  "email": "nani@gmail.com",
+  "phone": 9839837987,
+  "password": "$2a$10$HNlq1XIN60Tsl7Rzu8nOWOUEiTb5eMkJYSEe5ReHtwmUzypyU/s4C",
+  "role": "user",
+  "bookings": [],
+  "passwordChangedAt": 1746542093216,
+  "created_at": 1746542094216,
+  "updated_at": 1746542094216
+}

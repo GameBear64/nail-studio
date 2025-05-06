@@ -26,13 +26,13 @@ const routes = [
     name: 'artist',
     path: '/artist/:id',
     component: () => import('@pages/ArtistProfile.vue'),
-    // meta: { guestRoute: true },
+    meta: { guestRoute: true },
   },
   {
     name: 'artists',
     path: '/artists',
     component: () => import('@pages/ArtistList.vue'),
-    // meta: { guestRoute: true },
+    meta: { guestRoute: true },
   },
   {
     name: 'settings',
@@ -54,6 +54,7 @@ const routes = [
     name: 'procedures',
     path: '/procedures',
     component: () => import('@pages/Procedures.vue'),
+    meta: { guestRoute: true },
   },
   {
     path: '/admin',
@@ -80,7 +81,8 @@ router.beforeEach(async (to) => {
 
   if (!userStore.id && !to.meta?.guestRoute) return { path: '/login' };
   if (userStore.id) {
-    if (to.meta?.guestRoute && to.fullPath != '/') return { path: '/' };
+    if (!to.meta?.guestRoute && !userStore.role) return { path: '/' };
+
     if (to.meta?.adminRoute && userStore.role !== UserRoles.ADMIN) return { path: '/' };
   }
 });

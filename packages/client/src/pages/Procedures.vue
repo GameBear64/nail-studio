@@ -18,7 +18,7 @@ useFetch({ url: '/procedures', method: 'GET' }).then((res) => (procedures.value 
 
 <template>
   <div class="flex size-full flex-col">
-    <div class="flex h-80 w-screen items-center justify-center bg-[url(../../public/flowers.jpg)] bg-center">
+    <div class="flex h-80 w-screen items-center justify-center bg-[url(/flowers.jpg)] bg-center">
       <p
         class="text-bold text-md flex size-full items-center justify-center px-2 py-4 text-center italic text-pink-50 backdrop-brightness-50 sm:text-2xl">
         Explore all the nail treatments we offer – from classic manicures to advanced nail art, we've got something for every
