@@ -30,7 +30,7 @@ const router = useRouter();
         <button
           v-i18n
           class="btn-outlined sm:text-md text-sm"
-          @click="router.push({ name: 'user', params: { id: props.data._id } })">
+          @click="router.push({ name: 'artist', params: { id: props.data._id } })">
           See more
         </button>
       </div>

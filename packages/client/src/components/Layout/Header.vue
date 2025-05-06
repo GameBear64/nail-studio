@@ -36,7 +36,7 @@ const actions = [
     icon: 'person',
     name: 'Profile',
     action: () => {
-      router.push('/user/' + userStore?.id);
+      router.push('/artist/' + userStore?.id);
       isOpen.value = false;
     },
     requiredRole: UserRoles.ARTIST,
@@ -117,13 +117,6 @@ const navigations = [
 </script>
 
 <template>
-  <MobileNavigation
-    :navigations="navigations"
-    :actions="actions"
-    :admin-actions="adminActions"
-  />
-  <DesktopNavigation
-    :navigations="navigations"
-    :options="actions"
-  />
+  <MobileNavigation :navigations="navigations" :actions="actions" :admin-actions="adminActions" />
+  <DesktopNavigation :navigations="navigations" :options="actions" />
 </template>
