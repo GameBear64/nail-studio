@@ -11,16 +11,14 @@ const props = defineProps(['images', 'loading']);
     <MediaButton @update="emit('upload', $event)" />
 
     <div v-if="props.loading">
-      <div
-        class="flex h-60 w-72 items-center justify-center"
-      >
+      <div class="flex h-60 w-72 items-center justify-center">
         <div
           class="text-primary solid mr-3 inline-block size-8 animate-spin rounded-full border-4 border-pink-500 border-r-transparent"
           role="status"
         />
       </div>
     </div>
-        
+
     <div
       v-for="image in props?.images?.slice()?.reverse()"
       :key="image"

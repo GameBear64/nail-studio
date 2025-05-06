@@ -20,5 +20,7 @@ watch(() => route.path.id, refetch);
 </script>
 
 <template>
-  <div class="flex flex-col overflow-x-hidden">hello {{ user }}</div>
+  <div class="flex flex-col overflow-x-hidden">
+    hello {{ user }}
+  </div>
 </template>

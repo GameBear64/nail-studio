@@ -14,7 +14,6 @@ const open = ref(false);
 const closeModal = () => {
   open.value = !open.value;
 };
-
 </script>
 
 <template>

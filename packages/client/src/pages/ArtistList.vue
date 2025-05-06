@@ -3,8 +3,7 @@ import ArtistCart from '@components/Home/ArtistCard.vue';
 
 import { data, readAllArtists } from '@api/artists';
 
-
-readAllArtists()
+readAllArtists();
 </script>
 
 <template>

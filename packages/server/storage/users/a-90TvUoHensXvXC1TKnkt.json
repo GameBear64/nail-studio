@@ -16,10 +16,12 @@
   "phone": "+359 98 987 9876",
   "password": "$2a$10$O0Ty/iDnRfH8SNnq3wDXuekpFqFs2Ett1eE4W3Ui1puQHV.AAYMk.",
   "role": "artist",
-  "procedures": ["T2Cwcx28Cdxgsb1TIuo0"],
+  "procedures": [
+    "IR2qcGrJID9Pls1U1491",
+    "L6cHhof1pRRWqu1U148P"
+  ],
   "shift": "Full",
-  "bookings": [],
   "passwordChangedAt": 1739884080258,
   "created_at": 1739884081258,
-  "updated_at": 1746268383827
+  "updated_at": 1746555686653
 }

@@ -1,29 +1,28 @@
 <script setup>
-  import { ref, useId } from 'vue';
+import { ref, useId } from 'vue';
 
-  import Icon from '@components/Icon.vue';
+import Icon from '@components/Icon.vue';
 
-  import { readFile } from '@tools/utils';
+import { readFile } from '@tools/utils';
 
-  defineProps({
-    errors: String,
-    preview: { type: Boolean, default: true },
-  });
-  const emit = defineEmits(['update'])
-  const id = useId()
+defineProps({
+  errors: String,
+  preview: { type: Boolean, default: true },
+});
+const emit = defineEmits(['update']);
+const id = useId();
 
-  const imgPreview = ref(null)
+const imgPreview = ref(null);
 
-  const processFile = (event) => {
-    if (!event.target.files?.[0]) {
-      imgPreview.value = null
-      return;
-    }
-
-    imgPreview.value = URL.createObjectURL(event.target.files[0])
-    readFile(event.target.files[0]).then(img => emit('update', img))
+const processFile = (event) => {
+  if (!event.target.files?.[0]) {
+    imgPreview.value = null;
+    return;
   }
 
+  imgPreview.value = URL.createObjectURL(event.target.files[0]);
+  readFile(event.target.files[0]).then((img) => emit('update', img));
+};
 </script>
 
 <template>

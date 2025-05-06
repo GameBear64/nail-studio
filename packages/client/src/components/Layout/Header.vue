@@ -109,6 +109,13 @@ const navigations = [
 </script>
 
 <template>
-  <MobileNavigation :navigations="navigations" :actions="actions" :admin-actions="adminActions" />
-  <DesktopNavigation :navigations="navigations" :options="actions" />
+  <MobileNavigation
+    :navigations="navigations"
+    :actions="actions"
+    :admin-actions="adminActions"
+  />
+  <DesktopNavigation
+    :navigations="navigations"
+    :options="actions"
+  />
 </template>

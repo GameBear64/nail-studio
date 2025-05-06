@@ -6,7 +6,6 @@ import Shape from '@components/Home/Shape.vue';
 import { leafs } from '@tools/consts';
 
 const router = useRouter();
-
 </script>
 
 <template>
@@ -46,14 +45,14 @@ const router = useRouter();
         <button
           v-i18n
           class="btn-outlined"
-          @click="router.push({ name: 'artists'})"
+          @click="router.push({ name: 'artists' })"
         >
           Artists
         </button>
         <button
           v-i18n
           class="btn-outlined"
-          @click="router.push({ name: 'book'})"
+          @click="router.push({ name: 'book' })"
         >
           Book
         </button>

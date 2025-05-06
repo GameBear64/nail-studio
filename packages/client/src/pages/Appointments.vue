@@ -6,17 +6,17 @@ import useFetch from '@tools/useFetch';
 const data = ref([]);
 
 function formatDate(timestamp) {
-  const d = new Date(timestamp * 1000)
+  const d = new Date(timestamp * 1000);
   return d.toLocaleString(undefined, {
     month: 'short',
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-  })
+  });
 }
 
 function totalPrice(procedures) {
-  return procedures.reduce((sum, p) => sum + p.price, 0)
+  return procedures.reduce((sum, p) => sum + p.price, 0);
 }
 
 useFetch({ url: 'booking', method: 'GET' }).then((res) => {
@@ -33,7 +33,7 @@ useFetch({ url: 'booking', method: 'GET' }).then((res) => {
     <div
       v-for="booking in data"
       :key="booking._id"
-      class="space-y-4 rounded-lg border bg-white p-4 shadow-xs"
+      class="shadow-xs space-y-4 rounded-lg border bg-white p-4"
     >
       <!-- Header -->
       <div class="flex items-center gap-4">

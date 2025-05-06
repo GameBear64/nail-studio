@@ -10,7 +10,7 @@ import { Shifts } from '@tools/consts';
 import { successSnackBar } from '@tools/snackbars';
 import useFetch from '@tools/useFetch';
 import { data, readAllArtists } from '@api/artists';
-import { readAllProcedures } from '@api/procedures';
+import { data as procedureData, readAllProcedures } from '@api/procedures';
 
 const router = useRouter();
 
@@ -30,9 +30,10 @@ watch(
   (artist) => {
     useFetch({ url: 'booking/for/' + artist, method: 'GET' }).then((res) => {
       bookedHours.value = res;
+      booking.procedures = [];
     });
-  }
-)
+  },
+);
 
 const bookingReady = computed(() => booking.artist && booking.procedures.length > 0 && booking.date);
 
@@ -42,8 +43,10 @@ const artistDetails = computed(() => data.value?.find((artist) => artist._id == 
 const artistShift = computed(() =>
   artistDetails?.value?.shift == Shifts.MORNING ? [9, 12] : artistDetails?.value?.shift == Shifts.AFTERNOON ? [13, 17] : [9, 17],
 );
+const artistProcedures = computed(() => procedureData.value.filter(p => artistDetails?.value?.procedures?.includes(p._id)));
 
-const totalPrice = computed(() => booking.procedures.reduce((sum, item) => sum + item.price, 0));
+const totalPrice = computed(() => procedureData.value.filter(p => booking.procedures.includes(p._id)).reduce((sum, item) => sum + item.price, 0));
+const totalDuration = computed(() => procedureData.value.filter(p => booking.procedures.includes(p._id)).reduce((sum, item) => sum + item.duration, 0));
 
 const makeBooking = () => {
   const body = {
@@ -86,6 +89,7 @@ const makeBooking = () => {
               </p>
               <Procedures
                 v-model="booking.procedures"
+                :options="artistProcedures"
                 class="w-64 sm:w-96"
               />
             </div>
@@ -95,17 +99,17 @@ const makeBooking = () => {
             :start-hour="artistShift[0]"
             :end-hour="artistShift[1]"
             :booked="bookedHours"
+            :duration="totalDuration"
           />
         </div>
         <button
-          v-i18n
           class="btn mt-4 w-full"
           :class="{ 'bg-pink-300': !bookingReady }"
           :disabled="!bookingReady"
           type="button"
           @click="makeBooking"
         >
-          Make booking <span class="mx-1">({{ totalPrice }} лв)</span>
+          <span v-i18n>Make booking</span> ({{ totalPrice }} лв)
         </button>
       </div>
     </div>

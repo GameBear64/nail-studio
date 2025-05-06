@@ -1,5 +1,5 @@
 <script setup>
-import { computed,ref } from 'vue';
+import { computed, ref } from 'vue';
 import joi from 'joi';
 
 import Form from '@components/Form/Form.vue';
@@ -7,7 +7,7 @@ import Input from '@components/Form/Input.vue';
 import MediaInput from '@components/Form/MediaInput.vue';
 import SelectInput from '@components/Form/SelectInput.vue';
 import Modal from '@components/Modal.vue';
-import MultiSelect from '@components/MultiSelect.vue'
+import MultiSelect from '@components/MultiSelect.vue';
 
 import { Shifts } from '@tools/consts';
 import useFetch from '@tools/useFetch';
@@ -27,7 +27,6 @@ const formattedShifts = Object.entries(Shifts).map(([_key, val]) => ({ label: va
 const formattedProcedures = computed(() => proceduresData.value?.map((p) => ({ label: p.name, value: p._id })));
 const isEditMode = computed(() => !!props?.data);
 
-
 const handleUpload = (image) => {
   useFetch({ url: 'resource', method: 'POST', body: { data: image } }).then((id) => {
     userPicture.value = id;
@@ -38,11 +37,11 @@ const handleSubmit = (formData) => {
   if (isEditMode.value) {
     updateUser(props.data._id, { ...props.data, ...formData, procedures: selectedOptions.value, picture: userPicture.value });
   } else {
-    createUser({ ...formData, procedures: selectedOptions.value, picture: userPicture.value || "" });
+    createUser({ ...formData, procedures: selectedOptions.value, picture: userPicture.value || '' });
   }
 
   closeModal();
-}
+};
 </script>
 
 <template>

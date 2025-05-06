@@ -11,6 +11,8 @@ const props = defineProps({
   duration: { type: Number, default: 30 }, // in minutes
 });
 
+console.log(props.duration);
+
 const slotInterval = 30; // 30 minutes in seconds
 
 const model = defineModel();
@@ -35,7 +37,7 @@ const formattedDate = computed(() => {
   return d.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 });
 
-const isSlotBooked = ts => props.booked.some(([start, end]) => ts >= start && ts <= end);
+const isSlotBooked = (ts) => props.booked.some(([start, end]) => ts >= start && ts <= end);
 
 function isSlotAvailable(startTs) {
   const requiredSpan = props.duration * 60;
@@ -85,9 +87,7 @@ const slots = computed(() => {
 const selected = computed(() => {
   if (!model.value) return [];
   const end = model.value + props.duration * 60;
-  return slots.value
-    .filter(slot => slot.timestamp >= model.value && slot.timestamp < end)
-    .map(slot => slot.timestamp);
+  return slots.value.filter((slot) => slot.timestamp >= model.value && slot.timestamp < end).map((slot) => slot.timestamp);
 });
 
 function selectSlot(ts) {

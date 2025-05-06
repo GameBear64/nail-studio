@@ -28,14 +28,19 @@ const processFile = (event) => {
 <template>
   <div class="flex flex-col items-center">
     <label :for="id">
-      <img v-if="imgPreview && preview" :src="imgPreview" class="my-2 max-h-60 max-w-72 rounded" />
+      <img
+        v-if="imgPreview && preview"
+        :src="imgPreview"
+        class="my-2 max-h-60 max-w-72 rounded"
+      >
     </label>
     <input
       :id="id"
       v-bind="$attrs"
       type="file"
       class="bg-base-m text-txtPrimary border-base-s w-full cursor-pointer rounded border text-sm font-medium file:mr-4 file:cursor-pointer file:border-0 file:bg-pink-500 file:px-4 file:py-2 file:text-white focus:border-pink-500 focus:outline-none"
-      @change="processFile" />
+      @change="processFile"
+    >
     <p class="mt-1 h-4 text-sm font-medium leading-none text-red-600">
       {{ props.errors }}
     </p>

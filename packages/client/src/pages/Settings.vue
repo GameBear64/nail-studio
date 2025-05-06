@@ -33,12 +33,28 @@ const handleSubmit = (formData) => {
           .pattern(/^[0-9]+$/),
       }"
       class="rounded border bg-white px-12 py-6 shadow-sm"
-      @submit="handleSubmit">
-      <p class="pb-2 text-center text-xl font-semibold">Settings</p>
+      @submit="handleSubmit"
+    >
+      <p class="pb-2 text-center text-xl font-semibold">
+        Settings
+      </p>
       <div class="flex flex-col gap-1">
-        <Input name="name" :model-value="res?.name" :errors="errors?.name" />
-        <Input name="email" :model-value="res?.email" :errors="errors?.email" />
-        <Input name="phone" min="1" :model-value="res?.phone" :errors="errors?.phone" />
+        <Input
+          name="name"
+          :model-value="res?.name"
+          :errors="errors?.name"
+        />
+        <Input
+          name="email"
+          :model-value="res?.email"
+          :errors="errors?.email"
+        />
+        <Input
+          name="phone"
+          min="1"
+          :model-value="res?.phone"
+          :errors="errors?.phone"
+        />
       </div>
     </Form>
   </div>

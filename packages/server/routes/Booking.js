@@ -10,7 +10,7 @@ const { artist: artistSchema, user } = require('../database/UserSchema');
 router
   .route('/')
   .get(async (req, res) => {
-    const result = bookingSchema.find({ client: req.authUser.id });
+    const result = bookingSchema.find((booking) => booking.client == req.authUser.id || booking.artist == req.authUser.id);
 
     // fix in new version of fdb
     const populated = await Promise.all(

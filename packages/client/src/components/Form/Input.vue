@@ -14,7 +14,7 @@ const inputLabel = (attrs.name.charAt(0).toUpperCase() + attrs.name.slice(1)).sp
       v-i18n
       class="font-medium"
       :for="attrs.name"
-    >{{ attrs.label?attrs.label:inputLabel }}</label>
+    >{{ attrs.label ? attrs.label : inputLabel }}</label>
     <input
       :id="attrs.name"
       v-bind="$attrs"

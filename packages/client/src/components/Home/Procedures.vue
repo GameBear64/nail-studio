@@ -16,21 +16,30 @@ useFetch({ url: '/procedures', method: 'GET' }).then((res) => (procedures.value 
       <div
         v-for="procedure in procedures"
         :key="procedure._id"
-        class="relative flex w-96 flex-col items-center rounded border-2 border-pink-200 px-10 py-12 shadow-sm">
+        class="relative flex w-96 flex-col items-center rounded border-2 border-pink-200 px-10 py-12 shadow-sm"
+      >
         <p class="text-xl font-semibold uppercase text-gray-700">
           {{ procedure.name }}
         </p>
-        <p class="font-semibold text-pink-400">{{ procedure.price }}lv</p>
+        <p class="font-semibold text-pink-400">
+          {{ procedure.price }}lv
+        </p>
         <p class="text-center">
           {{ procedure.description }}
         </p>
         <button
           class="absolute bottom-0 border border-b-0 border-pink-200 bg-pink-100 p-2 text-sm font-semibold text-pink-600 shadow-sm"
-          @click="() => router.push('/book')">
+          @click="() => router.push('/book')"
+        >
           Book Now
         </button>
       </div>
     </div>
-    <button class="font-semibold text-gray-900" @click="() => router.push('/procedures')">See more...</button>
+    <button
+      class="font-semibold text-gray-900"
+      @click="() => router.push('/procedures')"
+    >
+      See more...
+    </button>
   </div>
 </template>

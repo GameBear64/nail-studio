@@ -3,11 +3,23 @@ import { computed } from 'vue';
 
 import MultiSelect from '@components/MultiSelect.vue';
 
-import { data } from '@api/procedures';
-
 const selectedOption = defineModel();
 
-const procedures = computed(() => data.value.map((p) => ({ label: `${p.name} (${p.price} лв)`, value: p._id, price: p.price })));
+const props = defineProps({
+  options: {
+    type: Array,
+    required: true,
+  },
+});
+
+const procedures = computed(() =>
+  props.options.map((p) => ({
+    label: `${p.name} (${p.price} лв)`,
+    value: p._id,
+    price: p.price,
+    duration: p.duration,
+  })),
+);
 </script>
 
 <template>
