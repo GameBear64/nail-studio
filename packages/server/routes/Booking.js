@@ -16,8 +16,8 @@ router
     const populated = await Promise.all(
       result.map(async (booking) => {
         const [artist, client, procedures] = await Promise.all([
-          artistSchema.read(booking.artist),
           user.read(booking.client),
+          artistSchema.read(booking.artist),
           Promise.all(booking.procedures.map((id) => procedureSchema.read(id))),
         ]);
 
@@ -29,7 +29,6 @@ router
         };
       }),
     );
-
     res.status(200).json(populated);
   })
   .post(

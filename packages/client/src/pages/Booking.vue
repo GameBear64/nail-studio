@@ -43,10 +43,14 @@ const artistDetails = computed(() => data.value?.find((artist) => artist._id == 
 const artistShift = computed(() =>
   artistDetails?.value?.shift == Shifts.MORNING ? [9, 12] : artistDetails?.value?.shift == Shifts.AFTERNOON ? [13, 17] : [9, 17],
 );
-const artistProcedures = computed(() => procedureData.value.filter(p => artistDetails?.value?.procedures?.includes(p._id)));
+const artistProcedures = computed(() => procedureData.value.filter((p) => artistDetails?.value?.procedures?.includes(p._id)));
 
-const totalPrice = computed(() => procedureData.value.filter(p => booking.procedures.includes(p._id)).reduce((sum, item) => sum + item.price, 0));
-const totalDuration = computed(() => procedureData.value.filter(p => booking.procedures.includes(p._id)).reduce((sum, item) => sum + item.duration, 0));
+const totalPrice = computed(() =>
+  procedureData.value.filter((p) => booking.procedures.includes(p._id)).reduce((sum, item) => sum + item.price, 0),
+);
+const totalDuration = computed(() =>
+  procedureData.value.filter((p) => booking.procedures.includes(p._id)).reduce((sum, item) => sum + item.duration, 0),
+);
 
 const makeBooking = () => {
   const body = {
@@ -63,35 +67,25 @@ const makeBooking = () => {
 
 <template>
   <div class="flex flex-col bg-pink-50">
-    <div class="flex h-72 w-screen items-center justify-center bg-[url(/blossom.jpg)]">
-      <p
-        class="text-bold text-md flex size-full items-center justify-center px-2 py-4 text-center italic text-pink-50 backdrop-brightness-50 sm:text-2xl"
-      >
-        Schedule your next visit for flawless, salon-perfect nails.
-      </p>
+    <div class="relative h-52 w-screen">
+      <img src="../../public/blossom.jpg" class="size-full object-cover" />
+      <div class="absolute top-0 m-auto flex size-full items-center justify-center bg-black/50">
+        <p class="text-bold text-md text-center italic text-pink-50 sm:text-2xl">
+          Schedule your next visit for flawless, salon-perfect nails.
+        </p>
+      </div>
     </div>
     <div class="flex size-full items-center justify-center">
       <div class="flex w-[55rem] flex-col rounded bg-white p-16 shadow-sm">
-        <div class="flex flex-col gap-10 sm:flex-row">
-          <div class="flex flex-col items-center justify-center gap-5">
+        <div class="flex w-full flex-col gap-10 sm:flex-row">
+          <div class="flex w-full flex-col items-center justify-center gap-10">
             <div>
-              <p class="text-sm">
-                First, choose an artist
-              </p>
-              <Artists
-                v-model="booking.artist"
-                class="w-64 sm:w-96"
-              />
+              <p class="text-sm">First, choose an artist</p>
+              <Artists v-model="booking.artist" class="min-w-64 sm:w-96" />
             </div>
             <div>
-              <p class="text-sm">
-                Second, choose a procedure
-              </p>
-              <Procedures
-                v-model="booking.procedures"
-                :options="artistProcedures"
-                class="w-64 sm:w-96"
-              />
+              <p class="text-sm">Second, choose a procedure</p>
+              <Procedures v-model="booking.procedures" :options="artistProcedures" class="min-w-64 sm:w-96" />
             </div>
           </div>
           <Date
@@ -99,16 +93,14 @@ const makeBooking = () => {
             :start-hour="artistShift[0]"
             :end-hour="artistShift[1]"
             :booked="bookedHours"
-            :duration="totalDuration"
-          />
+            :duration="totalDuration" />
         </div>
         <button
           class="btn mt-4 w-full"
           :class="{ 'bg-pink-300': !bookingReady }"
           :disabled="!bookingReady"
           type="button"
-          @click="makeBooking"
-        >
+          @click="makeBooking">
           <span v-i18n>Make booking</span> ({{ totalPrice }} лв)
         </button>
       </div>

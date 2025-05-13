@@ -8,10 +8,12 @@
   "phone": 88888888888,
   "password": "$2a$10$A3XNP97P26qqiynzTeeFnOGmkIlhNYf8akcXsqkI5vGWfxpeIQbmq",
   "role": "artist",
-  "procedures": ["IR2qcGrJID9Pls1U1491"],
+  "procedures": [
+    "IR2qcGrJID9Pls1U1491",
+    "L6cHhof1pRRWqu1U148P"
+  ],
   "shift": "Morning",
-  "bookings": [],
   "passwordChangedAt": 0,
   "created_at": 1738835351329,
-  "updated_at": 1746271603612
+  "updated_at": 1747146118931
 }

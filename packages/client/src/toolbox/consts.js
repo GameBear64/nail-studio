@@ -130,3 +130,10 @@ export const leafs = [
     delay: 'delay-1000',
   },
 ];
+
+export const navigations = [
+  { name: 'Home', icon: 'cottage', location: '/' },
+  { name: 'Artists', icon: 'groups', location: '/artists' },
+  { name: 'Procedures', icon: 'health_and_beauty', location: '/procedures' },
+  { name: 'Book', icon: 'checkbook', location: '/book' },
+];

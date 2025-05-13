@@ -19,33 +19,17 @@ const selectOption = (option) => {
 </script>
 
 <template>
-  <div class="border-base-s relative w-full rounded border border-gray-300 p-2 hover:border-pink-100">
-    <button
-      class="w-full rounded bg-white p-1 focus:outline-none"
-      @click="isOpen = !isOpen"
-    >
-      <slot
-        name="selected"
-        :selected="selected"
-      >
-        {{ selected?.label || 'Select an option' }}
+  <div class="border-base-s relative size-full rounded border border-gray-300 hover:border-pink-100">
+    <button class="size-full rounded bg-white px-2 focus:outline-none" @click="isOpen = !isOpen">
+      <slot v-if="selected" name="selected" :selected="selected">
+        {{ selected?.label }}
       </slot>
+
+      <p v-else class="text-start text-gray-400">Select an option...</p>
     </button>
-    <div
-      v-if="isOpen"
-      class="absolute z-10 w-full rounded-md border shadow-lg"
-    >
-      <slot
-        name="options"
-        :options="options"
-        :select="selectOption"
-      >
-        <div
-          v-for="option in options"
-          :key="option.value"
-          class="cursor-pointer hover:bg-gray-100"
-          @click="selectOption(option)"
-        >
+    <div v-if="isOpen" class="absolute z-10 w-full rounded-md border shadow-lg">
+      <slot name="options" :options="options" :select="selectOption">
+        <div v-for="option in options" :key="option.value" class="cursor-pointer hover:bg-gray-100" @click="selectOption(option)">
           {{ option.label }}
         </div>
       </slot>

@@ -89,7 +89,7 @@ const adminActions = [
     },
   },
   {
-    icon: 'badge',
+    icon: 'health_and_beauty',
     name: 'Procedures',
     action: () => {
       router.push({ name: 'admin/procedures' });
@@ -99,23 +99,9 @@ const adminActions = [
     },
   },
 ];
-
-const navigations = [
-  { name: 'Home', icon: 'cottage', location: '/' },
-  { name: 'Artists', icon: 'groups', location: '/artists' },
-  { name: 'Procedures', icon: 'health_and_beauty', location: '/procedures' },
-  { name: 'Book', icon: 'checkbook', location: '/book' },
-];
 </script>
 
 <template>
-  <MobileNavigation
-    :navigations="navigations"
-    :actions="actions"
-    :admin-actions="adminActions"
-  />
-  <DesktopNavigation
-    :navigations="navigations"
-    :options="actions"
-  />
+  <MobileNavigation :actions="actions" :admin-actions="adminActions" />
+  <DesktopNavigation :options="actions" />
 </template>

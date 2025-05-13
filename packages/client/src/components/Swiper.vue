@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
@@ -33,4 +33,4 @@ const props = defineProps(['data']);
       </SwiperSlide>
     </Swiper>
   </div>
-</template>
+</template> -->

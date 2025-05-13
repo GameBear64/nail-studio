@@ -10,9 +10,11 @@ import Logo from '@components/Layout/Logo.vue';
 
 import { userStore } from '@store/userStore';
 
+import { navigations } from '../../toolbox/consts';
+
 const router = useRouter();
 
-const props = defineProps(['navigations', 'options']);
+const props = defineProps(['options']);
 const openRef = ref(false);
 const isOpen = inject('isOpen');
 
@@ -29,42 +31,21 @@ onClickOutside(openRef, () => (isOpen.value = false));
     <Logo />
     <div class="flex flex-row gap-20 text-lg text-gray-600">
       <div
-        v-for="navigation in props.navigations"
+        v-for="navigation in navigations"
         :key="navigation.name"
         class="flex cursor-pointer flex-row items-center gap-2 rounded-xl p-2 hover:bg-pink-100 hover:text-pink-600"
-        :onclick="() => router.push(navigation.location)"
-      >
-        <Icon
-          clickable
-          :icon="navigation.icon"
-        />
+        :onclick="() => router.push(navigation.location)">
+        <Icon clickable :icon="navigation.icon" />
         <p v-i18n>
           {{ navigation.name }}
         </p>
       </div>
     </div>
-    <div
-      v-if="userStore.role && userStore.role !== 'guest'"
-      ref="openRef"
-      class="flex flex-row items-end"
-    >
-      <Icon
-        icon="person"
-        clickable
-        class="rounded bg-pink-400 p-1 text-white"
-        @click="() => (isOpen = !isOpen)"
-      />
+    <div v-if="userStore.role && userStore.role !== 'guest'" ref="openRef" class="flex flex-row items-end">
+      <Icon icon="person" clickable class="rounded bg-pink-400 p-1 text-white" @click="() => (isOpen = !isOpen)" />
       <div class="relative flex justify-end">
-        <Icon
-          :icon="arrow"
-          clickable
-          @click="() => (isOpen = !isOpen)"
-        />
-        <Dropdown
-          v-if="isOpen"
-          class="-right-1 top-11"
-          :options="allowedOptions"
-        />
+        <Icon :icon="arrow" clickable @click="() => (isOpen = !isOpen)" />
+        <Dropdown v-if="isOpen" class="-right-1 top-11" :options="allowedOptions" />
       </div>
     </div>
     <div v-else />

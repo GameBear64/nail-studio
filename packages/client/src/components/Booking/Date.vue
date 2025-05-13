@@ -11,8 +11,6 @@ const props = defineProps({
   duration: { type: Number, default: 30 }, // in minutes
 });
 
-console.log(props.duration);
-
 const slotInterval = 30; // 30 minutes in seconds
 
 const model = defineModel();
@@ -54,6 +52,11 @@ function isSlotAvailable(startTs) {
     if (isSlotBooked(ts) || props.breaks.includes(label)) {
       return false;
     }
+  }
+
+  const date = new Date();
+  if (startTs < Math.floor(date.getTime() / 1000)) {
+    return false;
   }
 
   return true;
@@ -122,19 +125,13 @@ function getSlotClass(slot) {
   <div class="w-full max-w-xl rounded-lg bg-white p-4 shadow">
     <!-- Date Navigation -->
     <div class="mb-4 flex items-center justify-between">
-      <button
-        class="px-2 text-xl hover:text-pink-500"
-        @click="prevDay"
-      >
+      <button class="px-2 text-xl hover:text-pink-500" @click="prevDay">
         <Icon icon="arrow_back" />
       </button>
       <h2 class="select-none text-lg font-semibold">
         {{ formattedDate }}
       </h2>
-      <button
-        class="px-2 text-xl hover:text-pink-500"
-        @click="nextDay"
-      >
+      <button class="px-2 text-xl hover:text-pink-500" @click="nextDay">
         <Icon icon="arrow_forward" />
       </button>
     </div>
@@ -145,8 +142,7 @@ function getSlotClass(slot) {
         :key="i"
         :class="['rounded border px-4 py-2 text-sm transition', getSlotClass(slot)]"
         :disabled="slot.isBooked || !slot.isAvailable"
-        @click="selectSlot(slot.timestamp)"
-      >
+        @click="selectSlot(slot.timestamp)">
         {{ slot.label }}
       </button>
     </div>
