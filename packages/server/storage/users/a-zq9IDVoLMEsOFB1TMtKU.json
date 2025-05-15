@@ -4,14 +4,16 @@
   "biography": "Педикюрист. Притежавам задълбочени познания и умения в класически, комбиниран, медицински и СПА педикюр, както и в нанасянето на гел лак и декорации. Работя с доказани професионални продукти, спазвайки най-високите стандарти за хигиена и безопасност. ",
   "yearsExperience": 1,
   "picture": "b0380a6a",
-  "gallery": [],
+  "gallery": [
+    "6965c7a4",
+    "9e929cf9"
+  ],
   "phone": 8888888888,
   "password": "$2a$10$.zziu.kJk4gOkFwgt4eUw.BR4FIOKXVno/nFauD8ft2Kr59PAmeYm",
   "role": "artist",
   "procedures": [],
   "shift": "Full",
-  "bookings": [],
   "passwordChangedAt": 1740385439257,
   "created_at": 1740385440258,
-  "updated_at": 1740386357183
+  "updated_at": 1747306046672
 }

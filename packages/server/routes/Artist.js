@@ -18,7 +18,6 @@ router
   })
   .post(
     checkAuth,
-    checkAdmin,
     joiValidate({
       name: joi.string().min(3).max(50).required(),
       email: joi.string().min(10).max(255).required().email(),
@@ -53,7 +52,7 @@ router
   })
   .patch(
     checkAuth,
-    checkAdmin,
+    // checkAdmin,
     skipIfNoChanges,
     joiValidate({
       name: joi.string().min(3).max(50).optional(),

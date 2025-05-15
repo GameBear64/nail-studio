@@ -11,7 +11,8 @@
     "4d079c",
     "4d079c",
     "4d079c",
-    "4d079c"
+    "4d079c",
+    "c2f7385b"
   ],
   "phone": "+359 98 987 9876",
   "password": "$2a$10$O0Ty/iDnRfH8SNnq3wDXuekpFqFs2Ett1eE4W3Ui1puQHV.AAYMk.",
@@ -24,5 +25,5 @@
   "shift": "Full",
   "passwordChangedAt": 1739884080258,
   "created_at": 1739884081258,
-  "updated_at": 1747146487533
+  "updated_at": 1747306182651
 }
