@@ -14,16 +14,28 @@ const props = defineProps(['images', 'loading']);
       <div class="flex h-60 w-72 items-center justify-center">
         <div
           class="text-primary solid mr-3 inline-block size-8 animate-spin rounded-full border-4 border-pink-500 border-r-transparent"
-          role="status" />
+          role="status"
+        />
       </div>
     </div>
 
-    <div v-for="image in props?.images?.slice()?.reverse()" :key="image" class="relative">
-      <img :src="`/api/resource/${image}?size=300`" class="max-w-54 rounded sm:max-h-60 sm:max-w-72" />
+    <div
+      v-for="image in props?.images?.slice()?.reverse()"
+      :key="image"
+      class="relative"
+    >
+      <img
+        :src="`/api/resource/${image}?size=300`"
+        class="max-w-54 rounded sm:max-h-60 sm:max-w-72"
+      >
       <div
         class="absolute right-1 top-1 flex size-10 cursor-pointer items-center justify-center rounded border border-red-300 bg-red-500"
-        @click="emit('delete', image)">
-        <Icon icon="delete" class="text-white" />
+        @click="emit('delete', image)"
+      >
+        <Icon
+          icon="delete"
+          class="text-white"
+        />
       </div>
     </div>
   </div>

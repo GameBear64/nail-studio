@@ -20,6 +20,7 @@ useFetch({ url: '/procedures', method: 'GET' }).then((res) => (procedures.value 
   <div class="flex size-full flex-col">
     <div class="flex h-80 w-screen items-center justify-center bg-[url(/flowers.jpg)] bg-center">
       <p
+        v-i18n
         class="text-bold text-md flex size-full items-center justify-center px-2 py-4 text-center italic text-pink-50 backdrop-brightness-50 sm:text-2xl"
       >
         Explore all the nail treatments we offer – from classic manicures to advanced nail art, we've got something for every
@@ -33,10 +34,10 @@ useFetch({ url: '/procedures', method: 'GET' }).then((res) => (procedures.value 
         :data="procedures"
       >
         <template #duration="{ row }">
-          <p>{{ row.duration }}min</p>
+          <p>{{ row.duration }} <span v-i18n>min</span></p>
         </template>
         <template #price="{ row }">
-          <p>{{ row.price }}lv</p>
+          <p>{{ row.price }} <span v-i18n>lv</span></p>
         </template>
       </Table>
     </div>

@@ -24,11 +24,8 @@ const router = useRouter();
           >
             {{ props.data?.name }}
           </p>
-          <p
-            v-i18n
-            class="text-sm text-gray-500"
-          >
-            {{ props.data.yearsExperience }} years of experience
+          <p class="text-sm text-gray-500">
+            {{ props.data.yearsExperience }} <span v-i18n>years of experience</span>
           </p>
         </div>
         <p

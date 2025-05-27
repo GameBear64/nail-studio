@@ -20,7 +20,10 @@ const slots = useSlots();
           class="flex justify-between pb-1"
           :class="props.title && 'border-pink-300 border-b-2'"
         >
-          <p class="text-xl font-bold">
+          <p
+            v-i18n
+            class="text-xl font-bold"
+          >
             {{ props.title }}
           </p>
           <button

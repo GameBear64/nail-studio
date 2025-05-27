@@ -28,7 +28,7 @@ readAllArtists();
 
     <div class="flex w-full flex-col items-center justify-center gap-5 lg:flex-row lg:justify-between">
       <ArtistCart
-        v-for="(artist, index) in data.slice(0, 4)"
+        v-for="artist in data.slice(0, 4)"
         :key="artist._id"
         class="w-80 md:w-96"
         :data="artist"

@@ -26,7 +26,10 @@ useFetch({ url: 'booking', method: 'GET' }).then((res) => {
 
 <template>
   <div class="mx-auto max-w-4xl space-y-6 p-6">
-    <h1 class="mb-4 text-2xl font-bold">
+    <h1
+      v-i18n
+      class="mb-4 text-2xl font-bold"
+    >
       Your Bookings
     </h1>
 
@@ -43,11 +46,14 @@ useFetch({ url: 'booking', method: 'GET' }).then((res) => {
           class="size-12 rounded-full object-cover"
         >
         <div>
-          <p class="text-lg font-semibold">
+          <p
+            v-i18n
+            class="text-lg font-semibold"
+          >
             {{ booking.artist.name }}
           </p>
           <p class="text-sm text-gray-500">
-            with {{ booking.client.name }}
+            <span v-i18n>with</span> <span v-i18n>{{ booking.client.name }}</span>
           </p>
         </div>
         <div class="ml-auto text-sm text-gray-600">
@@ -57,7 +63,10 @@ useFetch({ url: 'booking', method: 'GET' }).then((res) => {
 
       <!-- Procedures -->
       <div class="space-y-1 rounded bg-pink-50 p-3">
-        <p class="text-sm font-medium">
+        <p
+          v-i18n
+          class="text-sm font-medium"
+        >
           Procedures:
         </p>
         <ul class="list-disc pl-4 text-sm">
@@ -66,12 +75,12 @@ useFetch({ url: 'booking', method: 'GET' }).then((res) => {
             :key="procedure._id"
             class="flex justify-between"
           >
-            <span>{{ procedure.name }}</span>
-            <span class="text-gray-600">{{ procedure.price }} лв</span>
+            <span v-i18n>{{ procedure.name }}</span>
+            <span class="text-gray-600">{{ procedure.price }} <span v-i18n>lv</span></span>
           </li>
         </ul>
         <div class="mt-2 text-right font-semibold">
-          Total: {{ totalPrice(booking.procedures) }} лв
+          <span v-i18n>Total:</span> {{ totalPrice(booking.procedures) }} <span v-i18n>lv</span>
         </div>
       </div>
     </div>

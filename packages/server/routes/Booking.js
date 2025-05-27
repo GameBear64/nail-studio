@@ -16,8 +16,8 @@ router
     const populated = await Promise.all(
       result.map(async (booking) => {
         const [artist, client, procedures] = await Promise.all([
-          user.read(booking.client),
           artistSchema.read(booking.artist),
+          user.read(booking.client),
           Promise.all(booking.procedures.map((id) => procedureSchema.read(id))),
         ]);
 

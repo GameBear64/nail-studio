@@ -21,7 +21,7 @@ const closeModal = () => {
     :onclick="() => (open = !open)"
     class="btn flex cursor-pointer flex-row items-center gap-1"
   >
-    Create
+    <span v-i18n>Create</span>
     <Icon
       icon="add"
       class="text-sm md:pt-0.5 md:text-base"

@@ -28,7 +28,7 @@ const bookedHours = ref([]);
 watch(
   () => booking.artist,
   (artist) => {
-    useFetch({ url: 'booking/for/' + artist, method: 'GET' }).then((res) => {
+    useFetch({ url: 'booking/for/' + artist, method: 'GET', noError: true }).then((res) => {
       bookedHours.value = res;
       booking.procedures = [];
     });
@@ -68,9 +68,15 @@ const makeBooking = () => {
 <template>
   <div class="flex flex-col bg-pink-50">
     <div class="relative h-52 w-screen">
-      <img src="../../public/blossom.jpg" class="size-full object-cover" />
+      <img
+        src="/blossom.jpg"
+        class="size-full object-cover"
+      >
       <div class="absolute top-0 m-auto flex size-full items-center justify-center bg-black/50">
-        <p class="text-bold text-md text-center italic text-pink-50 sm:text-2xl">
+        <p
+          v-i18n
+          class="text-bold text-md text-center italic text-pink-50 sm:text-2xl"
+        >
           Schedule your next visit for flawless, salon-perfect nails.
         </p>
       </div>
@@ -80,12 +86,29 @@ const makeBooking = () => {
         <div class="flex w-full flex-col gap-10 sm:flex-row">
           <div class="flex w-full flex-col items-center justify-center gap-10">
             <div>
-              <p class="text-sm">First, choose an artist</p>
-              <Artists v-model="booking.artist" class="min-w-64 sm:w-96" />
+              <p
+                v-i18n
+                class="text-sm"
+              >
+                First, choose an artist
+              </p>
+              <Artists
+                v-model="booking.artist"
+                class="min-w-64 sm:w-96"
+              />
             </div>
             <div>
-              <p class="text-sm">Second, choose a procedure</p>
-              <Procedures v-model="booking.procedures" :options="artistProcedures" class="min-w-64 sm:w-96" />
+              <p
+                v-i18n
+                class="text-sm"
+              >
+                Second, choose a procedure
+              </p>
+              <Procedures
+                v-model="booking.procedures"
+                :options="artistProcedures"
+                class="min-w-64 sm:w-96"
+              />
             </div>
           </div>
           <Date
@@ -93,15 +116,17 @@ const makeBooking = () => {
             :start-hour="artistShift[0]"
             :end-hour="artistShift[1]"
             :booked="bookedHours"
-            :duration="totalDuration" />
+            :duration="totalDuration"
+          />
         </div>
         <button
           class="btn mt-4 w-full"
           :class="{ 'bg-pink-300': !bookingReady }"
           :disabled="!bookingReady"
           type="button"
-          @click="makeBooking">
-          <span v-i18n>Make booking</span> ({{ totalPrice }} лв)
+          @click="makeBooking"
+        >
+          <span v-i18n>Make booking</span> ({{ totalPrice }} <span v-i18n>lv</span>)
         </button>
       </div>
     </div>

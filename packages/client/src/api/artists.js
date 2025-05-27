@@ -17,10 +17,9 @@ export const createUser = (body) => {
 };
 
 export const updateUser = (userId, body) => {
-  const userData = Object.assign(body);
-  delete userData._id;
+  delete body._id;
 
-  useFetch({ url: 'artist/' + userId, method: 'PATCH', body: userData }).then((res) => {
+  useFetch({ url: 'artist/' + userId, method: 'PATCH', body }).then((res) => {
     data.value[data.value.findIndex((user) => user._id === res._id)] = res;
   });
 };

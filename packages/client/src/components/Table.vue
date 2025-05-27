@@ -10,6 +10,7 @@ const props = defineProps(['headers', 'data']);
           <th
             v-for="tableHeader in props.headers"
             :key="tableHeader.key"
+            v-i18n
           >
             {{ tableHeader.title }}
           </th>

@@ -24,9 +24,12 @@ const closeModal = () => {
     v-if="open"
     :close="closeModal"
   >
-    <p>Are you sure you want to delete this user?</p>
+    <p v-i18n>
+      Are you sure you want to delete this user?
+    </p>
     <template #buttons>
       <button
+        v-i18n
         :onclick="
           () => {
             deleteUser(props.userId);

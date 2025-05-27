@@ -1,31 +1,46 @@
-import { watchEffect } from 'vue';
+import { computed, reactive, watchEffect } from 'vue';
 
 import { useStorage } from '@vueuse/core';
 
+import { data, readAllTranslations } from '../../api/translations';
 import translations from '../../translations.json';
 
-export const locales = ['bg', 'de'];
+readAllTranslations();
+
+export const locales = ['bg'];
 export const locale = useStorage('locale', 'bg');
+
+export const extraTranslations = reactive({});
 
 export const bgEnToggle = () => {
   locale.value = locale.value == 'bg' ? 'en' : 'bg';
 };
 
+const mergedTranslations = computed(() => ({
+  ...Object.fromEntries(data.value.map(({ english, bulgarian }) => [english, [bulgarian]])),
+  ...translations,
+}));
+
 export const t = (key) => {
-  const translation = translations[key]?.[locales.indexOf(locale.value)];
+  const translation = mergedTranslations.value[key]?.[locales.indexOf(locale.value)];
+
   if (!translation && locale.value !== 'en') {
     handleMissingTranslation(key);
   }
-  return translation || key;
+  return translation ?? key;
 };
 
 export const i18nDirective = {
   beforeMount(el) {
-    const text = el.innerText.trim();
-    el.originalText = text;
-    el.innerText = t(text);
+    el.originalText = el.innerText.trim();
   },
   mounted(el) {
+    watchEffect(() => {
+      el.innerText = t(el.originalText);
+    });
+  },
+  updated(el) {
+    el.originalText = el.innerText.trim();
     watchEffect(() => {
       el.innerText = t(el.originalText);
     });

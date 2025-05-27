@@ -102,6 +102,9 @@ const adminActions = [
 </script>
 
 <template>
-  <MobileNavigation :actions="actions" :admin-actions="adminActions" />
+  <MobileNavigation
+    :actions="actions"
+    :admin-actions="adminActions"
+  />
   <DesktopNavigation :options="actions" />
 </template>

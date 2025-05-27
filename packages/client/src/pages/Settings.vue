@@ -21,7 +21,7 @@ const handleSubmit = (formData) => {
 </script>
 
 <template>
-  <div class="flex items-center justify-center bg-[url(../../public/flowerThree.jpg)] px-2">
+  <div class="flex items-center justify-center bg-[url(/flowerThree.jpg)] px-2">
     <Form
       v-slot="{ errors }"
       :rules="{
@@ -35,7 +35,10 @@ const handleSubmit = (formData) => {
       class="rounded border bg-white px-12 py-6 shadow-sm"
       @submit="handleSubmit"
     >
-      <p class="pb-2 text-center text-xl font-semibold">
+      <p
+        v-i18n
+        class="pb-2 text-center text-xl font-semibold"
+      >
         Settings
       </p>
       <div class="flex flex-col gap-1">

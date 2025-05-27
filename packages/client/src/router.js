@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import { setUserData } from '@store/userStore';
-import { userStore } from '@store/userStore';
+import { setUserData, userStore } from '@store/userStore';
 
 import { UserRoles } from './toolbox/consts';
 
@@ -47,7 +46,6 @@ const routes = [
   {
     name: 'book',
     path: '/book',
-    // idea: options in query params to preselect option
     component: () => import('@pages/Booking.vue'),
   },
   {
@@ -66,10 +64,8 @@ const routes = [
       { path: 'artists', name: 'admin/artists', component: () => import('@pages/Admin/ArtistsPanel.vue') },
       { path: 'procedures', name: 'admin/procedures', component: () => import('@pages/Admin/ProcedurePanel.vue') },
       { path: 'translations', name: 'admin/translations', component: () => import('@pages/Admin/TranslationsPanel.vue') },
-      // { path: 'galleries', name: 'galleries', component: () => import('@pages/Admin/GalleryPanel.vue') },
     ],
   },
-  // { path: '/user/:id', component: () => import('@pages/ArtistProfile.vue') },
 ];
 
 const router = createRouter({

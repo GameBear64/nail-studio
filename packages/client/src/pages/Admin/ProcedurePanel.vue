@@ -20,7 +20,10 @@ readAllProcedures();
 <template>
   <div class="m-auto mt-10 flex max-w-3xl flex-col justify-center">
     <div class="my-4 flex flex-row justify-between">
-      <h1 class="text-xl text-gray-800 md:text-2xl">
+      <h1
+        v-i18n
+        class="text-xl text-gray-800 md:text-2xl"
+      >
         Procedure Management
       </h1>
 
